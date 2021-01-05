@@ -1002,24 +1002,24 @@ try:
             msgb.showwarning('Invalid Student ID',' Please enter a valid student ID ')            
             sid.delete(0,END)
         if (sid.get(),) in d13:
-        f4.place_forget()
-        f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
-        f11.place(relx=0.5,rely=0.535,anchor='center')
-        l81=lb(f11,text='Fee details',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
-        l81.place(relx=0,rely=0.05,anchor='w')#ise bhi
-        l82=lb(f11,image=p29,bd=0)# ise bhi
-        l82.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
-        def fee_edit():
-            print('ruk')
-            b36.place_forget()
-            def fee_save():
-                print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=fee_save)
-            b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=fee_details)  
-            b38.place(relx=0.85,rely=0.0875,anchor='center')
-        b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=fee_edit)  
-        b36.place(relx=0.95,rely=0.09,anchor='center')
+            f4.place_forget()
+            f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
+            f11.place(relx=0.5,rely=0.535,anchor='center')
+            l81=lb(f11,text='Fee details',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
+            l81.place(relx=0,rely=0.05,anchor='w')#ise bhi
+            l82=lb(f11,image=p29,bd=0)# ise bhi
+            l82.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
+            def fee_edit():
+                print('ruk')
+                b36.place_forget()
+                def fee_save():
+                    print('wait more')
+                b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=fee_save)
+                b37.place(relx=0.95,rely=0.0875,anchor='center') 
+                b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=fee_details)  
+                b38.place(relx=0.85,rely=0.0875,anchor='center')
+            b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=fee_edit)  
+            b36.place(relx=0.95,rely=0.09,anchor='center')
 
 
 
