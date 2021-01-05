@@ -10,15 +10,30 @@ if c.is_connected()==True:
         l.append(i[0])
     print(l)
     q=['Pending','Paid']
-    p=['Final sem','Previous sem']
+    p=['Current sem','Previous sem']
 
 
             
-   
+
     for k in l:
-        am=randint(28999,169999)
-        t=choice(q)
-        t0=choice(p)
-        cur.execute('insert into fees values("{}","{}","{}","{}")'.format(k,t0,am,t))
-        c.commit()
+        try:
+            am=randint(28999,169999)
+            t=choice(q)
+            t0=choice(p)
+            cur.execute('insert into fees values("{}","{}","{}","{}")'.format(k,t0,am,t))
+            c.commit()
+        except:
+            continue
 print('ho giya')
+
+
+cur.execute('select * from fees')
+d0=cur.fetchall()
+for p in d0:
+    try:
+        if p[3]=='Pending':            
+            cur.execute('update fees set due_date="End of semester" where sid="{}"'.format(p[0]))
+            c.commit()
+    except:
+        continue
+

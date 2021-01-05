@@ -66,7 +66,9 @@ try:
     p34=ph(file = 'marksbg.png')
     p35=ph(file = '+admin.png')
     p36=ph(file = '+student.png')
-
+    p37=ph(file = 'paid1.png')
+    p38=ph(file = 'paid2.png')
+    p39=ph(file = 'paid3.png')
 
     win.iconphoto(None,p)#title bar image
 
@@ -127,7 +129,7 @@ try:
         global sid
         sid=ent(f3,bd=0,font=('SF Pro Display',13),width=6)# sid for profile
         sid.place(relx=0.35,rely=0.75,anchor='center')
-        
+
     
     def addstudent():  #############################  ISKA DBCUR.EXECUTE ME EK DO AUR ADD HONGE VO DEKHLIYO  ###################################
         f4.place_forget()
@@ -271,6 +273,7 @@ try:
                                 s6.get())) 
                             dbcur.execute("insert into marks values('{}','NULL','NULL','NULL','NULL','NULL','NULL','NULL','NULL')".format(s12.get()))
                             dbcur.execute('insert into slogin values("{}","NULL")'.format(s12.get()))
+                            dbcur.execute('insert into fees values("{}","NULL","NULL","NULL","NULL"'.format(s12.get()))
                             dbcon.commit()
                             msgb.showinfo('Message','Account added successfully.')
                             msgb.showinfo('Message','Since this will be a new account, therefore all other data branches such as password,assignments,attendance,etc are also not set-up.\n'
@@ -279,9 +282,9 @@ try:
                             home()
                         except:
                             msgb.showwarning('Unexpected error','Please check all fields or try again later.')
-        b41=bt(f12,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=nstudent_save)
+        b41=bt(f12,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=nstudent_save)
         b41.place(relx=0.95,rely=0.1,anchor='center') 
-        b42=bt(f12,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=home)  
+        b42=bt(f12,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
         b42.place(relx=0.85,rely=0.1,anchor='center')
 
     def addadmin(): ######################################################################### COMPLETED ###########################################################
@@ -296,13 +299,13 @@ try:
         l84=lb(f13,image=p29,bd=0)            
         l84.place(relx=0.5,rely=0.55,anchor='center')
 
-        l85=lb(f13,text='ID',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
+        l85=lb(f13,text='ID',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#249ADF')
         l85.place(relx=0.2,rely=0.3,anchor='w')
-        l85=lb(f13,text='Phone number :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
+        l85=lb(f13,text='Phone number :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF')
         l85.place(relx=0.2,rely=0.4,anchor='w')
-        l86=lb(f13,text='New password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
+        l86=lb(f13,text='New password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF')
         l86.place(relx=0.2,rely=0.5,anchor='w')
-        l87=lb(f13,text='Confirm new password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
+        l87=lb(f13,text='Confirm new password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF')
         l87.place(relx=0.2,rely=0.6,anchor='w')
 
         l88=lb(f13,image=p33,bd=0)
@@ -362,9 +365,9 @@ try:
                                 msgb.showwarning('Unexpected error','Please check all fields or try again later.')
 
                 
-        b43=bt(f13,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=nadmin_save)
+        b43=bt(f13,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=nadmin_save)
         b43.place(relx=0.95,rely=0.0875,anchor='center') 
-        b44=bt(f13,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=home)  
+        b44=bt(f13,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
         b44.place(relx=0.85,rely=0.0875,anchor='center')  
     
     def forgpass():#####################################################################  COMPLETE  #############################################################
@@ -494,7 +497,7 @@ try:
 
         b27=bt(f8,text='Go',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF',activebackground='#232323',command=go)
         b27.place(relx=0.6,rely=0.3,anchor='center')
-        b28=bt(f8,text='Cancel',bd=0,font=('SF Pro Display',16),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=cancel1)
+        b28=bt(f8,text='Cancel',bd=0,font=('SF Pro Display',16),bg='#000000',fg='#CF3327',activebackground='#000000',command=cancel1)
         b28.place(relx=0.9,rely=0.08,anchor='center')
         
     def passr():#####################################################################  COMPLETE  #############################################################    
@@ -544,7 +547,7 @@ try:
                             msgb.showinfo('Operation successful','Password changed successfully.\nPlease re-login for changes to take effect.')
                 except:
                     msgb.showinfo('Unexpected error','Please check all fields and try again.')
-            b26=bt(f7,text='Save',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF',activebackground='#232323',command=apass_save)
+            b26=bt(f7,text='Save',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#249ADF',activebackground='#232323',command=apass_save)
             b26.place(relx=0.7,rely=0.6,anchor='center')
 
         def spassreset():
@@ -588,7 +591,7 @@ try:
                         msgb.showwarning('Invalid ID','Incorrect ID, Please try again.')
                 except:
                     msgb.showinfo('Unexpected error','Please check all fields and try again.')
-            b26=bt(f7,text='Save',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF',activebackground='#232323',command=spass_save)
+            b26=bt(f7,text='Save',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#249ADF',activebackground='#232323',command=spass_save)
             b26.place(relx=0.7,rely=0.6,anchor='center')       
         
         f4.place_forget()
@@ -794,9 +797,9 @@ try:
                                 except:
                                     msgb.showwarning('Unexpected error','Please try again.')    
     
-                    b18=bt(f5,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=profile_save)
+                    b18=bt(f5,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=profile_save)
                     b18.place(relx=0.95,rely=0.1,anchor='center') 
-                    b19=bt(f5,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=sprofile)  
+                    b19=bt(f5,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=sprofile)  
                     b19.place(relx=0.85,rely=0.1,anchor='center')
                 b17=bt(f5,image=p28,bd=0,bg='#000000',activebackground='#000000',command=profile_edit)  
                 b17.place(relx=0.95,rely=0.09,anchor='center')    
@@ -985,15 +988,15 @@ try:
                         msgb.showinfo('Operation sucessful','All records updated successfully.')
                         marks()
                             
-                b34=bt(f10,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=marks_save)
+                b34=bt(f10,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=marks_save)
                 b34.place(relx=0.95,rely=0.0875,anchor='center') 
-                b35=bt(f10,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=marks)  
+                b35=bt(f10,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=marks)  
                 b35.place(relx=0.85,rely=0.0875,anchor='center')
             b33=bt(f10,image=p28,bd=0,bg='#000000',activebackground='#000000',command=marks_edit)  
             b33.place(relx=0.95,rely=0.09,anchor='center')
 
-    def fee_details():
-        dbcur.execute('select sid from fee')
+    def fee_details():##########################################################  COMPLETED  ####################################################################
+        dbcur.execute('select sid from fees')
         global d13
         d13=dbcur.fetchall()
         if sid.get()=='':
@@ -1005,18 +1008,128 @@ try:
             f4.place_forget()
             f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f11.place(relx=0.5,rely=0.535,anchor='center')
-            l81=lb(f11,text='Fee details',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
-            l81.place(relx=0,rely=0.05,anchor='w')#ise bhi
-            l82=lb(f11,image=p29,bd=0)# ise bhi
-            l82.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
+            l81=lb(f11,text='Fee details',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
+            l81.place(relx=0,rely=0.05,anchor='w')
+            l82=lb(f11,image=p29,bd=0)
+            l82.place(relx=0.5,rely=0.55,anchor='center')
+            dbcur.execute('select * from fees where sid="{}"'.format(sid.get()))
+            global d14
+            d14=list(dbcur.fetchall()[0])
+            for j in range(0,len(d14)):
+                if d14[j]==None or d14[j]=='NULL':
+                    d14[j]='N/A'
+            p1=[p37,p38,p39]
+            p2=['All Clear!','No dues!','No Pending Fees!'] 
+            im=choice(p1)
+            it=choice(p2) 
+            l98=lb(f11,image=im,bd=0)
+            l99=lb(f11,text=it,font=('SF Pro Display',32,'bold'),bd=0,bg='#232323', fg='#FFFFFF')
+            if d14[3]=='Paid' or d14[3]=='paid':                           
+                l98.place(relx=0.5,rely=0.45,anchor='center')             
+                l99.place(relx=0.5,rely=0.65,anchor='center')
+            else:       
+                l82.place(relx=0.5,rely=0.55,anchor='center')
+                l92=lb(f11,text='Cycle  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
+                l92.place(relx=0.2,rely=0.25,anchor='w')
+                l93=lb(f11,text='Amount  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
+                l93.place(relx=0.2,rely=0.35,anchor='w')
+                l94=lb(f11,text='Status  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
+                l94.place(relx=0.2,rely=0.45,anchor='w')
+                l100=lb(f11,text='Due date  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
+                l100.place(relx=0.2,rely=0.55,anchor='w')
+                l95=lb(f11,text=d14[1],font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
+                l95.place(relx=0.35,rely=0.25,anchor='w')
+                if d14[2]!='N/A':
+                    l96=lb(f11,text=('Rs. '+d14[2]+'/-'),font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
+                    l96.place(relx=0.35,rely=0.35,anchor='w')
+                else:
+                    l96=lb(f11,text=d14[2],font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
+                    l96.place(relx=0.35,rely=0.35,anchor='w')
+                l97=lb(f11,text=d14[3],font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
+                l97.place(relx=0.35,rely=0.45,anchor='w')
+                l101=lb(f11,text=d14[4],font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
+                l101.place(relx=0.35,rely=0.55,anchor='w')    
+            
             def fee_edit():
                 print('ruk')
                 b36.place_forget()
+                l98.place_forget()
+                l99.place_forget()
+                l82.place(relx=0.5,rely=0.55,anchor='center')                
+                la1=lb(f11,text='Cycle  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
+                la1.place(relx=0.2,rely=0.25,anchor='w')
+                la2=lb(f11,text='Amount  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
+                la2.place(relx=0.2,rely=0.35,anchor='w')
+                la3=lb(f11,text='Status  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
+                la3.place(relx=0.2,rely=0.45,anchor='w')
+                la8=lb(f11,text='Due date  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
+                la8.place(relx=0.2,rely=0.55,anchor='w')
+                la4=lb(f11,image=p33,bd=0)
+                la5=lb(f11,image=p33,bd=0)
+                la6=lb(f11,image=p33,bd=0)
+                la7=lb(f11,image=p33,bd=0)
+                la4.place(relx=0.45,rely=0.25,anchor='center')
+                la5.place(relx=0.45,rely=0.35,anchor='center')
+                la6.place(relx=0.45,rely=0.45,anchor='center')
+                la7.place(relx=0.45,rely=0.55,anchor='center')
+
+                cy=ent(f11,bd=0,font=('SF Pro Display',15),width=10,bg='#F2F2F2')
+                cy.place(relx=0.45,rely=0.25,anchor='center')
+                cy.insert(0,d14[1]) 
+
+                amt=ent(f11,bd=0,font=('SF Pro Display',15),width=10,bg='#F2F2F2')
+                amt.place(relx=0.45,rely=0.35,anchor='center')
+                amt.insert(0,d14[2])
+
+                st=ent(f11,bd=0,font=('SF Pro Display',15),width=10,bg='#F2F2F2')
+                st.place(relx=0.45,rely=0.45,anchor='center')
+                st.insert(0,d14[3])
+
+                dd=ent(f11,bd=0,font=('SF Pro Display',15),width=10,bg='#F2F2F2')
+                dd.place(relx=0.45,rely=0.55,anchor='center')
+                dd.insert(0,d14[4])
+
+                tx1=('* The cycle can be any time period, it may be represented as semesters or even dates.\n'
+                    '* You can only edit the record of the most recent or due payment only.\n'
+                    '* Payments can be done only through depositing check, DD, NEFT, RTGS or by online alternatives\n'
+                    'such as PayTM, our online portal, Net banking, etc.\n'
+                    '* Funds once transferred can in no way be refunded, instead it may be adjusted in future transactions.\n')
+                m2=msg(f11,text=tx1,bd=0,bg='#232323',fg='#FFFFFF',font=('SF Pro Display',11),width=800)                
+                m2.place(relx=0.5,rely=0.8,anchor='center')
+                
                 def fee_save():
                     print('wait more')
-                b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=fee_save)
+                    fc=0
+                    err=0
+                    n=0
+                    fget=[cy.get(),amt.get(),st.get(),dd.get()]
+                    for i in fget:
+                        if i=='':
+                            fc+=1
+                    if fc!=0:
+                        msgb.showwarning('Entry error','Please fill all fields and try again.')
+                    if fc==0:
+                        for h in amt.get():
+                            if h.isalpha()==True:
+                                n+=1
+                        if n!=0 or int(fget[1]) not in range(1,1000000):
+                            msgb.showwarning('Message','Please enter valid amount.')
+                            err+=1
+                        if fget[2] not in ['Pending','Paid','paid','pending']:
+                            msgb.showwarning('Message','Please check status, you can only enter Paid or Pending.')
+                            err+=1
+                        if err==0:
+                            try:
+                                dbcur.execute('update fees set cycle="{}",amount="{}",status="{}",'
+                                'due_date="{}" where sid="{}"'.format(fget[0],fget[1],fget[2],fget[3],sid.get()))
+                                dbcon.commit()
+                                msgb.showinfo('Message','Operation succesfull.')
+                                fee_details()
+                            except:
+                                msgb.showwarning('Unexpected error','Please check all entries and try again or later.')                    
+                b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=fee_save)
                 b37.place(relx=0.95,rely=0.0875,anchor='center') 
-                b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=fee_details)  
+                b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=fee_details)  
                 b38.place(relx=0.85,rely=0.0875,anchor='center')
             b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=fee_edit)  
             b36.place(relx=0.95,rely=0.09,anchor='center')
@@ -1024,7 +1137,7 @@ try:
 
 
 
-    def events():
+    def events():# frame number changer karle iska
         print('under development')
         f4.place_forget()
         f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
@@ -1038,9 +1151,9 @@ try:
             b36.place_forget()
             def events_save():
                 print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=events_save)
+            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=events_save)
             b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=events)  
+            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=events)  
             b38.place(relx=0.85,rely=0.0875,anchor='center')
         b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=events_edit)  
         b36.place(relx=0.95,rely=0.09,anchor='center')
@@ -1048,7 +1161,7 @@ try:
 
 
 
-    def attendance():
+    def attendance():# frame number changer karle iska
         print('under development')
         f4.place_forget()
         f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
@@ -1062,9 +1175,9 @@ try:
             b36.place_forget()
             def attendance_save():
                 print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=attendance_save)
+            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=attendance_save)
             b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=attendance)  
+            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=attendance)  
             b38.place(relx=0.85,rely=0.0875,anchor='center')
         b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=attendance_edit)  
         b36.place(relx=0.95,rely=0.09,anchor='center')
@@ -1072,7 +1185,7 @@ try:
 
 
 
-    def projects():
+    def projects():# frame number changer karle iska
         print('under development')
         f4.place_forget()
         f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
@@ -1086,9 +1199,9 @@ try:
             b36.place_forget()
             def projects_save():
                 print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=projects_save)
+            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
             b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=projects)  
+            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
             b38.place(relx=0.85,rely=0.0875,anchor='center')
         b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=projects_edit)  
         b36.place(relx=0.95,rely=0.09,anchor='center')
@@ -1096,7 +1209,7 @@ try:
 
 
 
-    def assignments():        
+    def assignments(): # frame number changer karle iska       
         print('under development')
         f4.place_forget()
         f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
@@ -1110,9 +1223,9 @@ try:
             b36.place_forget()
             def assignment_save():
                 print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=assignment_save)
+            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=assignment_save)
             b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=assignments)  
+            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=assignments)  
             b38.place(relx=0.85,rely=0.0875,anchor='center')
         b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=assignment_edit)  
         b36.place(relx=0.95,rely=0.09,anchor='center')
@@ -1150,9 +1263,9 @@ try:
                         about()
                     except:
                         msgb.showinfo('Unexpected error','Please check the entry and try again.')
-            b21=bt(f6,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=abt_save)
+            b21=bt(f6,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=abt_save)
             b21.place(relx=0.95,rely=0.0875,anchor='center') 
-            b22=bt(f6,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#FFFFFF',activebackground='#000000',command=about)  
+            b22=bt(f6,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=about)  
             b22.place(relx=0.85,rely=0.0875,anchor='center')                 
         b20=bt(f6,image=p28,bd=0,bg='#000000',activebackground='#000000',command=about_edit)  
         b20.place(relx=0.95,rely=0.09,anchor='center')        
