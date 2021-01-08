@@ -1137,7 +1137,7 @@ try:
 
 
 
-    def events():# frame number changer karle iska
+    def events():# frame number changer karle iska f14 
         print('under development')
         f4.place_forget()
         f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
@@ -1161,7 +1161,7 @@ try:
 
 
 
-    def attendance():# frame number changer karle iska
+    def attendance():# frame number changer karle iska f15 
         print('under development')
         f4.place_forget()
         f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
@@ -1185,7 +1185,7 @@ try:
 
 
 
-    def projects():# frame number changer karle iska
+    def projects():# frame number changer karle iska f16
         print('under development')
         f4.place_forget()
         f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
@@ -1209,7 +1209,7 @@ try:
 
 
 
-    def assignments(): # frame number changer karle iska       
+    def assignments(): # frame number changer karle iska    f17    
         print('under development')
         f4.place_forget()
         f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
