@@ -69,6 +69,7 @@ try:
     p37=ph(file = 'paid1.png')
     p38=ph(file = 'paid2.png')
     p39=ph(file = 'paid3.png')
+    p40=ph(file = 'eventbg.png')
 
     win.iconphoto(None,p)#title bar image
 
@@ -1134,29 +1135,27 @@ try:
             b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=fee_edit)  
             b36.place(relx=0.95,rely=0.09,anchor='center')
 
-
-
-
-    def events():# frame number changer karle iska f14 
+    def events():
         print('under development')
         f4.place_forget()
-        f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
-        f11.place(relx=0.5,rely=0.535,anchor='center')
-        l=lb(f11,text='Events',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
-        l.place(relx=0,rely=0.05,anchor='w')#ise bhi
-        l=lb(f11,image=p29,bd=0)# ise bhi
-        l.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
+        f14=fr(f2,height=500,width=855,bd=0,bg='#000000') 
+        f14.place(relx=0.5,rely=0.535,anchor='center')
+        la9=lb(f14,text='Events',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF') 
+        la9.place(relx=0,rely=0.05,anchor='w')
+        lb1=lb(f14,image=p40,bd=0)
+        lb1.place(relx=0.5,rely=0.55,anchor='center')
+
         def events_edit():
             print('ruk')
-            b36.place_forget()
+            b45.place_forget()
             def events_save():
                 print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=events_save)
-            b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=events)  
-            b38.place(relx=0.85,rely=0.0875,anchor='center')
-        b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=events_edit)  
-        b36.place(relx=0.95,rely=0.09,anchor='center')
+            b46=bt(f14,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=events_save)
+            b46.place(relx=0.95,rely=0.0865,anchor='center') 
+            b47=bt(f14,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=events)  
+            b47.place(relx=0.85,rely=0.0865,anchor='center')
+        b45=bt(f14,image=p28,bd=0,bg='#000000',activebackground='#000000',command=events_edit)  
+        b45.place(relx=0.95,rely=0.08,anchor='center')
 
 
 
@@ -1164,22 +1163,23 @@ try:
     def attendance():# frame number changer karle iska f15 
         print('under development')
         f4.place_forget()
-        f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
-        f11.place(relx=0.5,rely=0.535,anchor='center')
-        l=lb(f11,text='Attendance',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
-        l.place(relx=0,rely=0.05,anchor='w')#ise bhi
-        l=lb(f11,image=p29,bd=0)# ise bhi
+        f11=fr(f2,height=500,width=855,bd=0,bg='#000000') # aur ise bhi
+        f11.place(relx=0.5,rely=0.535,anchor='center')# aur ise bhi
+        l=lb(f11,text='Attendance',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
+        l.place(relx=0,rely=0.05,anchor='w')# aur ise bhi
+        l=lb(f11,image=p29,bd=0)# aur ise bhi
         l.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
-        def attendance_edit():
+
+        def att_edit():
             print('ruk')
             b36.place_forget()
-            def attendance_save():
+            def att_save():
                 print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=attendance_save)
+            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=att_save)
             b37.place(relx=0.95,rely=0.0875,anchor='center') 
             b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=attendance)  
             b38.place(relx=0.85,rely=0.0875,anchor='center')
-        b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=attendance_edit)  
+        b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=att_edit)  
         b36.place(relx=0.95,rely=0.09,anchor='center')
 
 
@@ -1268,13 +1268,8 @@ try:
             b22=bt(f6,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=about)  
             b22.place(relx=0.85,rely=0.0875,anchor='center')                 
         b20=bt(f6,image=p28,bd=0,bg='#000000',activebackground='#000000',command=about_edit)  
-        b20.place(relx=0.95,rely=0.09,anchor='center')        
-
-
-        
-        
-        
-        
+        b20.place(relx=0.95,rely=0.09,anchor='center')    
+   
     def login():######################################################################### COMPLETE #####################################################################
         b1.place_forget()
 
