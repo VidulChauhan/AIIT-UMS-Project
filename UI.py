@@ -420,6 +420,7 @@ try:
                             Phone.OTP(phn,onet)                 
                             msgb.showinfo('Forgot password','   OTP sent successfully.   ')
                             scount.append('clicked')
+                            
                         except:
                             msgb.showerror('Message Client error','Message could not be sent.\nPlease try again later.')    
                     else :
