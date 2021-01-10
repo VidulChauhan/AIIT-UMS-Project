@@ -420,7 +420,6 @@ try:
                             Phone.OTP(phn,onet)                 
                             msgb.showinfo('Forgot password','   OTP sent successfully.   ')
                             scount.append('clicked')
-                            
                         except:
                             msgb.showerror('Message Client error','Message could not be sent.\nPlease try again later.')    
                     else :
@@ -1344,7 +1343,7 @@ try:
         #login button 1
         
         global b1
-        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =home)
+        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =login)
         b1.place(relx=0.75,rely=0.55,anchor='center')
 
 
