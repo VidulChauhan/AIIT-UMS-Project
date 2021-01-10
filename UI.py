@@ -4,7 +4,7 @@ try:
     from tkinter import messagebox
     from random import *
     from datetime import *
-    from twilio.rest import Client
+    import Phone    
     import time as t
     import os
     ph=PhotoImage
@@ -415,18 +415,11 @@ try:
                     phn=d3[2]
                     if phone.get().strip()==phn:
                         try:
-                                                
-                            mid='AC941df350e2684f45d0e175d4faf8e132'
-                            auth='225b6457db2c13d7faf3abf2bf8cebfe'
-                            cl=Client(mid,auth)
                             global onet
                             onet=randrange(635745,952675)
-                            sms=cl.messages.create(from_='+17656256436',
-                            body='Hi Administrator, {} is the following code to reset your password. DO NOT share this with anyone'.format(onet),
-                            to="{}".format('+91'+phn))
+                            Phone.OTP(phn,onet)                 
                             msgb.showinfo('Forgot password','   OTP sent successfully.   ')
                             scount.append('clicked')
-                            print(sms.mid)
                         except:
                             msgb.showerror('Message Client error','Message could not be sent.\nPlease try again later.')    
                     else :
