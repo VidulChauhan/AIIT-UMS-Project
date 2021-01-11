@@ -1,13 +1,14 @@
 try:
     #import start
-    import mysql.connector as db
+    import mysql.connector as db ### EXTERNAL INSTALL ###
     from tkinter import *
     from tkinter import messagebox
     from random import *
     from datetime import *
-    import Phone    
+    import Phone ###  EXTERNAL INSTALL IN THIS AS WELL  ###   
     import time as t
     import os
+    #import matplotlib.pyplot as plot ### EXTERNAL INSTALL ###
     ph=PhotoImage
     lb=Label
     bt=Button
@@ -17,6 +18,7 @@ try:
     tx=Text       
     msg=Message
     dt=datetime
+    cv=Canvas
     day=dt.now().strftime('%A')
     month=dt.now().strftime('%B')
     DD=str(dt.now().day)
@@ -72,6 +74,7 @@ try:
     p38=ph(file = 'paid2.png')
     p39=ph(file = 'paid3.png')
     p40=ph(file = 'eventbg.png')
+    p41=ph(file = 'chartlegend.png')
 
     win.iconphoto(None,p)#title bar image
 
@@ -1130,7 +1133,7 @@ try:
             b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=fee_edit)  
             b36.place(relx=0.95,rely=0.09,anchor='center')
 
-    def events():
+    def events(): #################################################### COMPLETED ###############################################################
         f4.place_forget()
         f14=fr(f2,height=500,width=855,bd=0,bg='#000000') 
         f14.place(relx=0.5,rely=0.535,anchor='center')
@@ -1237,11 +1240,14 @@ try:
                     msgb.showwarning('Invalid entry','Please check all the dates and try again.\nMake sure they are valid and relevant.')
                 else:
                     if a==0 and b==0 and c==0:
-                        for p in range(0,5):                            
-                            dbcur.execute('update events set event="{}",date="{}" where Eid="{}"'.format(eget[p],e1get[p],l1[p]))
-                            dbcon.commit()
-                        msgb.showinfo('Message','Operation succesful.')
-                        events()
+                        try:
+                            for p in range(0,5):                            
+                                dbcur.execute('update events set event="{}",date="{}" where Eid="{}"'.format(eget[p],e1get[p],l1[p]))
+                                dbcon.commit()
+                            msgb.showinfo('Message','Operation succesful.')
+                            events()
+                        except:
+                            msgb.showwarning('Unexpected error','Please check all entries and try again or later.')
 
             b46=bt(f14,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=events_save)
             b46.place(relx=0.95,rely=0.0865,anchor='center') 
@@ -1250,77 +1256,141 @@ try:
         b45=bt(f14,image=p28,bd=0,bg='#000000',activebackground='#000000',command=events_edit)  
         b45.place(relx=0.95,rely=0.08,anchor='center')
 
+    def attendance():######################################################  COMPLETED  ##########################################################
+        dbcur.execute('select sid from attendance')
+        global d16
+        d16=dbcur.fetchall()
+        if sid.get()=='':
+            msgb.showwarning('ID error','  Please enter a Student ID  ')
+        if (sid.get(),) not in d16 and sid.get()!='':
+            msgb.showwarning('Invalid Student ID',' Please enter a valid student ID ')            
+            sid.delete(0,END)
+        if (sid.get(),) in d16:
+            #print('under development')
+            f4.place_forget()
+            f15=fr(f2,height=500,width=855,bd=0,bg='#000000') 
+            f15.place(relx=0.5,rely=0.535,anchor='center')
+            lb7=lb(f15,text='Attendance',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
+            lb7.place(relx=0,rely=0.05,anchor='w')
+            lb8=lb(f15,image=p29,bd=0)
+            lb8.place(relx=0.5,rely=0.55,anchor='center')
+            dbcur.execute('select * from attendance where sid="{}"'.format(sid.get()))
+            global d17
+            d17=dbcur.fetchall()[0]
+            
+            lb9=lb(f15,text='Number of days present  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
+            lb9.place(relx=0.2,rely=0.2,anchor='w')
+
+            lc1=lb(f15,text='Total number of days  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
+            lc1.place(relx=0.2,rely=0.275,anchor='w')
+
+            lc2=lb(f15,text=d17[1],font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
+            lc2.place(relx=0.55,rely=0.2,anchor='w')
+
+            lc4=lb(f15,text='180',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
+            lc4.place(relx=0.55,rely=0.275,anchor='w')
+
+            lc5=lb(f15,text='Status  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
+            lc5.place(relx=0.2,rely=0.35,anchor='w')
+
+            lc6=lb(f15,text='N/A',font=('SF Pro Display',16),bd=0,bg='#232323',fg='#FFFFFF')
+            lc6.place(relx=0.55,rely=0.35,anchor='w')
+
+            if d17[1]!='NULL' and d17[1]!=None:
+                if int(d17[1])<=180 and int(d17[1])>=163:
+                    lc6.configure(text='Good',fg='#C9E265')
+                if int(d17[1])<=162 and int(d17[1])>=135:  
+                    lc6.configure(text='Adequate',fg='#8C52FF') 
+                if int(d17[1])<=134 and int(d17[1])>=108:  
+                    lc6.configure(text='Low',fg='#FF914D')
+                if int(d17[1])<=107:  
+                    lc6.configure(text='Critically low',fg='#FF5757')
+
+                c1=cv(f15,width=230,height=230,bd=0,bg='#232323',highlightbackground='#232323')
+                pie=20,20,230,230
+                pr=int(d17[1])
+                ab=180-(pr)
+                arc2=c1.create_arc(pie,start=-60,extent="{}".format(-ab),fill='#FF5757',outline='#FF5757') #absent right
+                arc1=c1.create_arc(pie,start=0,extent="{}".format(pr),fill='#8C52FF',outline='#8C52FF') #present right
+                arc3=c1.create_arc(pie,start="{}".format(pr),extent=120,fill='#C9E265',outline='#C9E265') # holidays (festivals + weekends)
+                arc4=c1.create_arc(pie,start=0,extent=-60,fill='#FF914D',outline='#FF914D') # permitted leaves
+                c1.place(relx=0.35,rely=0.65,anchor='center')
+                lc7=lb(f15,image=p41,bd=0)
+                lc7.place(relx=0.68,rely=0.66,anchor='center')
+
+            def att_edit():
+                at=ent(f15,bd=0,font=('SF Pro Display',16),width=3)
+                at.place(relx=0.55,rely=0.2,anchor='w')
+                at.insert(0,d17[1])            
+                b36.place_forget()
+                def att_save():
+                    a=0 
+                    for i in at.get():
+                        if i=='':
+                            a+=1
+                    if at.get()=='':
+                        msgb.showwarning('Invalid entry','Please enter number of days present correctly and try again.')
+                    if at.get()!='' and a!=0:
+                        msgb.showwarning('Invalid error','Please enter a valid numeric value for number of days present.')
+                    else:                        
+                        if a==0 and at.get()!='':
+                            try:
+                                dbcur.execute('update attendance set present="{}" where sid="{}"'.format(at.get(),sid.get()))
+                                dbcon.commit()
+                                msgb.showinfo('Message','Operation successful.')
+                                attendance()
+                            except:
+                                msgb.showwarning('Unexpected error','Please check all entries and try again or later.')                    
+                b37=bt(f15,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=att_save)
+                b37.place(relx=0.95,rely=0.0875,anchor='center') 
+                b38=bt(f15,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=attendance)  
+                b38.place(relx=0.85,rely=0.0875,anchor='center')
+            b36=bt(f15,image=p28,bd=0,bg='#000000',activebackground='#000000',command=att_edit)  
+            b36.place(relx=0.95,rely=0.09,anchor='center')
 
 
-
-    def attendance():# frame number changer karle iska f15 
-        print('under development')
+    def projects():
         f4.place_forget()
-        f11=fr(f2,height=500,width=855,bd=0,bg='#000000') # aur ise bhi
-        f11.place(relx=0.5,rely=0.535,anchor='center')# aur ise bhi
-        l=lb(f11,text='Attendance',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
-        l.place(relx=0,rely=0.05,anchor='w')# aur ise bhi
-        l=lb(f11,image=p29,bd=0)# aur ise bhi
-        l.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
-
-        def att_edit():
-            print('ruk')
-            b36.place_forget()
-            def att_save():
-                print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=att_save)
-            b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=attendance)  
-            b38.place(relx=0.85,rely=0.0875,anchor='center')
-        b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=att_edit)  
-        b36.place(relx=0.95,rely=0.09,anchor='center')
-
-
-
-
-    def projects():# frame number changer karle iska f16
-        print('under development')
-        f4.place_forget()
-        f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
-        f11.place(relx=0.5,rely=0.535,anchor='center')
-        l=lb(f11,text='Projects',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
+        f16=fr(f2,height=500,width=855,bd=0,bg='#000000') 
+        f16.place(relx=0.5,rely=0.535,anchor='center')
+        l=lb(f16,text='Projects',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
         l.place(relx=0,rely=0.05,anchor='w')#ise bhi
-        l=lb(f11,image=p29,bd=0)# ise bhi
+        l=lb(f16,image=p29,bd=0)# ise bhi
         l.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
         def projects_edit():
             print('ruk')
             b36.place_forget()
             def projects_save():
                 print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
+            b37=bt(f16,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
             b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
+            b38=bt(f16,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
             b38.place(relx=0.85,rely=0.0875,anchor='center')
-        b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=projects_edit)  
+        b36=bt(f16,image=p28,bd=0,bg='#000000',activebackground='#000000',command=projects_edit)  
         b36.place(relx=0.95,rely=0.09,anchor='center')
 
 
 
 
-    def assignments(): # frame number changer karle iska    f17    
+    def assignments():
         print('under development')
         f4.place_forget()
-        f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
-        f11.place(relx=0.5,rely=0.535,anchor='center')
-        l=lb(f11,text='Assignments',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
+        f17=fr(f2,height=500,width=855,bd=0,bg='#000000') 
+        f17.place(relx=0.5,rely=0.535,anchor='center')
+        l=lb(f17,text='Assignments',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
         l.place(relx=0,rely=0.05,anchor='w')#ise bhi
-        l=lb(f11,image=p29,bd=0)# ise bhi
+        l=lb(f17,image=p29,bd=0)# ise bhi
         l.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
         def assignment_edit():
             print('ruk')
             b36.place_forget()
             def assignment_save():
                 print('wait more')
-            b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=assignment_save)
+            b37=bt(f17,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=assignment_save)
             b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=assignments)  
+            b38=bt(f17,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=assignments)  
             b38.place(relx=0.85,rely=0.0875,anchor='center')
-        b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=assignment_edit)  
+        b36=bt(f17,image=p28,bd=0,bg='#000000',activebackground='#000000',command=assignment_edit)  
         b36.place(relx=0.95,rely=0.09,anchor='center')
 
 
