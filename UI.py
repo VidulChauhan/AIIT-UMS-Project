@@ -1,4 +1,5 @@
 try:
+    #import start
     import mysql.connector as db
     from tkinter import *
     from tkinter import messagebox
@@ -25,11 +26,12 @@ try:
 
     #root window 
     win=Tk()
-    win.geometry('1150x650')
+    width=int(((win.winfo_screenwidth()*0.9875)//2)-575)
+    height=int(((win.winfo_screenheight()*0.95)//2)-325)
+    win.geometry('1150x650+{}+{}'.format(width,height))
     win.title('All India Institute of Technology')
     win.configure(bg='#000000')
     win.resizable(False,False)
-
 
     #title bar icon change
     p=ph(file  = 'titlelogo.png')#title icon 
@@ -1129,7 +1131,6 @@ try:
             b36.place(relx=0.95,rely=0.09,anchor='center')
 
     def events():
-        print('under development')
         f4.place_forget()
         f14=fr(f2,height=500,width=855,bd=0,bg='#000000') 
         f14.place(relx=0.5,rely=0.535,anchor='center')
@@ -1137,12 +1138,111 @@ try:
         la9.place(relx=0,rely=0.05,anchor='w')
         lb1=lb(f14,image=p40,bd=0)
         lb1.place(relx=0.5,rely=0.55,anchor='center')
+        dbcur.execute('select * from events')
+        d15=dbcur.fetchall()
+
+        lm1=msg(f14,text=d15[0][1].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',10))
+        lm1.place(relx=0.085,rely=0.335,anchor='w',height=55)
+        lm2=msg(f14,text=d15[1][1].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',10))
+        lm2.place(relx=0.085,rely=0.471,anchor='w',height=55)
+        lm3=msg(f14,text=d15[2][1].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',10))
+        lm3.place(relx=0.085,rely=0.607,anchor='w',height=55)
+        lm4=msg(f14,text=d15[3][1].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',10))
+        lm4.place(relx=0.085,rely=0.745,anchor='w',height=55)
+        lm5=msg(f14,text=d15[4][1].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',10))
+        lm5.place(relx=0.085,rely=0.883,anchor='w',height=55)
+
+        lb2=lb(f14,text=d15[0][2],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10))
+        lb2.place(relx=0.775,rely=0.335,anchor='w')
+        lb3=lb(f14,text=d15[1][2],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10))
+        lb3.place(relx=0.775,rely=0.471,anchor='w')
+        lb4=lb(f14,text=d15[2][2],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10))
+        lb4.place(relx=0.775,rely=0.607,anchor='w')
+        lb5=lb(f14,text=d15[3][2],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10))
+        lb5.place(relx=0.775,rely=0.745,anchor='w')
+        lb6=lb(f14,text=d15[4][2],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10))
+        lb6.place(relx=0.775,rely=0.883,anchor='w')
 
         def events_edit():
             print('ruk')
             b45.place_forget()
+        
+            #delete this 
+            #t1=tx(f6,bd=0,bg='#232323',fg='#FFFFFF',font=('SF Pro Display',12),padx=80,pady=10)
+            #t1.place(relx=0.5,rely=0.55,anchor='center',width=750,height=400)
+            #t1.insert(1.0,d7)
+
+            ta1=tx(f14,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10),height=3)
+            ta1.place(relx=0.085,rely=0.335,anchor='w',width=525)
+            ta1.insert(1.0,d15[0][1].strip())
+
+            ta2=tx(f14,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10),height=3)
+            ta2.place(relx=0.085,rely=0.471,anchor='w',width=525)
+            ta2.insert(1.0,d15[1][1].strip())
+
+            ta3=tx(f14,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10),height=3)
+            ta3.place(relx=0.085,rely=0.607,anchor='w',width=525)
+            ta3.insert(1.0,d15[2][1].strip())
+
+            ta4=tx(f14,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10),height=3)
+            ta4.place(relx=0.085,rely=0.745,anchor='w',width=525)
+            ta4.insert(1.0,d15[3][1].strip())
+
+            ta5=tx(f14,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10),height=3)
+            ta5.place(relx=0.085,rely=0.883,anchor='w',width=525)
+            ta5.insert(1.0,d15[4][1].strip()) 
+
+            tb1=ent(f14,bd=0,font=('SF Pro Display',10),width=10)
+            tb1.place(relx=0.775,rely=0.335,anchor='w')
+            tb1.insert(0,d15[0][2])
+
+            tb2=ent(f14,bd=0,font=('SF Pro Display',10),width=10)
+            tb2.place(relx=0.775,rely=0.471,anchor='w')
+            tb2.insert(0,d15[1][2])
+
+            tb3=ent(f14,bd=0,font=('SF Pro Display',10),width=10)
+            tb3.place(relx=0.775,rely=0.607,anchor='w')
+            tb3.insert(0,d15[2][2])
+
+            tb4=ent(f14,bd=0,font=('SF Pro Display',10),width=10)
+            tb4.place(relx=0.775,rely=0.745,anchor='w')
+            tb4.insert(0,d15[3][2])
+            
+            tb5=ent(f14,bd=0,font=('SF Pro Display',10),width=10)
+            tb5.place(relx=0.775,rely=0.883,anchor='w')
+            tb5.insert(0,d15[4][2])            
+
             def events_save():
                 print('wait more')
+                a=0
+                b=0
+                c=0
+                eget=[ta1.get(1.0,END),ta2.get(1.0,END),ta3.get(1.0,END),ta4.get(1.0,END),ta5.get(1.0,END)]
+                e1get=[tb1.get(),tb2.get(),tb3.get(),tb4.get(),tb5.get()]
+                l1=['E01','E02','E03','E04','E05']
+                for i in eget:
+                    if i.strip()=='':
+                        a+=1
+                for k in e1get:
+                    if k=='':
+                        b+=1
+                if a!=0 :
+                    msgb.showwarning('Invalid entry','Please fill all descriptions and try again.')
+                
+                for h in e1get:
+                    for p in h:
+                        if p in list('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+                            c+=1
+                if b!=0 or c!=0:
+                    msgb.showwarning('Invalid entry','Please check all the dates and try again.\nMake sure they are valid and relevant.')
+                else:
+                    if a==0 and b==0 and c==0:
+                        for p in range(0,5):                            
+                            dbcur.execute('update events set event="{}",date="{}" where Eid="{}"'.format(eget[p],e1get[p],l1[p]))
+                            dbcon.commit()
+                        msgb.showinfo('Message','Operation succesful.')
+                        events()
+
             b46=bt(f14,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=events_save)
             b46.place(relx=0.95,rely=0.0865,anchor='center') 
             b47=bt(f14,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=events)  
@@ -1343,7 +1443,7 @@ try:
         #login button 1
         
         global b1
-        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =login)
+        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =home)
         b1.place(relx=0.75,rely=0.55,anchor='center')
 
 
@@ -1376,66 +1476,9 @@ try:
             'Database Error','There was some problem with the associated database, Please try again later')
     else:
         main()
-except:
+except :
     msgb.showwarning('Unexpected error',"There was an unexpected error, we're trying to solve it. Please close the app and start it again.")
-  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+      
