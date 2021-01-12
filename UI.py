@@ -1441,7 +1441,7 @@ try:
             
             def projects_edit():
                 b51.place_forget()
-#404040
+
                 ta6=tx(f16,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
                 ta6.place(relx=0.35,rely=0.348,anchor='center',width=450)
                 ta6.insert(1.0,proj[0].strip())
@@ -1544,6 +1544,7 @@ try:
         l.place(relx=0,rely=0.05,anchor='w')#ise bhi
         l=lb(f17,image=p29,bd=0)# ise bhi
         l.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
+        
         def assignment_edit():
             print('ruk')
             b36.place_forget()
