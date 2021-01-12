@@ -24,7 +24,7 @@ The line of code is as simple as it could have been , so that future improvement
 
 # External modules used
 
-## This was a program based on database connectivity so the main module was Mysql
+#### This was a program based on database connectivity so the main module was Mysql
 
 It can be installed using pip command :
 * Open command prompt
@@ -36,7 +36,7 @@ It can be installed using pip command :
 * Type cd and paste the path in command prompt
 * then run the command given in pointer 2.
 
-## Twilio was used for the messaging API for the Two-Factor-Authentication service and OTP service
+#### Twilio was used for the messaging API for the Two-Factor-Authentication service and OTP service
 
 * similar command can be used here
 * Type 'pip install twilio' in command prompt
