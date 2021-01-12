@@ -7,6 +7,7 @@ id2='Taiit'
 pas2='tpass'
 
 if c.is_connected()==True:
+    
     cur=c.cursor()
     cur.execute('select sph,fph,mph from sprofile')
     dat=cur.fetchall()
