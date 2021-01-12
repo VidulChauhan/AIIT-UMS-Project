@@ -9,6 +9,7 @@ This contains almost all dynamic features making it shine above most projects:
 * Best in class Graphics design
 * Built-in dark mode
 * Dynamic dark mode to be added soon 
+
 NOTE : Please note that since the GUI was made using Tkinter, animations were nearly impossible to emplement at this early stage of the software
 # Use and Utility
 This is basically an simple ERP software for colleges and universities, 
