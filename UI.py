@@ -1544,6 +1544,7 @@ try:
         l.place(relx=0,rely=0.05,anchor='w')#ise bhi
         l=lb(f17,image=p29,bd=0)# ise bhi
         l.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
+
         
         def assignment_edit():
             print('ruk')

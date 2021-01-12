@@ -6,6 +6,7 @@ if c.is_connected()==True:
     cur=c.cursor()
     cur.execute('select sid from sprofile')
     d1=cur.fetchall()
+    
     #cur.execute('create table if not exists ')
     m1=['Practical file','3d demonstration of geometry','Prussian mathematics : Background']
     p1=['Investigatory project : Physics','Miniature petrol engine build','Demonstation of particle acceleration','Newtonian Physics']

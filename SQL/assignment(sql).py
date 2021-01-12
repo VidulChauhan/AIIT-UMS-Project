@@ -6,3 +6,4 @@ if c.is_connected()==True:
     cur=c.cursor()
     cur.execute('select sid from sprofile')
     d1=cur.fetchall()
+    
