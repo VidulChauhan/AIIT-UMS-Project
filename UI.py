@@ -1307,7 +1307,8 @@ try:
                     lc6.configure(text='Low',fg='#FF914D')
                 if int(d17[1])<=107:  
                     lc6.configure(text='Critically low',fg='#FF5757')
-
+                
+                ## GRAPH ##
                 c1=cv(f15,width=230,height=230,bd=0,bg='#232323',highlightbackground='#232323')
                 arc=20,20,230,230
                 pr=int(d17[1])
@@ -1350,30 +1351,185 @@ try:
             b48=bt(f15,image=p28,bd=0,bg='#000000',activebackground='#000000',command=att_edit)  
             b48.place(relx=0.95,rely=0.09,anchor='center')
 
+    def projects():######################################################  COMPLETED  #########################################################
+        dbcur.execute('select sid from attendance')
+        global d18
+        d18=dbcur.fetchall()
+        if sid.get()=='':
+            msgb.showwarning('ID error','  Please enter a Student ID  ')
+        if (sid.get(),) not in d18 and sid.get()!='':
+            msgb.showwarning('Invalid Student ID',' Please enter a valid student ID ')            
+            sid.delete(0,END)
+        if (sid.get(),) in d18:
+            f4.place_forget()
+            f16=fr(f2,height=500,width=855,bd=0,bg='#000000') 
+            f16.place(relx=0.5,rely=0.535,anchor='center')
+            lc8=lb(f16,text='Projects',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
+            lc8.place(relx=0,rely=0.05,anchor='w')
+            lc9=lb(f16,image=p42,bd=0)
+            lc9.place(relx=0.5,rely=0.56,anchor='center')
+            dbcur.execute('select t1,t2,t3,t4,t5 from projects where sid="{}"'.format(sid.get()))
+            d19=dbcur.fetchall()[0]
+            proj=[]
+            date1=[]
+            for g in d19:
+                y=g.split(',')
+                proj.append(y[0])
+                date1.append(y[1])
+            for d in range(len(proj)):
+                if proj[d]=='NULL' or proj[d]==None:
+                    proj[d]='N/A'
+            for f in range(len(date1)):
+                if date1[f]=='NULL' or date1[f]==None:
+                    date1[f]='N/A'
 
-    def projects():
-        f4.place_forget()
-        f16=fr(f2,height=500,width=855,bd=0,bg='#000000') 
-        f16.place(relx=0.5,rely=0.535,anchor='center')
-        lc8=lb(f16,text='Projects',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
-        lc8.place(relx=0,rely=0.05,anchor='w')
-        lc9=lb(f16,image=p42,bd=0)
-        lc9.place(relx=0.5,rely=0.56,anchor='center')
-        
-        
-        def projects_edit():    
+            ## PROJECT ##
+            lm6=msg(f16,text=proj[0].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            lm6.place(relx=0.35,rely=0.348,anchor='center',height=55)
 
-            b51.place_forget()
-            def projects_save():
-                print('wait more')
-            b52=bt(f16,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
-            b52.place(relx=0.95,rely=0.0875,anchor='center') 
-            b53=bt(f16,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
-            b53.place(relx=0.85,rely=0.0875,anchor='center')
-        b51=bt(f16,image=p28,bd=0,bg='#000000',activebackground='#000000',command=projects_edit)  
-        b51.place(relx=0.95,rely=0.09,anchor='center')
+            lm7=msg(f16,text=proj[1].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            lm7.place(relx=0.35,rely=0.484,anchor='center',height=55)
 
+            lm8=msg(f16,text=proj[2].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            lm8.place(relx=0.35,rely=0.62,anchor='center',height=55)
 
+            lm9=msg(f16,text=proj[3].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            lm9.place(relx=0.35,rely=0.758,anchor='center',height=55)
+
+            ln1=msg(f16,text=proj[4].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            ln1.place(relx=0.35,rely=0.896,anchor='center',height=55)  #404040
+            
+            ## DATE ##
+            ld0=lb(f16,text=date1[0],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld0.place(relx=0.785,rely=0.348,anchor='center')
+
+            ld1=lb(f16,text=date1[1],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld1.place(relx=0.785,rely=0.484,anchor='center')
+
+            ld2=lb(f16,text=date1[2],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld2.place(relx=0.785,rely=0.62,anchor='center')
+
+            ld3=lb(f16,text=date1[3],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld3.place(relx=0.785,rely=0.758,anchor='center')
+
+            ld4=lb(f16,text=date1[4],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld4.place(relx=0.785,rely=0.896,anchor='center')
+
+            def str_date(a):
+                a=a.split('-')
+                return date(int(a[0]),int(a[1]),int(a[2]))
+
+            if date1[0]!='N/A':
+                if str_date(date1[0])<date.today():
+                    ld0.configure(fg='#FF5757')
+            if date1[1]!='N/A' :
+                if str_date(date1[1])<date.today():
+                    ld1.configure(fg='#FF5757')
+            if date1[2]!='N/A':
+                if str_date(date1[2])<date.today():
+                    ld2.configure(fg='#FF5757')
+            if date1[3]!='N/A':
+                if str_date(date1[3])<date.today():
+                    ld3.configure(fg='#FF5757')
+            if date1[4]!='N/A':
+                if str_date(date1[4])<date.today():
+                    ld4.configure(fg='#FF5757') 
+
+            
+            def projects_edit():
+                b51.place_forget()
+#404040
+                ta6=tx(f16,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                ta6.place(relx=0.35,rely=0.348,anchor='center',width=450)
+                ta6.insert(1.0,proj[0].strip())
+
+                ta7=tx(f16,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                ta7.place(relx=0.35,rely=0.484,anchor='center',width=450)
+                ta7.insert(1.0,proj[1].strip())
+
+                ta8=tx(f16,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                ta8.place(relx=0.35,rely=0.62,anchor='center',width=450)
+                ta8.insert(1.0,proj[2].strip())
+
+                ta9=tx(f16,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                ta9.place(relx=0.35,rely=0.758,anchor='center',width=450)
+                ta9.insert(1.0,proj[3].strip())
+
+                ta10=tx(f16,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                ta10.place(relx=0.35,rely=0.896,anchor='center',width=450)
+                ta10.insert(1.0,proj[4].strip()) 
+
+                tb6=ent(f16,bd=0,font=('SF Pro Display',16),width=10)
+                tb6.place(relx=0.785,rely=0.348,anchor='center')
+                tb6.insert(0,date1[0])
+
+                tb7=ent(f16,bd=0,font=('SF Pro Display',16),width=10)
+                tb7.place(relx=0.785,rely=0.484,anchor='center')
+                tb7.insert(0,date1[1])
+
+                tb8=ent(f16,bd=0,font=('SF Pro Display',16),width=10)
+                tb8.place(relx=0.785,rely=0.62,anchor='center')
+                tb8.insert(0,date1[2])
+
+                tb9=ent(f16,bd=0,font=('SF Pro Display',16),width=10)
+                tb9.place(relx=0.785,rely=0.758,anchor='center')
+                tb9.insert(0,date1[3])
+                
+                tc1=ent(f16,bd=0,font=('SF Pro Display',16),width=10)
+                tc1.place(relx=0.785,rely=0.896,anchor='center')
+                tc1.insert(0,date1[4])
+
+                def projects_save():
+                    a=0
+                    b=0
+                    c=0
+                    pro=[ta6.get(1.0,END).strip(),ta7.get(1.0,END).strip(),ta8.get(1.0,END).strip(),ta9.get(1.0,END).strip(),ta10.get(1.0,END).strip()]
+                    dates=[tb6.get().strip(),tb7.get().strip(),tb8.get().strip(),tb9.get().strip(),tc1.get().strip()]
+                    for h in pro:
+                        if h=='':
+                            a+=1
+                    for i in dates :
+                        if i=='':
+                            a+=1
+                        if i!='N/A':
+                            for j in i:    
+                                if j in list('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+                                    b+=1
+                    if a!=0:
+                        msgb.showwarning('Invalid entry','Please fill all fields and try again.\n'
+                        'If you want to leave an empty record\njust pass N/A in both its parameters.')
+                    if b!=0:
+                        msgb.showwarning('Invalid entry','Please enter a valid date.')
+                    for u in range(5):
+                        if pro[u].strip()=='N/A':
+                            if dates[u]!='N/A':
+                                c+=1
+                        elif dates[u]=='N/A':
+                            if pro[u].strip()!='N/A':
+                                c+=1
+                    if c!=0:
+                        msgb.showwarning('Invalid entry','Please fill both parameters as N/A, not one.')
+                    else:
+                        if a==0 and b==0:
+                            try:
+                                q0=pro[0]+','+dates[0]
+                                q1=pro[1]+','+dates[1]
+                                q2=pro[2]+','+dates[2]
+                                q3=pro[3]+','+dates[3]
+                                q4=pro[4]+','+dates[4]
+                                dbcur.execute('update projects set t1="{}",t2="{}",t3="{}",t4="{}",t5="{}" where sid="{}"'.format(
+                                    q0,q1,q2,q3,q4,sid.get()))
+                                msgb.showinfo('Message','Operation successful.')
+                                dbcon.commit()
+                                projects()
+                            except TypeError:                        
+                                msgb.showwarning('Unexpected error','Please check all entries and try again or later.')
+                b52=bt(f16,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
+                b52.place(relx=0.95,rely=0.0875,anchor='center') 
+                b53=bt(f16,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
+                b53.place(relx=0.85,rely=0.0875,anchor='center')
+            b51=bt(f16,image=p28,bd=0,bg='#000000',activebackground='#000000',command=projects_edit)  
+            b51.place(relx=0.95,rely=0.09,anchor='center')
 
 
     def assignments():
