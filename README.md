@@ -48,3 +48,10 @@ It can be installed using pip command :
 All rights reserved 
 
 Copyright 2021
+
+
+# Disclaimer  
+
+#### Any of the names which are used in the project are not owned by me 
+#### This wsa just a school project :)
+#### Any resemblance to other projects or real-time commercial softwares are pure coincidence 
