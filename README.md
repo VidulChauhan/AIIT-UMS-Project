@@ -47,7 +47,7 @@ It can be installed using pip command :
 
 All rights reserved 
 
-Copyright 2021
+© Copyright 2021
 
 
 # Disclaimer  
