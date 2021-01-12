@@ -36,46 +36,46 @@ try:
     win.resizable(False,False)
 
     #title bar icon change
-    p=ph(file  = 'titlelogo.png')#title icon 
-    p1=ph(file = 'main.png')#main screen logo
-    p2=ph(file = 'loginbutton1.png') #login button
-    p3=ph(file = 'loginbutton2.png')
-    p6=ph(file = 'divbar.png')
-    p7=ph(file = 'gobutton.png') 
-    p8=ph(file = 'backbutton.png')
-    p9=ph(file = 'aiit.png')
-    p10=ph(file = 'signout.png')
-    p11=ph(file = 'profile2.png')
-    p12=ph(file = 'assignments2.png')
-    p13=ph(file = 'fee2.png')
-    p14=ph(file = 'projects2.png')
-    p15=ph(file = 'events2.png')
-    p16=ph(file = 'attendance2.png')
-    p17=ph(file = 'about2.png')
-    p18=ph(file = 'marks2.png')
-    p19=ph(file = 'passreset2.png')
-    p20=ph(file = 'hb.png')
-    p21=ph(file = 'loginbg2.png')
-    p22=ph(file = 'abtlogo.png')
-    p23=ph(file = 'entrybar.png')
-    p24=ph(file = 'sidbar.png')
-    p25=ph(file = 'profilebg.png')
-    p26=ph(file = 'boyicon.png')
-    p27=ph(file = 'girlicon.png')
-    p28=ph(file = 'editbutton.png')
-    p29=ph(file = 'abtbg.png')
-    p30=ph(file = 'apassr.png')
-    p32=ph(file = 'spassr.png')#1st
-    p33=ph(file = 'txbar bg.png')
-    p34=ph(file = 'marksbg.png')
-    p35=ph(file = '+admin.png')
-    p36=ph(file = '+student.png')
-    p37=ph(file = 'paid1.png')
-    p38=ph(file = 'paid2.png')
-    p39=ph(file = 'paid3.png')
-    p40=ph(file = 'eventbg.png')
-    p41=ph(file = 'chartlegend.png')
-    p42=ph(file = 'projectbg.png')
+    p=ph(file = 'images/titlelogo.png')#title icon C:\Users\Home Base PC\AppData\Local\Programs\Python\Python39\cs project\images
+    p1=ph(file = 'images/main.png')#main screen logo
+    p2=ph(file = 'images/loginbutton1.png') #login button
+    p3=ph(file = 'images/loginbutton2.png')
+    p6=ph(file = 'images/divbar.png')
+    p7=ph(file = 'images/gobutton.png') 
+    p8=ph(file = 'images/backbutton.png')
+    p9=ph(file = 'images/aiit.png')
+    p10=ph(file = 'images/signout.png')
+    p11=ph(file = 'images/profile2.png')
+    p12=ph(file = 'images/assignments2.png')
+    p13=ph(file = 'images/fee2.png')
+    p14=ph(file = 'images/projects2.png')
+    p15=ph(file = 'images/events2.png')
+    p16=ph(file = 'images/attendance2.png')
+    p17=ph(file = 'images/about2.png')
+    p18=ph(file = 'images/marks2.png')
+    p19=ph(file = 'images/passreset2.png')
+    p20=ph(file = 'images/hb.png')
+    p21=ph(file = 'images/loginbg2.png')
+    p22=ph(file = 'images/abtlogo.png')
+    p23=ph(file = 'images/entrybar.png')
+    p24=ph(file = 'images/sidbar.png')
+    p25=ph(file = 'images/profilebg.png')
+    p26=ph(file = 'images/boyicon.png')
+    p27=ph(file = 'images/girlicon.png')
+    p28=ph(file = 'images/editbutton.png')
+    p29=ph(file = 'images/abtbg.png')
+    p30=ph(file = 'images/apassr.png')
+    p32=ph(file = 'images/spassr.png')#1st
+    p33=ph(file = 'images/txbar bg.png')
+    p34=ph(file = 'images/marksbg.png')
+    p35=ph(file = 'images/+admin.png')
+    p36=ph(file = 'images/+student.png')
+    p37=ph(file = 'images/paid1.png')
+    p38=ph(file = 'images/paid2.png')
+    p39=ph(file = 'images/paid3.png')
+    p40=ph(file = 'images/eventbg.png')
+    p41=ph(file = 'images/chartlegend.png')
+    p42=ph(file = 'images/projectbg.png')
 
     win.iconphoto(None,p)#title bar image
 
@@ -280,7 +280,10 @@ try:
                                 s6.get())) 
                             dbcur.execute("insert into marks values('{}','NULL','NULL','NULL','NULL','NULL','NULL','NULL','NULL')".format(s12.get()))
                             dbcur.execute('insert into slogin values("{}","NULL")'.format(s12.get()))
-                            dbcur.execute('insert into fees values("{}","NULL","NULL","NULL","NULL"'.format(s12.get()))
+                            dbcur.execute('insert into fees values("{}","NULL","NULL","NULL","NULL")'.format(s12.get()))
+                            dbcur.execute('insert into projects values("{}","NULL,NULL","NULL,NULL","NULL,NULL","NULL,NULL","NULL,NULL")'.format(s12.get()))
+                            dbcur.execute('insert into attendance values("{}","NULL")'.format(s12.get()))
+                           # dbcur.execute('insert into assignments values("{}",')
                             dbcon.commit()
                             msgb.showinfo('Message','Account added successfully.')
                             msgb.showinfo('Message','Since this will be a new account, therefore all other data branches such as password,assignments,attendance,etc are also not set-up.\n'
@@ -1018,10 +1021,10 @@ try:
             for j in range(0,len(d14)):
                 if d14[j]==None or d14[j]=='NULL':
                     d14[j]='N/A'
-            p1=[p37,p38,p39]
-            p2=['All Clear!','No dues!','No Pending Fees!'] 
-            im=choice(p1)
-            it=choice(p2) 
+            pp1=[p37,p38,p39]
+            pp2=['All Clear!','No dues!','No Pending Fees!'] 
+            im=choice(ppp1)
+            it=choice(pp2) 
             l98=lb(f11,image=im,bd=0)
             l99=lb(f11,text=it,font=('SF Pro Display',32,'bold'),bd=0,bg='#232323', fg='#FFFFFF')
             if d14[3]=='Paid' or d14[3]=='paid':                           
