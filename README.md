@@ -14,3 +14,4 @@ NOTE : Please note that since the GUI was made using Tkinter, animations were ne
 This is basically an simple ERP software for colleges and universities, 
 just the looks and the user experience bumped up to a higher level.
 The line of code is as simple as it could have been , so that future improvements can be made effortlesly.
+# 
