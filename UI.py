@@ -75,6 +75,7 @@ try:
     p39=ph(file = 'paid3.png')
     p40=ph(file = 'eventbg.png')
     p41=ph(file = 'chartlegend.png')
+    p42=ph(file = 'projectbg.png')
 
     win.iconphoto(None,p)#title bar image
 
@@ -444,7 +445,7 @@ try:
                         if otp.get()=='':
                             msgb.showwarning('Invalid entry','Please enter OTP. \nif not recieved,enter registered mobile number and click on send')
                         if otp.get()==str(onet):
-                            t.sleep(0.5)
+                            t.sleep(0.3)
                             global f9
                             f9=fr(f8,bd=0,height=500,width=855,bg='#000000')
                             f9.place(relx=0.5,rely=0.5,anchor='center')
@@ -564,7 +565,7 @@ try:
             l56.place(relx=0.45,rely=0.3,anchor='w')
             l57.place(relx=0.45,rely=0.4,anchor='w')
             l58.place(relx=0.45,rely=0.5,anchor='w')
-            Sid=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#cur
+            Sid=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#current
             Sid.place(relx=0.475,rely=0.3,anchor='w')
             newspass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#new
             newspass.place(relx=0.475,rely=0.4,anchor='w')
@@ -1054,6 +1055,7 @@ try:
                 b36.place_forget()
                 l98.place_forget()
                 l99.place_forget()
+
                 l82.place(relx=0.5,rely=0.55,anchor='center')                
                 la1=lb(f11,text='Cycle  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
                 la1.place(relx=0.2,rely=0.25,anchor='w')
@@ -1307,13 +1309,13 @@ try:
                     lc6.configure(text='Critically low',fg='#FF5757')
 
                 c1=cv(f15,width=230,height=230,bd=0,bg='#232323',highlightbackground='#232323')
-                pie=20,20,230,230
+                arc=20,20,230,230
                 pr=int(d17[1])
                 ab=180-(pr)
-                arc2=c1.create_arc(pie,start=-60,extent="{}".format(-ab),fill='#FF5757',outline='#FF5757') #absent right
-                arc1=c1.create_arc(pie,start=0,extent="{}".format(pr),fill='#8C52FF',outline='#8C52FF') #present right
-                arc3=c1.create_arc(pie,start="{}".format(pr),extent=120,fill='#C9E265',outline='#C9E265') # holidays (festivals + weekends)
-                arc4=c1.create_arc(pie,start=0,extent=-60,fill='#FF914D',outline='#FF914D') # permitted leaves
+                c1.create_arc(arc,start=-60,extent="{}".format(-ab),fill='#FF5757',outline='#FF5757') #absent right
+                c1.create_arc(arc,start=0,extent="{}".format(pr),fill='#8C52FF',outline='#8C52FF') #present right
+                c1.create_arc(arc,start="{}".format(pr),extent=120,fill='#C9E265',outline='#C9E265') # holidays (festivals + weekends)
+                c1.create_arc(arc,start=0,extent=-60,fill='#FF914D',outline='#FF914D') # permitted leaves
                 c1.place(relx=0.35,rely=0.65,anchor='center')
                 lc7=lb(f15,image=p41,bd=0)
                 lc7.place(relx=0.68,rely=0.66,anchor='center')
@@ -1322,7 +1324,7 @@ try:
                 at=ent(f15,bd=0,font=('SF Pro Display',16),width=3)
                 at.place(relx=0.55,rely=0.2,anchor='w')
                 at.insert(0,d17[1])            
-                b36.place_forget()
+                b48.place_forget()
                 def att_save():
                     a=0 
                     for i in at.get():
@@ -1341,33 +1343,35 @@ try:
                                 attendance()
                             except:
                                 msgb.showwarning('Unexpected error','Please check all entries and try again or later.')                    
-                b37=bt(f15,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=att_save)
-                b37.place(relx=0.95,rely=0.0875,anchor='center') 
-                b38=bt(f15,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=attendance)  
-                b38.place(relx=0.85,rely=0.0875,anchor='center')
-            b36=bt(f15,image=p28,bd=0,bg='#000000',activebackground='#000000',command=att_edit)  
-            b36.place(relx=0.95,rely=0.09,anchor='center')
+                b49=bt(f15,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=att_save)
+                b49.place(relx=0.95,rely=0.0875,anchor='center') 
+                b50=bt(f15,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=attendance)  
+                b50.place(relx=0.85,rely=0.0875,anchor='center')
+            b48=bt(f15,image=p28,bd=0,bg='#000000',activebackground='#000000',command=att_edit)  
+            b48.place(relx=0.95,rely=0.09,anchor='center')
 
 
     def projects():
         f4.place_forget()
         f16=fr(f2,height=500,width=855,bd=0,bg='#000000') 
         f16.place(relx=0.5,rely=0.535,anchor='center')
-        l=lb(f16,text='Projects',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
-        l.place(relx=0,rely=0.05,anchor='w')#ise bhi
-        l=lb(f16,image=p29,bd=0)# ise bhi
-        l.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
-        def projects_edit():
-            print('ruk')
-            b36.place_forget()
+        lc8=lb(f16,text='Projects',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
+        lc8.place(relx=0,rely=0.05,anchor='w')
+        lc9=lb(f16,image=p42,bd=0)
+        lc9.place(relx=0.5,rely=0.56,anchor='center')
+        
+        
+        def projects_edit():    
+
+            b51.place_forget()
             def projects_save():
                 print('wait more')
-            b37=bt(f16,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
-            b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f16,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
-            b38.place(relx=0.85,rely=0.0875,anchor='center')
-        b36=bt(f16,image=p28,bd=0,bg='#000000',activebackground='#000000',command=projects_edit)  
-        b36.place(relx=0.95,rely=0.09,anchor='center')
+            b52=bt(f16,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
+            b52.place(relx=0.95,rely=0.0875,anchor='center') 
+            b53=bt(f16,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
+            b53.place(relx=0.85,rely=0.0875,anchor='center')
+        b51=bt(f16,image=p28,bd=0,bg='#000000',activebackground='#000000',command=projects_edit)  
+        b51.place(relx=0.95,rely=0.09,anchor='center')
 
 
 
