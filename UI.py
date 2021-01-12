@@ -1023,7 +1023,7 @@ try:
                     d14[j]='N/A'
             pp1=[p37,p38,p39]
             pp2=['All Clear!','No dues!','No Pending Fees!'] 
-            im=choice(ppp1)
+            im=choice(pp1)
             it=choice(pp2) 
             l98=lb(f11,image=im,bd=0)
             l99=lb(f11,text=it,font=('SF Pro Display',32,'bold'),bd=0,bg='#232323', fg='#FFFFFF')
