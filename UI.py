@@ -1663,7 +1663,7 @@ try:
                     lf5.configure(fg='#E48F2A')
             
             def assignment_edit():
-                
+
                 b54.place_forget()
 
                 a1=tx(f17,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
