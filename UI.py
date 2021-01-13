@@ -1,14 +1,10 @@
 try:
     #import start
-    import mysql.connector as db ### EXTERNAL INSTALL ###
+    import mysql.connector as db                    ### EXTERNAL INSTALL ###
     from tkinter import *
     from tkinter import messagebox
     from random import *
-    from datetime import *
-    import Phone ###  EXTERNAL INSTALL IN THIS AS WELL  ###   
     import time as t
-    import os
-    #import matplotlib.pyplot as plot ### EXTERNAL INSTALL ###
     ph=PhotoImage
     lb=Label
     bt=Button
@@ -17,8 +13,9 @@ try:
     msgb=messagebox   
     tx=Text       
     msg=Message
-    dt=datetime
     cv=Canvas
+    from datetime import *
+    dt=datetime    
     day=dt.now().strftime('%A')
     month=dt.now().strftime('%B')
     DD=str(dt.now().day)
@@ -27,6 +24,7 @@ try:
     curtime=dt.now().time()
 
     #root window 
+
     win=Tk()
     width=int(((win.winfo_screenwidth()*0.9875)//2)-575)
     height=int(((win.winfo_screenheight()*0.95)//2)-325)
@@ -35,10 +33,9 @@ try:
     win.configure(bg='#000000')
     win.resizable(False,False)
 
-    #title bar icon change
-    p=ph(file = 'images/titlelogo.png')#title icon C:\Users\Home Base PC\AppData\Local\Programs\Python\Python39\cs project\images
-    p1=ph(file = 'images/main.png')#main screen logo
-    p2=ph(file = 'images/loginbutton1.png') #login button
+    p=ph(file = 'images/titlelogo.png')
+    p1=ph(file = 'images/main.png')
+    p2=ph(file = 'images/loginbutton1.png') 
     p3=ph(file = 'images/loginbutton2.png')
     p6=ph(file = 'images/divbar.png')
     p7=ph(file = 'images/gobutton.png') 
@@ -76,8 +73,17 @@ try:
     p40=ph(file = 'images/eventbg.png')
     p41=ph(file = 'images/chartlegend.png')
     p42=ph(file = 'images/projectbg.png')
+    p43=ph(file = 'images/assignmentbg.png')
+    
+    #title bar icon change
 
-    win.iconphoto(None,p)#title bar image
+    win.iconphoto(None,p)
+
+    global str_date
+    def str_date(a):
+        a=a.split('-')
+        return date(int(a[0]),int(a[1]),int(a[2]))
+
 
     def home():#####################################################################  COMPLETE  #############################################################
         f1.place_forget()
@@ -137,7 +143,7 @@ try:
         sid=ent(f3,bd=0,font=('SF Pro Display',13),width=6)# sid for profile
         sid.place(relx=0.35,rely=0.75,anchor='center')
 
-    
+
     def addstudent():  #############################  ISKA DBCUR.EXECUTE ME EK DO AUR ADD HONGE VO DEKHLIYO  ###################################
         f4.place_forget()
         global f12
@@ -186,7 +192,7 @@ try:
         s12.place(relx=0.5425,rely=0.473,anchor='w')
 
         def nstudent_save():            
-            a=0 #for names
+            a=0
             b=0
             d=0
             ad=0
@@ -283,7 +289,7 @@ try:
                             dbcur.execute('insert into fees values("{}","NULL","NULL","NULL","NULL")'.format(s12.get()))
                             dbcur.execute('insert into projects values("{}","NULL,NULL","NULL,NULL","NULL,NULL","NULL,NULL","NULL,NULL")'.format(s12.get()))
                             dbcur.execute('insert into attendance values("{}","NULL")'.format(s12.get()))
-                           # dbcur.execute('insert into assignments values("{}",')
+                            dbcur.execute('insert into assignments values("{}","NULL,NULL,NULL","NULL,NULL,NULL","NULL,NULL,NULL","NULL,NULL,NULL","NULL,NULL,NULL")'.format(s12.get()))
                             dbcon.commit()
                             msgb.showinfo('Message','Account added successfully.')
                             msgb.showinfo('Message','Since this will be a new account, therefore all other data branches such as password,assignments,attendance,etc are also not set-up.\n'
@@ -296,6 +302,7 @@ try:
         b41.place(relx=0.95,rely=0.1,anchor='center') 
         b42=bt(f12,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
         b42.place(relx=0.85,rely=0.1,anchor='center')
+
 
     def addadmin(): ######################################################################### COMPLETED ###########################################################
         dbcur.execute('select * from adminlogin')
@@ -380,6 +387,7 @@ try:
         b44=bt(f13,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
         b44.place(relx=0.85,rely=0.0875,anchor='center')  
     
+
     def forgpass():#####################################################################  COMPLETE  #############################################################
         f1.place_forget()
         global f8
@@ -423,6 +431,7 @@ try:
                 def send():            
                     phn=d3[2]
                     if phone.get().strip()==phn:
+                        import Phone                       ### EXTERNAL INSTALL ###    
                         try:
                             global onet
                             onet=randrange(635745,952675)
@@ -503,6 +512,7 @@ try:
         b28=bt(f8,text='Cancel',bd=0,font=('SF Pro Display',16),bg='#000000',fg='#CF3327',activebackground='#000000',command=cancel1)
         b28.place(relx=0.9,rely=0.08,anchor='center')
         
+
     def passr():#####################################################################  COMPLETE  #############################################################    
         def apassreset():
             global l32
@@ -554,10 +564,8 @@ try:
             b26.place(relx=0.7,rely=0.6,anchor='center')
 
         def spassreset():
-            l32.place_forget()
             b25.place_forget()
-            l53=lb(f7,text='Enter ID :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
-            l53.place(relx=0.2,rely=0.3,anchor='w')
+            l32.configure(text='Enter ID : ')
             l54=lb(f7,text='New password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
             l54.place(relx=0.2,rely=0.4,anchor='w')
             l55=lb(f7,text='Confirm new password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
@@ -610,8 +618,8 @@ try:
         b24=bt(f7,image=p32,bd=0,bg='#232323',activebackground='#232323',command=spassreset)
         b24.place(relx=0.501,rely=0.177,anchor='w')
         apassreset()       
-
         
+
     def sprofile():##########################################################   COMPLETE   ##################################################
         dbcur.execute('select sid from sprofile')
         global d1
@@ -632,7 +640,6 @@ try:
 
                 dbcur.execute('select * from sprofile where sid="{}"'.format(sid.get()))
                 d6=dbcur.fetchall()            
-                #global rec
                 rec=d6[0]
                 l10=lb(f5,image=p25,bd=0)            
                 l10.place(relx=0.5,rely=0.55,anchor='center')
@@ -704,7 +711,7 @@ try:
                     mph_e.insert(0,rec[7])
 
                     def profile_save():
-                        a=0 #for names
+                        a=0
                         b=0
                         c=0
                         d=0
@@ -806,6 +813,7 @@ try:
                     b19.place(relx=0.85,rely=0.1,anchor='center')
                 b17=bt(f5,image=p28,bd=0,bg='#000000',activebackground='#000000',command=profile_edit)  
                 b17.place(relx=0.95,rely=0.09,anchor='center')    
+
 
     def marks(): ##########################################################   COMPLETE   ##################################################
         dbcur.execute('select sid from marks')
@@ -998,6 +1006,7 @@ try:
             b33=bt(f10,image=p28,bd=0,bg='#000000',activebackground='#000000',command=marks_edit)  
             b33.place(relx=0.95,rely=0.09,anchor='center')
 
+
     def fee_details():##########################################################  COMPLETED  ####################################################################
         dbcur.execute('select sid from fees')
         global d13
@@ -1054,7 +1063,7 @@ try:
                 l101.place(relx=0.35,rely=0.55,anchor='w')    
             
             def fee_edit():
-                print('ruk')
+
                 b36.place_forget()
                 l98.place_forget()
                 l99.place_forget()
@@ -1101,8 +1110,7 @@ try:
                 m2=msg(f11,text=tx1,bd=0,bg='#232323',fg='#FFFFFF',font=('SF Pro Display',11),width=800)                
                 m2.place(relx=0.5,rely=0.8,anchor='center')
                 
-                def fee_save():
-                    print('wait more')
+                def fee_save():                    
                     fc=0
                     err=0
                     n=0
@@ -1138,6 +1146,7 @@ try:
             b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=fee_edit)  
             b36.place(relx=0.95,rely=0.09,anchor='center')
 
+
     def events(): #################################################### COMPLETED ###############################################################
         f4.place_forget()
         f14=fr(f2,height=500,width=855,bd=0,bg='#000000') 
@@ -1172,13 +1181,8 @@ try:
         lb6.place(relx=0.775,rely=0.883,anchor='w')
 
         def events_edit():
-            print('ruk')
+
             b45.place_forget()
-        
-            #delete this 
-            #t1=tx(f6,bd=0,bg='#232323',fg='#FFFFFF',font=('SF Pro Display',12),padx=80,pady=10)
-            #t1.place(relx=0.5,rely=0.55,anchor='center',width=750,height=400)
-            #t1.insert(1.0,d7)
 
             ta1=tx(f14,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',10),height=3)
             ta1.place(relx=0.085,rely=0.335,anchor='w',width=525)
@@ -1221,7 +1225,6 @@ try:
             tb5.insert(0,d15[4][2])            
 
             def events_save():
-                print('wait more')
                 a=0
                 b=0
                 c=0
@@ -1261,6 +1264,7 @@ try:
         b45=bt(f14,image=p28,bd=0,bg='#000000',activebackground='#000000',command=events_edit)  
         b45.place(relx=0.95,rely=0.08,anchor='center')
 
+
     def attendance():######################################################  COMPLETED  ##########################################################
         dbcur.execute('select sid from attendance')
         global d16
@@ -1271,7 +1275,6 @@ try:
             msgb.showwarning('Invalid Student ID',' Please enter a valid student ID ')            
             sid.delete(0,END)
         if (sid.get(),) in d16:
-            #print('under development')
             f4.place_forget()
             f15=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f15.place(relx=0.5,rely=0.535,anchor='center')
@@ -1312,6 +1315,7 @@ try:
                     lc6.configure(text='Critically low',fg='#FF5757')
                 
                 ## GRAPH ##
+
                 c1=cv(f15,width=230,height=230,bd=0,bg='#232323',highlightbackground='#232323')
                 arc=20,20,230,230
                 pr=int(d17[1])
@@ -1354,6 +1358,7 @@ try:
             b48=bt(f15,image=p28,bd=0,bg='#000000',activebackground='#000000',command=att_edit)  
             b48.place(relx=0.95,rely=0.09,anchor='center')
 
+
     def projects():######################################################  COMPLETED  #########################################################
         dbcur.execute('select sid from attendance')
         global d18
@@ -1387,6 +1392,7 @@ try:
                     date1[f]='N/A'
 
             ## PROJECT ##
+
             lm6=msg(f16,text=proj[0].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
             lm6.place(relx=0.35,rely=0.348,anchor='center',height=55)
 
@@ -1403,6 +1409,7 @@ try:
             ln1.place(relx=0.35,rely=0.896,anchor='center',height=55)  #404040
             
             ## DATE ##
+
             ld0=lb(f16,text=date1[0],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
             ld0.place(relx=0.785,rely=0.348,anchor='center')
 
@@ -1418,27 +1425,32 @@ try:
             ld4=lb(f16,text=date1[4],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
             ld4.place(relx=0.785,rely=0.896,anchor='center')
 
-            def str_date(a):
-                a=a.split('-')
-                return date(int(a[0]),int(a[1]),int(a[2]))
-
             if date1[0]!='N/A':
                 if str_date(date1[0])<date.today():
                     ld0.configure(fg='#FF5757')
+                if str_date(date1[0])==date.today():
+                    ld0.configure(fg='#E48F2A')
             if date1[1]!='N/A' :
                 if str_date(date1[1])<date.today():
                     ld1.configure(fg='#FF5757')
+                if str_date(date1[1])==date.today():
+                    ld1.configure(fg='#E48F2A')
             if date1[2]!='N/A':
                 if str_date(date1[2])<date.today():
                     ld2.configure(fg='#FF5757')
+                if str_date(date1[2])==date.today():
+                    ld2.configure(fg='#E48F2A')
             if date1[3]!='N/A':
                 if str_date(date1[3])<date.today():
                     ld3.configure(fg='#FF5757')
+                if str_date(date1[3])==date.today():
+                    ld3.configure(fg='#E48F2A')
             if date1[4]!='N/A':
                 if str_date(date1[4])<date.today():
-                    ld4.configure(fg='#FF5757') 
+                    ld4.configure(fg='#FF5757')
+                if str_date(date1[4])==date.today():
+                    ld4.configure(fg='#E48F2A')
 
-            
             def projects_edit():
                 b51.place_forget()
 
@@ -1535,32 +1547,249 @@ try:
             b51.place(relx=0.95,rely=0.09,anchor='center')
 
 
-    def assignments():
-        print('under development')
-        f4.place_forget()
-        f17=fr(f2,height=500,width=855,bd=0,bg='#000000') 
-        f17.place(relx=0.5,rely=0.535,anchor='center')
-        l=lb(f17,text='Assignments',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')#isse dekhliyo iska variabke aadha hai 
-        l.place(relx=0,rely=0.05,anchor='w')#ise bhi
-        l=lb(f17,image=p29,bd=0)# ise bhi
-        l.place(relx=0.5,rely=0.55,anchor='center')# aur ise bhi
+    def assignments(): ################################################  COMPLETED  #############################################################
+        dbcur.execute('select sid from attendance')
+        global d18
+        d18=dbcur.fetchall()
+        if sid.get()=='':
+            msgb.showwarning('ID error','  Please enter a Student ID  ')
+        if (sid.get(),) not in d18 and sid.get()!='':
+            msgb.showwarning('Invalid Student ID',' Please enter a valid student ID ')            
+            sid.delete(0,END)
+        if (sid.get(),) in d18:
+            f4.place_forget()
+            f17=fr(f2,height=500,width=855,bd=0,bg='#000000') 
+            f17.place(relx=0.5,rely=0.535,anchor='center')
+            ld5=lb(f17,text='Assignments',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
+            ld5.place(relx=0,rely=0.05,anchor='w')
+            ld6=lb(f17,image=p43,bd=0)
+            ld6.place(relx=0.5,rely=0.55,anchor='center')
 
+            dbcur.execute('select a1,a2,a3,a4,a5 from assignments where sid="{}"'.format(sid.get()))
+            d19=dbcur.fetchall()[0]
+            assi=[]
+            adate=[]
+            sdate=[]
+            for i in d19:
+                y=i.split(',')                
+                assi.append(y[0])
+                adate.append(y[1])
+                sdate.append(y[2])
+            for j in range(len(assi)):
+                if assi[j]=='NULL' or assi[j]==None:
+                    assi[j]='N/A'
+            for k in range(len(adate)):
+                if adate[k]=='NULL' or adate[k]==None:
+                    adate[k]='N/A'
+            for m in range(len(sdate)):
+                if sdate[m]=='NULL' or sdate[m]==None:
+                    sdate[m]='N/A'
+            
+            ### ASSIGNNMENT ####
+            
+            ln2=msg(f17,text=assi[0].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            ln2.place(relx=0.29,rely=0.34,anchor='center',height=55) ## 0.8 
+
+            ln3=msg(f17,text=assi[1].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            ln3.place(relx=0.29,rely=0.473,anchor='center',height=55)
+
+            ln4=msg(f17,text=assi[2].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            ln4.place(relx=0.29,rely=0.612,anchor='center',height=55)
+
+            ln5=msg(f17,text=assi[3].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            ln5.place(relx=0.29,rely=0.75,anchor='center',height=55)
+
+            ln6=msg(f17,text=assi[4].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
+            ln6.place(relx=0.29,rely=0.89,anchor='center',height=55)
+
+            ### DATE OF ASSIGNMENT ###
+
+            ld5=lb(f17,text=adate[0],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld5.place(relx=0.6275,rely=0.34,anchor='center')
+
+            ld6=lb(f17,text=adate[1],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld6.place(relx=0.6275,rely=0.473,anchor='center')
+
+            ld7=lb(f17,text=adate[2],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld7.place(relx=0.6275,rely=0.612,anchor='center')
+
+            ld8=lb(f17,text=adate[3],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld8.place(relx=0.6275,rely=0.75,anchor='center')
+
+            ld9=lb(f17,text=adate[4],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld9.place(relx=0.6275,rely=0.89,anchor='center')
+
+            ### DATE OF SUBMISSION ###
+
+            lf1=lb(f17,text=sdate[0],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            lf1.place(relx=0.8365,rely=0.34,anchor='center')
+
+            lf2=lb(f17,text=sdate[1],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            lf2.place(relx=0.8365,rely=0.473,anchor='center')
+
+            lf3=lb(f17,text=sdate[2],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            lf3.place(relx=0.8365,rely=0.612,anchor='center')
+
+            lf4=lb(f17,text=sdate[3],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            lf4.place(relx=0.8365,rely=0.75,anchor='center')
+
+            lf5=lb(f17,text=sdate[4],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            lf5.place(relx=0.8365,rely=0.89,anchor='center')
+
+            if sdate[0]!='N/A':
+                if str_date(sdate[0])<date.today():
+                    lf1.configure(fg='#FF5757')
+                if str_date(sdate[0])==date.today():
+                    lf1.configure(fg='#E48F2A')
+            if sdate[1]!='N/A' :
+                if str_date(sdate[1])<date.today():
+                    lf2.configure(fg='#FF5757')
+                if str_date(sdate[1])==date.today():
+                    lf2.configure(fg='#E48F2A')
+            if sdate[2]!='N/A':
+                if str_date(sdate[2])<date.today():
+                    lf3.configure(fg='#FF5757')
+                if str_date(sdate[2])==date.today():
+                    lf3.configure(fg='#E48F2A')        
+            if sdate[3]!='N/A':
+                if str_date(sdate[3])<date.today():
+                    lf4.configure(fg='#FF5757')
+                if str_date(sdate[3])==date.today():
+                    lf4.configure(fg='#E48F2A')
+            if sdate[4]!='N/A':
+                if str_date(sdate[4])<date.today():
+                    lf5.configure(fg='#FF5757')
+                if str_date(sdate[4])==date.today():
+                    lf5.configure(fg='#E48F2A')
+            
+            def assignment_edit():
+                
+                b54.place_forget()
+
+                a1=tx(f17,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                a1.place(relx=0.29,rely=0.34,anchor='center',width=350)
+                a1.insert(1.0,assi[0].strip())
+
+                a2=tx(f17,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                a2.place(relx=0.29,rely=0.473,anchor='center',width=350)
+                a2.insert(1.0,assi[1].strip())
+
+                a3=tx(f17,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                a3.place(relx=0.29,rely=0.612,anchor='center',width=350)
+                a3.insert(1.0,assi[2].strip())
+
+                a4=tx(f17,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                a4.place(relx=0.29,rely=0.75,anchor='center',width=350)
+                a4.insert(1.0,assi[3].strip())
+
+                a5=tx(f17,bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16),height=2)
+                a5.place(relx=0.29,rely=0.89,anchor='center',width=350)
+                a5.insert(1.0,assi[4].strip()) 
+
+                #### A-DATE ####
+
+                a6=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                a6.place(relx=0.6275,rely=0.34,anchor='center')
+                a6.insert(0,adate[0])
+
+                a7=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                a7.place(relx=0.6275,rely=0.473,anchor='center')
+                a7.insert(0,adate[1])
+
+                a8=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                a8.place(relx=0.6275,rely=0.612,anchor='center')
+                a8.insert(0,adate[2])
+
+                a9=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                a9.place(relx=0.6275,rely=0.75,anchor='center')
+                a9.insert(0,adate[3])
+                
+                c1=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                c1.place(relx=0.6275,rely=0.89,anchor='center')
+                c1.insert(0,adate[4])
+
+                #### S-DATE ####
+
+                c2=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                c2.place(relx=0.8365,rely=0.34,anchor='center')
+                c2.insert(0,sdate[0])
+
+                c3=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                c3.place(relx=0.8365,rely=0.473,anchor='center')
+                c3.insert(0,sdate[1])
+
+                c4=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                c4.place(relx=0.8365,rely=0.612,anchor='center')
+                c4.insert(0,sdate[2])
+
+                c5=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                c5.place(relx=0.8365,rely=0.75,anchor='center')
+                c5.insert(0,sdate[3])
+                
+                c6=ent(f17,bd=0,font=('SF Pro Display',16),width=10)
+                c6.place(relx=0.8365,rely=0.89,anchor='center')
+                c6.insert(0,sdate[4])
+
+                def assignment_save():
+                    a1get=[a1.get(1.0,END).strip(),a2.get(1.0,END).strip(),a3.get(1.0,END).strip(),a4.get(1.0,END).strip(),a5.get(1.0,END).strip()]
+                    adget=[a6.get().strip(),a7.get().strip(),a8.get().strip(),a9.get().strip(),c1.get().strip()]
+                    sget= [c2.get().strip(),c3.get().strip(),c4.get().strip(),c5.get().strip(),c6.get().strip()]
+                    g=0
+                    z=0
+                    p=0
+                    for x in range(5):
+                        if a1get[x]=='' or adget[x]=='' or sget[x]=='' :
+                            g+=1
+                        if a1get[x]=='N/A':
+                            if adget[x]!='N/A':
+                                p+=1
+                            if sget[x]!='N/A':
+                                p+=1
+                        elif a1get[x]!='N/A':
+                            if adget[x]=='N/A':
+                                p+=1
+                            if sget[x]=='N/A':
+                                p+=1
+                        elif a1get[x]!='N/A' and adget[x]!='N/A' and sget[x]!='N/A':
+                            for v in adget[x] : 
+                                if v in list('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+                                    z+=1
+                            for c in sget[x]:
+                                if c in list('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+                                    z+=1
+
+                    if g!=0:
+                        msgb.showwarning('Invalid entry','Please fill all fields and try again ')
+                    if z!=0 and g==0:
+                        msgb.showwarning('Invalid entry','Please enter a valid date.\n\n'
+                        'To leave an empty record, enter N/A in all 3 parameters.')
+                    if p!=0 and g==0:
+                        msgb.showwarning('Invalid entry','Please enter N/A in all 3 parameters if you want to leave it empty.')
+                    else:
+                        if z==0 and g==0 and p==0:
+                            try:
+                                q5=a1get[0]+','+adget[0]+','+sget[0]
+                                q6=a1get[1]+','+adget[1]+','+sget[1]
+                                q7=a1get[2]+','+adget[2]+','+sget[2]
+                                q8=a1get[3]+','+adget[3]+','+sget[3]
+                                q9=a1get[4]+','+adget[4]+','+sget[4]
+
+                                dbcur.execute('update assignments set a1="{}",a2="{}",a3="{}",a4="{}",a5="{}" where sid="{}"'.format(
+                                    q5,q6,q7,q8,q9,sid.get()))
+                                dbcon.commit()
+                                msgb.showinfo('Message','Operation successful.')
+                                assignments()
+                            except:
+                                msgb.showwarning('Unexpected error','Please check all entries and try again or later.')                    
+
+                b55=bt(f17,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=assignment_save)
+                b55.place(relx=0.95,rely=0.0875,anchor='center') 
+                b56=bt(f17,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=assignments)  
+                b56.place(relx=0.85,rely=0.0875,anchor='center')
+            b54=bt(f17,image=p28,bd=0,bg='#000000',activebackground='#000000',command=assignment_edit)  
+            b54.place(relx=0.95,rely=0.085,anchor='center')
         
-        def assignment_edit():
-            print('ruk')
-            b36.place_forget()
-            def assignment_save():
-                print('wait more')
-            b37=bt(f17,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=assignment_save)
-            b37.place(relx=0.95,rely=0.0875,anchor='center') 
-            b38=bt(f17,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=assignments)  
-            b38.place(relx=0.85,rely=0.0875,anchor='center')
-        b36=bt(f17,image=p28,bd=0,bg='#000000',activebackground='#000000',command=assignment_edit)  
-        b36.place(relx=0.95,rely=0.09,anchor='center')
 
-
-
-        
     def about():####################################################################    COMPLETE    ###############################################
         f4.place_forget()
         global f6    
@@ -1587,7 +1816,7 @@ try:
                 else:
                     try:
                         dbcur.execute('update about set text="{}"'.format(t1.get(1.0,END)))
-                        #dbcon.commit()
+                        dbcon.commit()
                         about()
                     except:
                         msgb.showinfo('Unexpected error','Please check the entry and try again.')
@@ -1598,6 +1827,7 @@ try:
         b20=bt(f6,image=p28,bd=0,bg='#000000',activebackground='#000000',command=about_edit)  
         b20.place(relx=0.95,rely=0.09,anchor='center')    
    
+
     def login():######################################################################### COMPLETE #####################################################################
         b1.place_forget()
 
@@ -1646,9 +1876,8 @@ try:
                         #id.delete()
                         #key.delete()
                         msgb.showwarning('Invalid entry','There was an error, Incorrect ID and Password combination.')
-                        key.delete(0,END)         
-                            
-            
+                        key.delete(0,END)  
+
         b3=bt(f1,image=p7,bd = 0, bg='#232323',
         activebackground='#232323',command=verify)
         b3.place(relx = 0.85,rely=0.69,anchor='center')
@@ -1660,8 +1889,11 @@ try:
         b5=bt(f1,image=p8,bd=0,bg='#000000',activebackground='#000000',command=main)
         b5.place(relx=0.03,rely=0.05,anchor='center')
     
+
     def main():####################################################################  COMPLETE  ########################################################################
+        
         #main window
+
         global f1
         f1=fr(win,height=650,width=1150,bd=0 ,bg='#000000')
         f1.place(relx=0.5,rely=0.5,anchor = 'center')
@@ -1672,6 +1904,7 @@ try:
         l.place(relx=0.25,rely=0.5,anchor='center')
         
         #sign in prompt
+
         l1=lb(f1,text='Please Sign In.',bg = '#000000',fg = '#FFFFFF',font = ('SF Pro Display',38,'bold'))
         l1.place(relx=0.75,rely=0.35,anchor='center')
 
@@ -1680,7 +1913,6 @@ try:
         global b1
         b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =home)
         b1.place(relx=0.75,rely=0.55,anchor='center')
-
 
         def sbutton():                         
             def switch(a):
@@ -1694,7 +1926,6 @@ try:
             b1.bind('<Leave>',reverse)
         sbutton()               
                 
-            
         # division bar    
         
         l2=lb(f1,image = p6,bd = 0,bg = "#000000")
@@ -1702,7 +1933,7 @@ try:
 
         win.mainloop()
 
-    try:   # step 1 where it starts
+    try: 
         dbcon=db.connect(host='localhost',user='root',password='mysql',database='proj_vidul')
         if dbcon.is_connected()==True:
             dbcur=dbcon.cursor()
