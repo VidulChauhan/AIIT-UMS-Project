@@ -1,5 +1,5 @@
 try:
-    #import start
+    import start
     import mysql.connector as db                    ### EXTERNAL INSTALL ###
     from tkinter import *
     from tkinter import messagebox
@@ -1911,7 +1911,7 @@ try:
         #login button 1
         
         global b1
-        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =home)
+        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =login)
         b1.place(relx=0.75,rely=0.55,anchor='center')
 
         def sbutton():                         
@@ -1942,6 +1942,7 @@ try:
             'Database Error','There was some problem with the associated database, Please try again later')
     else:
         main()
+        
 except :
     msgb.showwarning('Unexpected error',"There was an unexpected error, we're trying to solve it. Please close the app and start it again.")
 
