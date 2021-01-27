@@ -1,9 +1,9 @@
 try:
     #import start
-    import mysql.connector as db                    ### EXTERNAL INSTALL ###
-    from tkinter import *    
+    import mysql.connector as db                    ### EXTERNAL INSTALL ###     
     from random import *
     import time as t
+    from tkinter import *   
     ph=PhotoImage
     lb=Label
     bt=Button
