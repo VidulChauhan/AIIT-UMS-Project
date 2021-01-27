@@ -122,7 +122,7 @@ try:
         f2.place(relx=0.5,rely=0.5,anchor='center') 
 
         global f3
-        f3=fr(win,bd=0,height=100,width=1150,bg='#232323')#smaller one
+        f3=fr(win,bd=0,height=100,width=1150,bg='#232323')#smaller one OVER F2
         f3.place(relx=0.5,rely=0,anchor='center')       
 
         l28=lb(f3,text=DATE,bd=0,font=('SF Pro Display',13),bg='#232323',fg='#FFFFFF') 
@@ -130,6 +130,8 @@ try:
 
         l29=lb(f2,bd=0,bg='#000000',fg='#FFFFFF',font=('SF Pro Display',22,'bold'))
         l29.place(relx=0.5,rely=0.105,anchor='center')
+
+        #####################  GREETING ACCORDING TO TIME ####################
 
         if curtime>=time(0,00,00) and curtime<time(11,59,59):
             l29.configure(text='Good morning !')
@@ -146,61 +148,60 @@ try:
         ANIMATE(b6,p10)
 
         global f4
-        f4=fr(f2,height=520,width=875,bd=0,bg='#000000') 
+        f4=fr(f2,height=520,width=875,bd=0,bg='#000000') # OVER F2 BELOW F3
         f4.place(relx=0.5,rely=0.535,anchor='center')
 
-        b7=bt(f4,image=p11,bd=0,bg='#000000',activebackground='#000000',command=sprofile)#profile
+        b7=bt(f4,image=p11,bd=0,bg='#000000',activebackground='#000000',command=sprofile) # profile
         b7.place(relx=0.1385,rely=0.236,anchor='center')
         ANIMATE(b7,p11)
 
-        b8=bt(f4,image=p12,bd=0,bg='#000000',activebackground='#000000',command=assignments)#assignments
+        b8=bt(f4,image=p12,bd=0,bg='#000000',activebackground='#000000',command=assignments) #assignments
         b8.place(relx=0.466,rely=0.688,anchor='center')
         ANIMATE(b8,p12)
-
         
-        b9=bt(f4,image=p14,bd=0,bg='#000000',activebackground='#000000',command=projects)#projects
+        b9=bt(f4,image=p14,bd=0,bg='#000000',activebackground='#000000',command=projects) # projects
         b9.place(relx=0.392,rely=0.182,anchor='center')
         ANIMATE(b9,p14)
 
-        b10=bt(f4,image=p18,bd=0,bg='#000000',activebackground='#000000',command=marks)#marks
+        b10=bt(f4,image=p18,bd=0,bg='#000000',activebackground='#000000',command=marks) # marks
         b10.place(relx=0.7515,rely=0.182,anchor='center')
         ANIMATE(b10,p18)
 
-        b11=bt(f4,image=p16,bd=0,bg='#000000',activebackground='#000000',command=attendance)#attendance
+        b11=bt(f4,image=p16,bd=0,bg='#000000',activebackground='#000000',command=attendance) # attendance
         b11.place(relx=0.13855,rely=0.62,anchor='center')
         ANIMATE(b11,p16)
 
-        b12=bt(f4,image=p15,bd=0,bg='#000000',activebackground='#000000',command=events)#events
+        b12=bt(f4,image=p15,bd=0,bg='#000000',activebackground='#000000',command=events) # events
         b12.place(relx=0.13855,rely=0.8825,anchor='center')
         ANIMATE(b12,p15)
 
-        b13=bt(f4,image=p19,bd=0,bg='#000000',activebackground='#000000',command=passr)#passreset
+        b13=bt(f4,image=p19,bd=0,bg='#000000',activebackground='#000000',command=passr) # passreset
         b13.place(relx=0.738,rely=0.52,anchor='center')
         ANIMATE(b13,p19)
 
-        b14=bt(f4,image=p17,bd=0,bg='#000000',activebackground='#000000',command=about)#about
+        b14=bt(f4,image=p17,bd=0,bg='#000000',activebackground='#000000',command=about) # about
         b14.place(relx=0.912,rely=0.52,anchor='center')
         ANIMATE(b14,p17)
         
-        b15=bt(f4,image=p13,bd=0,bg='#000000',activebackground='#000000',command=fee_details)#fee
+        b15=bt(f4,image=p13,bd=0,bg='#000000',activebackground='#000000',command=fee_details) # fee
         b15.place(relx=0.8263,rely=0.828,anchor='center')
         ANIMATE(b15,p13)
 
-        b16=bt(f3,image=p20,bd=0,bg='#232323',activebackground ='#232323',command=home)# home button
+        b16=bt(f3,image=p20,bd=0,bg='#232323',activebackground ='#232323',command=home) # home button
         b16.place(relx=0.5,rely=0.75,anchor='center')
         ANIMATE(b16,p20)
 
-        b39=bt(f2,image=p35,bd=0,bg='#000000',activebackground='#000000',command=addadmin)
+        b39=bt(f2,image=p35,bd=0,bg='#000000',activebackground='#000000',command=addadmin) # add administrator 
         b39.place(relx=0.01,rely=0.115,anchor='w')
         ANIMATE(b39,p35)
 
-        b40=bt(f2,image=p36,bd=0,bg='#000000',activebackground='#000000',command=addstudent)
+        b40=bt(f2,image=p36,bd=0,bg='#000000',activebackground='#000000',command=addstudent) # add student
         b40.place(relx=0.01,rely=0.175,anchor='w')
         ANIMATE(b40,p36)
 
         def delstudent():
-
             lb(f2,image = p50,bd=0).place(relx=0.9375,rely=0.5,anchor='center')
+
             global dsid   ###   0.235 ---> rely
             dsid=ent(f2,bd=0,bg='#FFFFFF',font=('SF Pro Display',12),width=6)# ID 
             dsid.place(relx=0.9375,rely=0.5,anchor='center')
@@ -233,6 +234,7 @@ try:
                         except :
                             msgb.showwarning('Unexpected error','There was an error deleting that account\nPlease try again later.')
                             home()
+
             bt(f2,text='delete',bd=0,bg='#000000',fg='#CF3327',font=('SF Pro Display',12),activebackground='#000000',command=del1).place(                
                 relx=0.9377,rely=0.55,anchor='w')
 
@@ -240,8 +242,8 @@ try:
                 relx=0.9373,rely=0.55,anchor='e')
 
         def deladmin():
-
             lb(f2,image = p50,bd=0).place(relx=0.9375,rely=0.5,anchor='center')
+
             global daid 
             daid=ent(f2,bd=0,bg='#FFFFFF',font=('SF Pro Display',12),width=6)# ID 
             daid.place(relx=0.9375,rely=0.5,anchor='center')
@@ -272,6 +274,7 @@ try:
                             except:
                                 msgb.showwarning('Unexpected error','There was an error deleting that account\nPlease try again later.')
                                 home()
+
             bt(f2,text='delete',bd=0,bg='#000000',fg='#CF3327',font=('SF Pro Display',12),activebackground='#000000',command=del2).place(                
                 relx=0.9377,rely=0.55,anchor='w')  
 
@@ -310,19 +313,19 @@ try:
         l83.place(relx=0.5,rely=0.55,anchor='center')
     
         lb(f12,image = p33,bd=0).place(relx=0.29,rely=0.29,anchor='w')
-        s1=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for student name
+        s1=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for student name
         s1.place(relx=0.298,rely=0.29,anchor='w')        
         
         lb(f12,image = p33,bd=0).place(relx=0.29,rely=0.383,anchor='w')
-        s2=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)#for student mobile
+        s2=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for student mobile
         s2.place(relx=0.298,rely=0.383,anchor='w')
         
         lb(f12,image = p33,bd=0).place(relx=0.29,rely=0.475,anchor='w')
-        s3=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for current year
+        s3=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for current year
         s3.place(relx=0.298,rely=0.475,anchor='w')        
         
         lb(f12,image = p33,bd=0).place(relx=0.6925,rely=0.29,anchor='w')
-        s4=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for student admission
+        s4=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for student admission
         s4.place(relx=0.7005,rely=0.29,anchor='w')        
         
         lb(f12,image = p33,bd=0).place(relx=0.6925,rely=0.383,anchor='w')
@@ -330,32 +333,32 @@ try:
         s5.place(relx=0.7005,rely=0.383,anchor='w')
                 
         lb(f12,image = p44,bd=0).place(relx=0.825,rely=0.473,anchor='w')
-        s6=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=7)# for blood group
+        s6=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=7) # for blood group
         s6.place(relx=0.833,rely=0.473,anchor='w')
         
         lb(f12,image = p44,bd=0).place(relx=0.095,rely=0.485,anchor='center')
-        s7=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=6)#for gender
+        s7=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=6) # for gender
         s7.place(relx=0.095,rely=0.485,anchor='center')
         s7.insert(0,'M/F')
         
         lb(f12,image = p33,bd=0).place(relx=0.29,rely=0.688,anchor='w')
-        s8=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for father's name
+        s8=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for father's name
         s8.place(relx=0.298,rely=0.688,anchor='w')        
         
         lb(f12,image = p33,bd=0).place(relx=0.29,rely=0.782,anchor='w')
-        s9=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)#father's number
+        s9=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # father's number
         s9.place(relx=0.298,rely=0.782,anchor='w')       
         
         lb(f12,image = p33,bd=0).place(relx=0.78,rely=0.688,anchor='w')
-        s10=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for mother's name
+        s10=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for mother's name
         s10.place(relx=0.788,rely=0.688,anchor='w')        
 
         lb(f12,image = p33,bd=0).place(relx=0.78,rely=0.782,anchor='w')
-        s11=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)#mother's number
+        s11=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # mother's number
         s11.place(relx=0.788,rely=0.782,anchor='w')        
         
         lb(f12,image = p44,bd=0).place(relx=0.5425,rely=0.473,anchor='w')
-        s12=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=7)# ID 
+        s12=ent(f12,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=7) # ID 
         s12.place(relx=0.5505,rely=0.473,anchor='w')        
 
         def nstudent_save():            
@@ -377,25 +380,25 @@ try:
             for g in sget:
                 if g=='':
                     sg+=1
-            for c in s1.get():#sname checked.
+            for c in s1.get(): # sname checked.
                 if c.isdigit()==True:
                     a+=1
-            for c1 in s8.get():#fname checked.
+            for c1 in s8.get(): # fname checked.
                 if c1.isdigit()==True:
                     a+=1
-            for c2 in s10.get():#mname checked.
+            for c2 in s10.get(): # mname checked.
                 if c2.isdigit()==True:
                     a+=1                  
-            for no in s2.get():#sph cheked.
+            for no in s2.get(): # sph cheked.
                 if no.isdigit()!=True:
                     b+=1 
-            for no1 in s9.get():#fph cheked.
+            for no1 in s9.get(): # fph cheked.
                 if no1.isdigit()!=True:
                     b+=1
-            for no2 in s11.get():#mph checked.
+            for no2 in s11.get(): # mph checked.
                 if no2.isdigit()!=True:
                     b+=1              
-            for w1 in s5.get(): #course checked.
+            for w1 in s5.get(): # course checked.
                 if w1.isdigit()==True:
                     d+=1
             for i1 in s12.get()[5:]:
@@ -420,16 +423,16 @@ try:
                 if s3.get() not in l: #year checked.
                     msgb.showwarning('Invalid entry','    Please check year.    ')   
                     e+=1         
-                if s4.get().startswith('S')==False or ad!=0:    #admission number checked                
+                if s4.get().startswith('S')==False or ad!=0:    # admission number checked                
                     msgb.showwarning('Invalid entry',"Admission number is not valid,\nIt can only begin with a 'S'\nPlease try again.")
                     e+=1                
                 if d!=0:   
                     msgb.showwarning('Invalid entry','Course is not valid, please try again.')   
                     e+=1             
-                if s6.get() not in l2: #blood group checked.
+                if s6.get() not in l2: # blood group checked.
                     msgb.showwarning('Invalid entry','Please check blood group and try again.') 
                     e+=1               
-                if s7.get() not in ['male','female','Male','Female','M','F','m','f']:   #gender checked.
+                if s7.get() not in ['male','female','Male','Female','M','F','m','f']:   # gender checked.
                     msgb.showwarning('Invalid entry','Please check gender and try again.')
                     e+=1
                 else:
@@ -465,6 +468,7 @@ try:
                             home()
                         except:
                             msgb.showwarning('Unexpected error','Please check all fields or try again later.')
+
         b41=bt(f12,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=nstudent_save)
         b41.place(relx=0.95,rely=0.1,anchor='center')
 
@@ -510,13 +514,13 @@ try:
         tid=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)
         tid.place(relx=0.475,rely=0.3,anchor='w')
 
-        phno=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) #ph
+        phno=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) # ph
         phno.place(relx=0.475,rely=0.4,anchor='w')
 
-        napass=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) #new
+        napass=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) # new
         napass.place(relx=0.475,rely=0.5,anchor='w')
 
-        cnapass=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) #new confirmed
+        cnapass=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) # new confirmed
         cnapass.place(relx=0.475,rely=0.6,anchor='w')
 
         def nadmin_save():
@@ -621,7 +625,7 @@ try:
                 def send():            
                     phn=d3[2]
                     if phone.get().strip()==phn:
-                        import Phone                       ### EXTERNAL INSTALL ###    
+                        import Phone                       ### EXTERNAL INSTALL AND IMPORT ###    
                         try:
                             global onet
                             onet=randrange(635745,952675)
@@ -742,13 +746,13 @@ try:
             l36.place(relx=0.45,rely=0.4,anchor='w')
             l37.place(relx=0.45,rely=0.5,anchor='w')
 
-            curpass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#cur
+            curpass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) # cur
             curpass.place(relx=0.475,rely=0.3,anchor='w')
 
-            newpass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#new
+            newpass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) # new
             newpass.place(relx=0.475,rely=0.4,anchor='w')
 
-            cnewpass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#new confirmed
+            cnewpass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) # new confirmed
             cnewpass.place(relx=0.475,rely=0.5,anchor='w')
 
             global b25
@@ -798,13 +802,13 @@ try:
             l57.place(relx=0.45,rely=0.4,anchor='w')
             l58.place(relx=0.45,rely=0.5,anchor='w')
 
-            Sid=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#current
+            Sid=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) # current
             Sid.place(relx=0.475,rely=0.3,anchor='w')
 
-            newspass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#new
+            newspass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) # new
             newspass.place(relx=0.475,rely=0.4,anchor='w')
 
-            cnewspass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#new confirmed
+            cnewspass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) # new confirmed
             cnewspass.place(relx=0.475,rely=0.5,anchor='w')
                 
             def spass_save():
@@ -883,40 +887,40 @@ try:
                     l13=lb(f5,image=p27,bd=0)
                     l13.place(relx=0.095,rely=0.375,anchor='center')
 
-                l14=lb(f5,text='{}'.format(rec[2]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# sname
+                l14=lb(f5,text='{}'.format(rec[2]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # sname
                 l14.place(relx=0.29,rely=0.29,anchor='w')   
 
-                l15=lb(f5,text='{}'.format(rec[5]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# student ph
+                l15=lb(f5,text='{}'.format(rec[5]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # student ph
                 l15.place(relx=0.29,rely=0.383,anchor='w') 
 
-                l16=lb(f5,text='{}'.format(rec[9]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# year
+                l16=lb(f5,text='{}'.format(rec[9]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # year
                 l16.place(relx=0.29,rely=0.475,anchor='w')
 
-                l17=lb(f5,text='{}'.format(rec[1]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# admission number 
+                l17=lb(f5,text='{}'.format(rec[1]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # admission number 
                 l17.place(relx=0.6925,rely=0.29,anchor='w')
 
-                l18=lb(f5,text='{}'.format(rec[8]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# course  
+                l18=lb(f5,text='{}'.format(rec[8]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # course  
                 l18.place(relx=0.6925,rely=0.383,anchor='w')
 
-                l19=lb(f5,text='{}'.format(rec[0]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# id
+                l19=lb(f5,text='{}'.format(rec[0]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # id
                 l19.place(relx=0.5425,rely=0.473,anchor='w')
 
-                l20=lb(f5,text='{}'.format(rec[11]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# blood group
+                l20=lb(f5,text='{}'.format(rec[11]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # blood group
                 l20.place(relx=0.825,rely=0.473,anchor='w')
 
-                l21=lb(f5,text='{}'.format(rec[3]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# fname
+                l21=lb(f5,text='{}'.format(rec[3]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # fname
                 l21.place(relx=0.29,rely=0.688,anchor='w')
 
-                l22=lb(f5,text='{}'.format(rec[6]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# father ph
+                l22=lb(f5,text='{}'.format(rec[6]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # father ph
                 l22.place(relx=0.29,rely=0.782,anchor='w')
 
-                l23=lb(f5,text='{}'.format(rec[4]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# mname
+                l23=lb(f5,text='{}'.format(rec[4]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # mname
                 l23.place(relx=0.78,rely=0.688,anchor='w')
 
-                l24=lb(f5,text='{}'.format(rec[7]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')# mother ph
+                l24=lb(f5,text='{}'.format(rec[7]),bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') # mother ph
                 l24.place(relx=0.78,rely=0.782,anchor='w')
 
-                l25=lb(f5,text='{}'.format(rec[10].capitalize()),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #gender 
+                l25=lb(f5,text='{}'.format(rec[10].capitalize()),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # gender 
                 l25.place(relx=0.095,rely=0.515,anchor='center')          
                 
                 def profile_edit():
@@ -924,23 +928,23 @@ try:
                     l13.place(relx=0.095,rely=0.345,anchor='center')
 
                     lb(f5,image = p33,bd=0).place(relx=0.29,rely=0.29,anchor='w')
-                    sname_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for student name
+                    sname_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for student name
                     sname_e.place(relx=0.298,rely=0.29,anchor='w')
                     sname_e.insert(0,rec[2])
 
                     lb(f5,image = p33,bd=0).place(relx=0.29,rely=0.383,anchor='w')
-                    sph_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)#for student mobile
+                    sph_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for student mobile
                     sph_e.place(relx=0.298,rely=0.383,anchor='w')
                     sph_e.insert(0,rec[5])
 
                     lb(f5,image = p33,bd=0).place(relx=0.29,rely=0.475,anchor='w')
-                    y_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for current year
+                    y_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for current year
                     y_e.place(relx=0.298,rely=0.475,anchor='w')
                     y_e.insert(0,rec[9])
 
                     
                     lb(f5,image = p33,bd=0).place(relx=0.6925,rely=0.29,anchor='w')
-                    admn_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for student admission
+                    admn_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for student admission
                     admn_e.place(relx=0.7005,rely=0.29,anchor='w')
                     admn_e.insert(0,rec[1])
 
@@ -951,33 +955,33 @@ try:
                     crs_e.insert(0,rec[8])
 
                     lb(f5,image = p44,bd=0).place(relx=0.825,rely=0.473,anchor='w')
-                    bld_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=4)# for blood group
+                    bld_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=4) # for blood group
                     bld_e.place(relx=0.833,rely=0.473,anchor='w')
                     bld_e.insert(0,rec[11])
                     
                     l25.place_forget()
                     lb(f5,image = p44,bd=0).place(relx=0.095,rely=0.5,anchor='center')
-                    gdr_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',13),width=6)#for gender
+                    gdr_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',13),width=6) # for gender
                     gdr_e.place(relx=0.095,rely=0.5,anchor='center')
                     gdr_e.insert(0,rec[10])
                     
                     lb(f5,image = p33,bd=0).place(relx=0.29,rely=0.688,anchor='w')
-                    fname_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for father's name
+                    fname_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for father's name
                     fname_e.place(relx=0.298,rely=0.688,anchor='w')
                     fname_e.insert(0,rec[3])
 
                     lb(f5,image = p33,bd=0).place(relx=0.29,rely=0.782,anchor='w')
-                    fph_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)#father's number
+                    fph_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # father's number
                     fph_e.place(relx=0.298,rely=0.782,anchor='w')
                     fph_e.insert(0,rec[6])
 
                     lb(f5,image = p33,bd=0).place(relx=0.78,rely=0.688,anchor='w')
-                    mname_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)# for mother's name
+                    mname_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # for mother's name
                     mname_e.place(relx=0.788,rely=0.688,anchor='w')
                     mname_e.insert(0,rec[4])
 
                     lb(f5,image = p33,bd=0).place(relx=0.78,rely=0.782,anchor='w')
-                    mph_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13)#mother's number
+                    mph_e=ent(f5,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=13) # mother's number
                     mph_e.place(relx=0.788,rely=0.782,anchor='w')
                     mph_e.insert(0,rec[7])
 
@@ -988,13 +992,13 @@ try:
                         d=0
                         r=0
                         ad=0
-                        for ch in sname_e.get():#sname checked.
+                        for ch in sname_e.get(): # sname checked.
                             if ch.isdigit()==True:
                                 a+=1
-                        for ch1 in fname_e.get():#fname checked.
+                        for ch1 in fname_e.get(): # fname checked.
                             if ch1.isdigit()==True:
                                 a+=1
-                        for ch2 in mname_e.get():#mname checked.
+                        for ch2 in mname_e.get(): # mname checked.
                             if ch2.isdigit()==True:
                                 a+=1                
                         if a!=0:
@@ -1007,13 +1011,13 @@ try:
                             mname_e.insert(0,rec[4])
                             r+=1
                             
-                        for n in sph_e.get():#sph cheked.
+                        for n in sph_e.get(): # sph cheked.
                             if n.isdigit()!=True:
                                 b+=1 
-                        for n1 in fph_e.get():#fph cheked.
+                        for n1 in fph_e.get(): # fph cheked.
                             if n1.isdigit()!=True:
                                 b+=1
-                        for n2 in mph_e.get():#mph checked.
+                        for n2 in mph_e.get(): # mph checked.
                             if n2.isdigit()!=True:
                                 b+=1                           
                         if len(sph_e.get())!=10 or len(fph_e.get())!=10 or len(mph_e.get())!=10 or b!=0:
@@ -1026,7 +1030,7 @@ try:
                             mph_e.insert(0,rec[7])
                             r+=1
                             
-                        l=['1st year','2nd year','3rd year','Final year']#year checked.
+                        l=['1st year','2nd year','3rd year','Final year'] # year checked.
                         if y_e.get() not in l:
                             msgb.showwarning('Invalid entry','    Please check year.    ')
                             y_e.delete(0,END)
@@ -1037,14 +1041,13 @@ try:
                                 ad+=1
                         if admn_e.get().startswith('S')==False or ad!=0:
                             c+=1
-                        if c!=0:    
-                            #admission number checked
+                        if c!=0: # admission number checked
                             msgb.showwarning('Invalid entry','Admission number is not valid, please try again.')
                             admn_e.delete(0,END)
                             admn_e.insert(0,rec[1])
                             r+=1
 
-                        for w in crs_e.get():#course checked.
+                        for w in crs_e.get(): # course checked.
                             if w.isdigit()==True:
                                 d+=1  
                         if d!=0:   
@@ -1052,13 +1055,13 @@ try:
                             crs_e.delete(0,END)
                             crs_e.insert(0,rec[8])
                             r+=1
-                        l2=['+A','+B','+O','-O','+AB','-AB','-A','-B'] #blood group checked.
+                        l2=['+A','+B','+O','-O','+AB','-AB','-A','-B'] # blood group checked.
                         if bld_e.get() not in l2:
                             msgb.showwarning('Invalid entry','Please check blood group and try again.')
                             bld_e.delete(0,END)
                             bld_e.insert(0,rec[11])
                             r+=1
-                        if gdr_e.get() not in ['male','female','Male','Female']:#gender checked.
+                        if gdr_e.get() not in ['male','female','Male','Female']: # gender checked.
                             msgb.showwarning('Invalid entry','Please check gender and try again.')
                             gdr_e.delete(0,END)
                             gdr_e.insert(0,rec[10])  
@@ -1099,6 +1102,7 @@ try:
             sid.delete(0,END)
         if (sid.get(),) in d13:
             f4.place_forget()
+
             global f10
             f10=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f10.place(relx=0.5,rely=0.535,anchor='center')
@@ -1117,104 +1121,104 @@ try:
                     rec1[y]='NULL'                  
             
             if rec1[1]!='NULL':
-                l61=lb(f10,text=rec1[1],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #mid sem 1
+                l61=lb(f10,text=rec1[1],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # mid sem 1
                 l61.place(relx=0.53,rely=0.315,anchor='center')
 
                 l62=lb(f10,text=(rec1[1]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l62.place(relx=0.82,rely=0.315,anchor='center')
             else:
-                l77=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #mid sem 1
+                l77=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # mid sem 1
                 l77.place(relx=0.53,rely=0.315,anchor='center')
 
                 l78=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l78.place(relx=0.82,rely=0.315,anchor='center')
 
             if rec1[2]!='NULL':
-                l63=lb(f10,text=rec1[2],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #sem final 1 
+                l63=lb(f10,text=rec1[2],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # sem final 1 
                 l63.place(relx=0.53,rely=0.375,anchor='center')
 
                 l64=lb(f10,text=(rec1[2]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l64.place(relx=0.82,rely=0.375,anchor='center')
             else:
-                l79=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #sem final 1 
+                l79=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # sem final 1 
                 l79.place(relx=0.53,rely=0.375,anchor='center')
 
                 l80=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l80.place(relx=0.82,rely=0.375,anchor='center')
             
             if rec1[3]!='NULL':
-                l65=lb(f10,text=rec1[3],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 2
+                l65=lb(f10,text=rec1[3],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # midsem 2
                 l65.place(relx=0.53,rely=0.465,anchor='center')
 
                 l66=lb(f10,text=(rec1[3]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l66.place(relx=0.82,rely=0.465,anchor='center')
             else:
-                l65=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 2
+                l65=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # midsem 2
                 l65.place(relx=0.53,rely=0.465,anchor='center')
 
                 l66=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l66.place(relx=0.82,rely=0.465,anchor='center')
         
             if rec1[4]!='NULL':
-                l67=lb(f10,text=rec1[4],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 2
+                l67=lb(f10,text=rec1[4],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # final 2
                 l67.place(relx=0.53,rely=0.525,anchor='center')
 
                 l68=lb(f10,text=(rec1[4]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l68.place(relx=0.82,rely=0.525,anchor='center')
             else:
-                l67=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 2
+                l67=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # final 2
                 l67.place(relx=0.53,rely=0.525,anchor='center')
 
                 l68=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l68.place(relx=0.82,rely=0.525,anchor='center')      
             
             if rec1[5]!='NULL':
-                l69=lb(f10,text=rec1[5],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 3
+                l69=lb(f10,text=rec1[5],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # midsem 3
                 l69.place(relx=0.53,rely=0.615,anchor='center')
 
                 l70=lb(f10,text=(rec1[5]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l70.place(relx=0.82,rely=0.615,anchor='center')
             else:
-                l69=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 3
+                l69=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # midsem 3
                 l69.place(relx=0.53,rely=0.615,anchor='center')
 
                 l70=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l70.place(relx=0.82,rely=0.615,anchor='center')
 
             if rec1[6]!='NULL':    
-                l71=lb(f10,text=rec1[6],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 3 
+                l71=lb(f10,text=rec1[6],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # final 3 
                 l71.place(relx=0.53,rely=0.675,anchor='center')
 
                 l72=lb(f10,text=(rec1[6]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l72.place(relx=0.82,rely=0.675,anchor='center')
             else:
-                l71=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 3 
+                l71=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # final 3 
                 l71.place(relx=0.53,rely=0.675,anchor='center')
 
                 l72=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l72.place(relx=0.82,rely=0.675,anchor='center')
 
             if rec1[7]!='NULL':
-                l73=lb(f10,text=rec1[7],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 4
+                l73=lb(f10,text=rec1[7],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # midsem 4
                 l73.place(relx=0.53,rely=0.765,anchor='center')
 
                 l74=lb(f10,text=(rec1[7]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l74.place(relx=0.82,rely=0.765,anchor='center')
             else:
-                l73=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 4
+                l73=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # midsem 4
                 l73.place(relx=0.53,rely=0.765,anchor='center')
 
                 l74=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l74.place(relx=0.82,rely=0.765,anchor='center')
 
             if rec1[8]!='NULL':
-                l75=lb(f10,text=rec1[8],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 4
+                l75=lb(f10,text=rec1[8],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # final 4
                 l75.place(relx=0.53,rely=0.825,anchor='center')
 
                 l76=lb(f10,text=(rec1[8]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l76.place(relx=0.82,rely=0.825,anchor='center')
             else:
-                l75=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 4
+                l75=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') # final 4
                 l75.place(relx=0.53,rely=0.825,anchor='center')
 
                 l76=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
@@ -1321,6 +1325,7 @@ try:
             sid.delete(0,END)
         if (sid.get(),) in d13:
             f4.place_forget()
+
             f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f11.place(relx=0.5,rely=0.535,anchor='center')
 
@@ -1459,7 +1464,8 @@ try:
                                 msgb.showinfo('Message','Operation succesfull.')
                                 fee_details()
                             except:
-                                msgb.showwarning('Unexpected error','Please check all entries and try again or later.')                    
+                                msgb.showwarning('Unexpected error','Please check all entries and try again or later.')
+
                 b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=fee_save)
                 b37.place(relx=0.95,rely=0.0875,anchor='center') 
 
@@ -1625,6 +1631,7 @@ try:
             sid.delete(0,END)
         if (sid.get(),) in d16:
             f4.place_forget()
+
             f15=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f15.place(relx=0.5,rely=0.535,anchor='center')
 
@@ -1672,8 +1679,9 @@ try:
                 arc=20,20,230,230
                 pr=int(d17[1])
                 ab=180-(pr)
-                c1.create_arc(arc,start=-60,extent="{}".format(-ab),fill='#FF5757',outline='#FF5757') #absent right
-                c1.create_arc(arc,start=0,extent="{}".format(pr),fill='#8C52FF',outline='#8C52FF') #present right
+
+                c1.create_arc(arc,start=-60,extent="{}".format(-ab),fill='#FF5757',outline='#FF5757') # absent right
+                c1.create_arc(arc,start=0,extent="{}".format(pr),fill='#8C52FF',outline='#8C52FF') # present right
                 c1.create_arc(arc,start="{}".format(pr),extent=120,fill='#C9E265',outline='#C9E265') # holidays (festivals + weekends)
                 c1.create_arc(arc,start=0,extent=-60,fill='#FF914D',outline='#FF914D') # permitted leaves
                 c1.place(relx=0.35,rely=0.65,anchor='center')
@@ -1706,7 +1714,8 @@ try:
                                 msgb.showinfo('Message','Operation successful.')
                                 attendance()
                             except:
-                                msgb.showwarning('Unexpected error','Please check all entries and try again or later.')                    
+                                msgb.showwarning('Unexpected error','Please check all entries and try again or later.')   
+
                 b49=bt(f15,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=att_save)
                 b49.place(relx=0.95,rely=0.0875,anchor='center') 
 
@@ -1767,7 +1776,7 @@ try:
             lm9.place(relx=0.35,rely=0.758,anchor='center',height=55)
 
             ln1=msg(f16,text=proj[4].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
-            ln1.place(relx=0.35,rely=0.896,anchor='center',height=55)  #404040
+            ln1.place(relx=0.35,rely=0.896,anchor='center',height=55) 
             
             ## DATE ##
 
@@ -1905,6 +1914,7 @@ try:
                                 projects()
                             except TypeError:                        
                                 msgb.showwarning('Unexpected error','Please check all entries and try again or later.')
+
                 b52=bt(f16,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
                 b52.place(relx=0.95,rely=0.0875,anchor='center') 
 
@@ -1926,7 +1936,7 @@ try:
             sid.delete(0,END)
         if (sid.get(),) in d18:
             f4.place_forget()
-            
+
             f17=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f17.place(relx=0.5,rely=0.535,anchor='center')
 
@@ -1959,7 +1969,7 @@ try:
             ### ASSIGNNMENT ####
             
             ln2=msg(f17,text=assi[0].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
-            ln2.place(relx=0.29,rely=0.34,anchor='center',height=55) ## 0.8 
+            ln2.place(relx=0.29,rely=0.34,anchor='center',height=55) 
 
             ln3=msg(f17,text=assi[1].strip(),bd=0,bg='#404040',fg='#FFFFFF',width=525,font=('SF Pro Display',16))
             ln3.place(relx=0.29,rely=0.473,anchor='center',height=55)
@@ -2266,8 +2276,6 @@ try:
                     if key.get()==d9[0][0]:
                         home() 
                     elif key.get()!=d9[0][0] and key.get()!='' :
-                        #id.delete()
-                        #key.delete()
                         msgb.showwarning('Invalid entry','There was an error, Incorrect ID and Password combination.')
                         key.delete(0,END)  
 
@@ -2286,23 +2294,23 @@ try:
 
     def main():####################################################################  COMPLETE  ########################################################################
         
-        #main window
+        # main window
 
         global f1
         f1=fr(win,height=650,width=1150,bd=0 ,bg='#000000')
         f1.place(relx=0.5,rely=0.5,anchor = 'center')
         
-        #universitrely logo
+        # universitrely logo
         
         l=lb(f1,image=p1,bd=0,bg = '#000000')
         l.place(relx=0.25,rely=0.5,anchor='center')
         
-        #sign in prompt
+        # sign in prompt
 
         l1=lb(f1,text='Please Sign In.',bg = '#000000',fg = '#FFFFFF',font = ('SF Pro Display',38,'bold'))
         l1.place(relx=0.75,rely=0.35,anchor='center')
 
-        #login button 1
+        # login button 1
         
         global b1
         b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =home)
