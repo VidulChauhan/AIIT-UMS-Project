@@ -1771,19 +1771,19 @@ try:
             
             ## DATE ##
 
-            ld0=lb(f16,text=date1[0],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld0=lb(f16,text=date1[0],bd=0,bg='#404040',fg='#249ADF',font=('SF Pro Display',16))
             ld0.place(relx=0.785,rely=0.348,anchor='center')
 
-            ld1=lb(f16,text=date1[1],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld1=lb(f16,text=date1[1],bd=0,bg='#404040',fg='#249ADF',font=('SF Pro Display',16))
             ld1.place(relx=0.785,rely=0.484,anchor='center')
 
-            ld2=lb(f16,text=date1[2],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld2=lb(f16,text=date1[2],bd=0,bg='#404040',fg='#249ADF',font=('SF Pro Display',16))
             ld2.place(relx=0.785,rely=0.62,anchor='center')
 
-            ld3=lb(f16,text=date1[3],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld3=lb(f16,text=date1[3],bd=0,bg='#404040',fg='#249ADF',font=('SF Pro Display',16))
             ld3.place(relx=0.785,rely=0.758,anchor='center')
 
-            ld4=lb(f16,text=date1[4],bd=0,bg='#404040',fg='#FFFFFF',font=('SF Pro Display',16))
+            ld4=lb(f16,text=date1[4],bd=0,bg='#404040',fg='#249ADF',font=('SF Pro Display',16))
             ld4.place(relx=0.785,rely=0.896,anchor='center')
 
             if date1[0]!='N/A':
@@ -1926,6 +1926,7 @@ try:
             sid.delete(0,END)
         if (sid.get(),) in d18:
             f4.place_forget()
+            
             f17=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f17.place(relx=0.5,rely=0.535,anchor='center')
 
@@ -2209,7 +2210,7 @@ try:
                         about()
                     except:
                         msgb.showinfo('Unexpected error','Please check the entry and try again.')
-                        
+
             b21=bt(f6,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=abt_save)
             b21.place(relx=0.95,rely=0.0875,anchor='center') 
 
