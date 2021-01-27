@@ -1,5 +1,5 @@
 try:
-    import start
+    #import start
     import mysql.connector as db                    ### EXTERNAL INSTALL ###
     from tkinter import *    
     from random import *
@@ -29,7 +29,7 @@ try:
     width=int(((win.winfo_screenwidth()*0.9875)//2)-575)
     height=int(((win.winfo_screenheight()*0.95)//2)-325)
     win.geometry('1150x650+{}+{}'.format(width,height))
-    win.title('All India Institute of Technology')
+    win.title('Advanced Institute of Innovation and Technology')
     win.configure(bg='#000000')
     win.resizable(False,False)
 
@@ -89,9 +89,34 @@ try:
         a=a.split('-')
         return date(int(a[0]),int(a[1]),int(a[2]))
 
+    ################################################################# MINOR ANIMATIONS ###########################################################
+    from PIL import ImageTk,Image
+    def ZOOM(img):
+        path=img.cget('file')
+        image=Image.open(path)    
+        image1=ImageTk.PhotoImage(image)
+        width=round(image1.width()+(0.03*image1.width()))
+        height=round(image1.height()+(0.03*image1.height()))
+        zoom_image=image.resize((width,height),Image.ANTIALIAS)
+        new_image=ImageTk.PhotoImage(zoom_image)
+        return new_image
+    
+    global ANIMATE
+    def ANIMATE(b,img):
+        def zoom(i):
+            image=ZOOM(img)
+            b.configure(image=image)
+            b.image=image
+        def reverse(i):
+            b.configure(image=img)
+            b.image=img
+        b.bind('<Enter>',zoom)
+        b.bind('<Leave>',reverse)
+
 
     def home():#####################################################################  COMPLETE  #############################################################
         f1.place_forget()
+
         global f2
         f2=fr(win,bd=0,height=650,width=1150,bg='#000000')#bigger one
         f2.place(relx=0.5,rely=0.5,anchor='center') 
@@ -104,7 +129,7 @@ try:
         l28.place(relx=0.715,rely=0.755,anchor='center')
 
         l29=lb(f2,bd=0,bg='#000000',fg='#FFFFFF',font=('SF Pro Display',22,'bold'))
-        l29.place(relx=0.5,rely=0.11,anchor='center')
+        l29.place(relx=0.5,rely=0.105,anchor='center')
 
         if curtime>=time(0,00,00) and curtime<time(11,59,59):
             l29.configure(text='Good morning !')
@@ -118,46 +143,60 @@ try:
 
         b6=bt(f3,image=p10,bd=0,bg='#232323',activebackground = '#232323',command = main)
         b6.place(relx=0.95,rely=0.75,anchor = 'center')
+        ANIMATE(b6,p10)
 
         global f4
-        f4=fr(f2,height=500,width=855,bd=0,bg='#000000') 
+        f4=fr(f2,height=520,width=875,bd=0,bg='#000000') 
         f4.place(relx=0.5,rely=0.535,anchor='center')
 
         b7=bt(f4,image=p11,bd=0,bg='#000000',activebackground='#000000',command=sprofile)#profile
         b7.place(relx=0.1385,rely=0.236,anchor='center')
+        ANIMATE(b7,p11)
 
         b8=bt(f4,image=p12,bd=0,bg='#000000',activebackground='#000000',command=assignments)#assignments
         b8.place(relx=0.466,rely=0.688,anchor='center')
+        ANIMATE(b8,p12)
+
         
         b9=bt(f4,image=p14,bd=0,bg='#000000',activebackground='#000000',command=projects)#projects
         b9.place(relx=0.392,rely=0.182,anchor='center')
+        ANIMATE(b9,p14)
 
         b10=bt(f4,image=p18,bd=0,bg='#000000',activebackground='#000000',command=marks)#marks
         b10.place(relx=0.7515,rely=0.182,anchor='center')
+        ANIMATE(b10,p18)
 
         b11=bt(f4,image=p16,bd=0,bg='#000000',activebackground='#000000',command=attendance)#attendance
         b11.place(relx=0.13855,rely=0.62,anchor='center')
+        ANIMATE(b11,p16)
 
         b12=bt(f4,image=p15,bd=0,bg='#000000',activebackground='#000000',command=events)#events
         b12.place(relx=0.13855,rely=0.8825,anchor='center')
+        ANIMATE(b12,p15)
 
         b13=bt(f4,image=p19,bd=0,bg='#000000',activebackground='#000000',command=passr)#passreset
         b13.place(relx=0.738,rely=0.52,anchor='center')
+        ANIMATE(b13,p19)
 
         b14=bt(f4,image=p17,bd=0,bg='#000000',activebackground='#000000',command=about)#about
         b14.place(relx=0.912,rely=0.52,anchor='center')
-
+        ANIMATE(b14,p17)
+        
         b15=bt(f4,image=p13,bd=0,bg='#000000',activebackground='#000000',command=fee_details)#fee
         b15.place(relx=0.8263,rely=0.828,anchor='center')
+        ANIMATE(b15,p13)
 
         b16=bt(f3,image=p20,bd=0,bg='#232323',activebackground ='#232323',command=home)# home button
         b16.place(relx=0.5,rely=0.75,anchor='center')
+        ANIMATE(b16,p20)
 
         b39=bt(f2,image=p35,bd=0,bg='#000000',activebackground='#000000',command=addadmin)
         b39.place(relx=0.01,rely=0.115,anchor='w')
+        ANIMATE(b39,p35)
 
         b40=bt(f2,image=p36,bd=0,bg='#000000',activebackground='#000000',command=addstudent)
         b40.place(relx=0.01,rely=0.175,anchor='w')
+        ANIMATE(b40,p36)
 
         def delstudent():
 
@@ -195,7 +234,8 @@ try:
                             msgb.showwarning('Unexpected error','There was an error deleting that account\nPlease try again later.')
                             home()
             bt(f2,text='delete',bd=0,bg='#000000',fg='#CF3327',font=('SF Pro Display',12),activebackground='#000000',command=del1).place(                
-                relx=0.9377,rely=0.55,anchor='w')    
+                relx=0.9377,rely=0.55,anchor='w')
+
             bt(f2,text='cancel',bd=0,bg='#000000',fg='#FFFFFF',font=('SF Pro Display',12),activebackground='#000000',command=home).place(
                 relx=0.9373,rely=0.55,anchor='e')
 
@@ -233,15 +273,18 @@ try:
                                 msgb.showwarning('Unexpected error','There was an error deleting that account\nPlease try again later.')
                                 home()
             bt(f2,text='delete',bd=0,bg='#000000',fg='#CF3327',font=('SF Pro Display',12),activebackground='#000000',command=del2).place(                
-                relx=0.9377,rely=0.55,anchor='w')    
+                relx=0.9377,rely=0.55,anchor='w')  
+
             bt(f2,text='cancel',bd=0,bg='#000000',fg='#FFFFFF',font=('SF Pro Display',12),activebackground='#000000',command=home).place(
                 relx=0.9373,rely=0.55,anchor='e')
         
         b57=bt(f2,image=p48,bd=0,bg='#000000',activebackground='#000000',command=deladmin)
         b57.place(relx=0.99,rely=0.115,anchor='e')
+        ANIMATE(b57,p48)
 
         b58=bt(f2,image=p49,bd=0,bg='#000000',activebackground='#000000',command=delstudent)
         b58.place(relx=0.99,rely=0.175,anchor='e')
+        ANIMATE(b58,p49)
 
         l11=lb(f3,image=p24,bd=0)
         l11.place(relx=0.35,rely=0.75,anchor='center')
@@ -254,13 +297,15 @@ try:
         sid.place(relx=0.35,rely=0.75,anchor='center')
 
 
-    def addstudent():  ###########################################  COMPLETED  ###################################################
+    def addstudent():  ###########################################  COMPLETED  ###############################################################
         f4.place_forget()
         global f12
         f12=fr(f2,height=500,width=855,bd=0,bg='#000000') 
         f12.place(relx=0.5,rely=0.535,anchor='center')
+
         l6=lb(f12,text='Add Student account',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
-        l6.place(relx=0,rely=0.05,anchor='w')           
+        l6.place(relx=0,rely=0.05,anchor='w')     
+
         l83=lb(f12,image=p25,bd=0)            
         l83.place(relx=0.5,rely=0.55,anchor='center')
     
@@ -421,7 +466,8 @@ try:
                         except:
                             msgb.showwarning('Unexpected error','Please check all fields or try again later.')
         b41=bt(f12,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=nstudent_save)
-        b41.place(relx=0.95,rely=0.1,anchor='center') 
+        b41.place(relx=0.95,rely=0.1,anchor='center')
+
         b42=bt(f12,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
         b42.place(relx=0.85,rely=0.1,anchor='center')
 
@@ -433,17 +479,22 @@ try:
         global f13
         f13=fr(f2,height=500,width=855,bd=0,bg='#000000') 
         f13.place(relx=0.5,rely=0.535,anchor='center')
+        
         l6=lb(f13,text='Add Administrator account',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
-        l6.place(relx=0,rely=0.05,anchor='w')           
+        l6.place(relx=0,rely=0.05,anchor='w')     
+
         l84=lb(f13,image=p29,bd=0)            
         l84.place(relx=0.5,rely=0.55,anchor='center')
 
         l85=lb(f13,text='ID',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#249ADF')
         l85.place(relx=0.2,rely=0.3,anchor='w')
+
         l85=lb(f13,text='Phone number :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF')
         l85.place(relx=0.2,rely=0.4,anchor='w')
+
         l86=lb(f13,text='New password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF')
         l86.place(relx=0.2,rely=0.5,anchor='w')
+
         l87=lb(f13,text='Confirm new password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF')
         l87.place(relx=0.2,rely=0.6,anchor='w')
 
@@ -458,10 +509,13 @@ try:
         
         tid=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)
         tid.place(relx=0.475,rely=0.3,anchor='w')
+
         phno=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) #ph
         phno.place(relx=0.475,rely=0.4,anchor='w')
+
         napass=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) #new
         napass.place(relx=0.475,rely=0.5,anchor='w')
+
         cnapass=ent(f13,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10) #new confirmed
         cnapass.place(relx=0.475,rely=0.6,anchor='w')
 
@@ -506,6 +560,7 @@ try:
                 
         b43=bt(f13,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=nadmin_save)
         b43.place(relx=0.95,rely=0.0875,anchor='center') 
+
         b44=bt(f13,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
         b44.place(relx=0.85,rely=0.0875,anchor='center')  
     
@@ -514,18 +569,24 @@ try:
         f1.place_forget()
         fram=fr(win,height=650,width=1150,bd=0,bg='#000000')
         fram.place(relx=0.5,rely=0.5,anchor='center')
+
         global f8
         f8=fr(fram,height=500,width=855,bd=0,bg='#000000')
         f8.place(relx=0.5,rely=0.535,anchor='center')
+
         l38=lb(f8,text='Forgot password',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
         l38.place(relx=0,rely=0.05,anchor='w')
+
         l39=lb(f8,image=p29,bd=0)
         l39.place(relx=0.5,rely=0.55,anchor='center') 
+
         l42=lb(f8,image=p33,bd=0)
-        l42.place(relx = 0.525,rely=0.2,anchor = 'center')  
+        l42.place(relx = 0.525,rely=0.2,anchor = 'center') 
+
         global fid
         fid=ent(f8,bd = 0 ,font=('SF Pro Display',16),width=8,bg='#F2F2F2') 
         fid.place(relx = 0.525,rely=0.2,anchor = 'center') 
+
         l41=lb(f8,text='Enter ID :',bd = 0 ,font=('SF Pro Display',16),bg='#232323', fg='#FFFFFF')
         l41.place(relx = 0.375,rely = 0.2,anchor = 'center')
 
@@ -544,14 +605,19 @@ try:
                 l40=lb(f8,text="We'll send an OTP the your registered mobile number ending with  {}.".format(Pn),
                 font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
                 l40.place(relx=0.5,rely=0.4,anchor='center')
+
                 l43=lb(f8,image=p33,bd=0)
                 l43.place(relx=0.525,rely=0.5,anchor='center')
+
                 phone=ent(f8,bd = 0 ,font=('SF Pro Display',16),width=10,bg='#F2F2F2')
                 phone.place(relx=0.525,rely=0.5,anchor='center')
+
                 l44=lb(f8,text='Enter phone number :',bd=0,font=('SF Pro Display',16),bg='#232323', fg='#FFFFFF')
                 l44.place(relx=0.31,rely=0.5,anchor='center')
+
                 global scount
                 scount=[]
+
                 def send():            
                     phn=d3[2]
                     if phone.get().strip()==phn:
@@ -565,15 +631,20 @@ try:
                         except:
                             msgb.showerror('Message Client error','Message could not be sent.\nPlease try again later.')    
                     else :
-                        msgb.showwarning('Incorrect credentials','  Phone number not entered or invalid.  ')      
+                        msgb.showwarning('Incorrect credentials','  Phone number not entered or invalid.  ') 
+
                 b29=bt(f8,text='Send',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF',activebackground='#232323',command=send)
                 b29.place(relx=0.7,rely=0.55,anchor='center')
+                
                 l45=lb(f8,text='Enter One Time Password',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF') 
                 l45.place(relx=0.525,rely=0.65,anchor='center')
+
                 l46=lb(f8,image=p33,bd=0)
                 l46.place(relx=0.525,rely=0.75,anchor='center')
+
                 otp=ent(f8,bd = 0 ,font=('SF Pro Display',16),width=6,bg='#F2F2F2')
                 otp.place(relx=0.525,rely=0.75,anchor='center')
+
                 def fverify():
                     if len(scount)==0:
                         msgb.showinfo('Message error','Please click on send to send OTP and then enter it to verify.')
@@ -585,28 +656,39 @@ try:
                             global f9
                             f9=fr(f8,bd=0,height=500,width=855,bg='#000000')
                             f9.place(relx=0.5,rely=0.5,anchor='center')
+
                             l47=lb(f9,image=p29,bd=0)
                             l47.place(relx=0.5,rely=0.55,anchor='center')
+
                             l48=lb(f9,text='Set New password',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
                             l48.place(relx=0,rely=0.05,anchor='w')
+
                             l49=lb(f9,text='Enter new password :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
                             l49.place(relx=0.15,rely=0.2,anchor='w')
+
                             l50=lb(f9,image=p33,bd=0)
                             l50.place(relx=0.475,rely=0.2,anchor='center')
+
                             npass=ent(f9,bd = 0 ,font=('SF Pro Display',16),width=10,bg='#F2F2F2')
                             npass.place(relx=0.475,rely=0.2,anchor='center')
+
                             l51=lb(f9,text='Confirm password :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
                             l51.place(relx=0.15,rely=0.35,anchor='w')
+
                             l52=lb(f9,image=p33,bd=0)
                             l52.place(relx=0.475,rely=0.35,anchor='center')
+
                             cnpass=ent(f9,bd = 0 ,font=('SF Pro Display',16),width=10,bg='#F2F2F2')
                             cnpass.place(relx=0.475,rely=0.35,anchor='center')
+
                             def cancel2():
                                 f9.place_forget()
                                 f8.place_forget()
                                 f1.place(relx=0.5,rely=0.5,anchor = 'center')
+
                             b31=bt(f9,text='Cancel',font=('SF Pro Display',16),bd=0,bg='#000000',activebackground='#000000',fg='#FFFFFF',command=cancel2)
                             b31.place(relx=0.9,rely=0.08,anchor='center')
+
                             def save2():
                                 try:
                                     if npass.get()=='' or cnpass.get()=='':
@@ -620,10 +702,13 @@ try:
                                         msgb.showwarning('Operation unsuccessful','Passswords do not match, please try again.')  
                                 except:
                                     msgb.showinfo('Unexpected error','Please check all fields and try again.')
+
                             b32=bt(f9,text='Save',font=('SF Pro Display',16),bd=0,bg='#232323',activebackground='#232323',fg='#249ADF',command=save2)
                             b32.place(relx=0.55,rely=0.45,anchor='center')
+
                         if otp.get()!=str(onet) and otp.get()!='':
                             msgb.showwarning('Invalid entry','  Entered code is incorrect.  ')
+
                 b30=bt(f8,text='Verify',font=('SF Pro Display',16),bd=0,fg='#249ADF',bg='#232323',activebackground='#232323',command=fverify)
                 b30.place(relx=0.525,rely=0.825,anchor='center')
         
@@ -633,6 +718,7 @@ try:
 
         b27=bt(f8,text='Go',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF',activebackground='#232323',command=go)
         b27.place(relx=0.6,rely=0.3,anchor='center')
+
         b28=bt(f8,text='Cancel',bd=0,font=('SF Pro Display',16),bg='#000000',fg='#CF3327',activebackground='#000000',command=cancel1)
         b28.place(relx=0.9,rely=0.08,anchor='center')
         
@@ -642,22 +728,29 @@ try:
             global l32
             l32=lb(f7,text='Current password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
             l32.place(relx=0.2,rely=0.3,anchor='w')
+
             l33=lb(f7,text='New password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
             l33.place(relx=0.2,rely=0.4,anchor='w')
+
             l34=lb(f7,text='Confirm new password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
             l34.place(relx=0.2,rely=0.5,anchor='w')
+
             l35=lb(f7,image=p33,bd=0)
             l36=lb(f7,image=p33,bd=0)
             l37=lb(f7,image=p33,bd=0)
             l35.place(relx=0.45,rely=0.3,anchor='w')
             l36.place(relx=0.45,rely=0.4,anchor='w')
             l37.place(relx=0.45,rely=0.5,anchor='w')
+
             curpass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#cur
             curpass.place(relx=0.475,rely=0.3,anchor='w')
+
             newpass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#new
             newpass.place(relx=0.475,rely=0.4,anchor='w')
+
             cnewpass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#new confirmed
             cnewpass.place(relx=0.475,rely=0.5,anchor='w')
+
             global b25
             b25=bt(f7,text= 'Forgot your Password ?',font = ('SF Pro Display',10,UNDERLINE),
             bd = 0,bg = '#232323',fg='#737373',activebackground = '#232323',command=forgpass)
@@ -684,26 +777,33 @@ try:
                             msgb.showinfo('Operation successful','Password changed successfully.\nPlease re-login for changes to take effect.')
                 except:
                     msgb.showinfo('Unexpected error','Please check all fields and try again.')
+
             b26=bt(f7,text='Save',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#249ADF',activebackground='#232323',command=apass_save)
             b26.place(relx=0.7,rely=0.6,anchor='center')
 
         def spassreset():
             b25.place_forget()
             l32.configure(text='Enter ID : ')
+
             l54=lb(f7,text='New password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
             l54.place(relx=0.2,rely=0.4,anchor='w')
+
             l55=lb(f7,text='Confirm new password :',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#FFFFFF')
             l55.place(relx=0.2,rely=0.5,anchor='w')
+
             l56=lb(f7,image=p33,bd=0)
             l57=lb(f7,image=p33,bd=0)
             l58=lb(f7,image=p33,bd=0)
             l56.place(relx=0.45,rely=0.3,anchor='w')
             l57.place(relx=0.45,rely=0.4,anchor='w')
             l58.place(relx=0.45,rely=0.5,anchor='w')
+
             Sid=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#current
             Sid.place(relx=0.475,rely=0.3,anchor='w')
+
             newspass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#new
             newspass.place(relx=0.475,rely=0.4,anchor='w')
+
             cnewspass=ent(f7,bd=0,bg='#F2F2F2',font=('SF Pro Display',16),width=10)#new confirmed
             cnewspass.place(relx=0.475,rely=0.5,anchor='w')
                 
@@ -726,6 +826,7 @@ try:
                         msgb.showwarning('Invalid ID','Incorrect ID, Please try again.')
                 except:
                     msgb.showinfo('Unexpected error','Please check all fields and try again.')
+
             b26=bt(f7,text='Save',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#249ADF',activebackground='#232323',command=spass_save)
             b26.place(relx=0.7,rely=0.6,anchor='center')       
         
@@ -733,14 +834,19 @@ try:
         global f7
         f7=fr(f2,height=500,width=855,bd=0,bg='#000000') 
         f7.place(relx=0.5,rely=0.535,anchor='center')
+
         l30=lb(f7,image=p29,bd=0)
         l30.place(relx=0.5,rely=0.55,anchor='center')
+
         l31=lb(f7,text='Password reset',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
         l31.place(relx=0,rely=0.05,anchor='w')
+
         b23=bt(f7,image=p30,bd=0,bg='#232323',activebackground='#232323',command=apassreset)
         b23.place(relx=0.499,rely=0.175,anchor='e')
+        
         b24=bt(f7,image=p32,bd=0,bg='#232323',activebackground='#232323',command=spassreset)
         b24.place(relx=0.501,rely=0.177,anchor='w')
+
         apassreset()       
         
 
@@ -759,14 +865,17 @@ try:
                 global f5
                 f5=fr(f2,height=500,width=855,bd=0,bg='#000000') 
                 f5.place(relx=0.5,rely=0.535,anchor='center')
+
                 l6=lb(f5,text='Profile',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
                 l6.place(relx=0,rely=0.05,anchor='w')
 
                 dbcur.execute('select * from sprofile where sid="{}"'.format(sid.get()))
                 d6=dbcur.fetchall()            
                 rec=d6[0]
+
                 l10=lb(f5,image=p25,bd=0)            
                 l10.place(relx=0.5,rely=0.55,anchor='center')
+
                 if rec[10] in ['male','Male','M','m']:
                     l13=lb(f5,image=p26,bd=0)
                     l13.place(relx=0.095,rely=0.375,anchor='center')
@@ -971,8 +1080,10 @@ try:
     
                     b18=bt(f5,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=profile_save)
                     b18.place(relx=0.95,rely=0.1,anchor='center') 
+
                     b19=bt(f5,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=sprofile)  
                     b19.place(relx=0.85,rely=0.1,anchor='center')
+
                 b17=bt(f5,image=p28,bd=0,bg='#000000',activebackground='#000000',command=profile_edit)  
                 b17.place(relx=0.95,rely=0.09,anchor='center')    
 
@@ -991,10 +1102,13 @@ try:
             global f10
             f10=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f10.place(relx=0.5,rely=0.535,anchor='center')
+
             l59=lb(f10,text='Mark details',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
             l59.place(relx=0,rely=0.05,anchor='w')
+
             l60=lb(f10,image=p34,bd=0)
             l60.place(relx=0.5,rely=0.56,anchor='center')
+
             dbcur.execute('select * from marks where sid="{}"'.format(sid.get()))
             d10=dbcur.fetchall()            
             rec1=list(d10[0])
@@ -1005,88 +1119,104 @@ try:
             if rec1[1]!='NULL':
                 l61=lb(f10,text=rec1[1],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #mid sem 1
                 l61.place(relx=0.53,rely=0.315,anchor='center')
+
                 l62=lb(f10,text=(rec1[1]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l62.place(relx=0.82,rely=0.315,anchor='center')
             else:
                 l77=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #mid sem 1
                 l77.place(relx=0.53,rely=0.315,anchor='center')
+
                 l78=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l78.place(relx=0.82,rely=0.315,anchor='center')
 
             if rec1[2]!='NULL':
                 l63=lb(f10,text=rec1[2],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #sem final 1 
                 l63.place(relx=0.53,rely=0.375,anchor='center')
+
                 l64=lb(f10,text=(rec1[2]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l64.place(relx=0.82,rely=0.375,anchor='center')
             else:
                 l79=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #sem final 1 
                 l79.place(relx=0.53,rely=0.375,anchor='center')
+
                 l80=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l80.place(relx=0.82,rely=0.375,anchor='center')
             
             if rec1[3]!='NULL':
                 l65=lb(f10,text=rec1[3],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 2
                 l65.place(relx=0.53,rely=0.465,anchor='center')
+
                 l66=lb(f10,text=(rec1[3]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l66.place(relx=0.82,rely=0.465,anchor='center')
             else:
                 l65=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 2
                 l65.place(relx=0.53,rely=0.465,anchor='center')
+
                 l66=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l66.place(relx=0.82,rely=0.465,anchor='center')
         
             if rec1[4]!='NULL':
                 l67=lb(f10,text=rec1[4],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 2
                 l67.place(relx=0.53,rely=0.525,anchor='center')
+
                 l68=lb(f10,text=(rec1[4]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l68.place(relx=0.82,rely=0.525,anchor='center')
             else:
                 l67=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 2
                 l67.place(relx=0.53,rely=0.525,anchor='center')
+
                 l68=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l68.place(relx=0.82,rely=0.525,anchor='center')      
             
             if rec1[5]!='NULL':
                 l69=lb(f10,text=rec1[5],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 3
                 l69.place(relx=0.53,rely=0.615,anchor='center')
+
                 l70=lb(f10,text=(rec1[5]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l70.place(relx=0.82,rely=0.615,anchor='center')
             else:
                 l69=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 3
                 l69.place(relx=0.53,rely=0.615,anchor='center')
+
                 l70=lb(f10,text=('N/A'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l70.place(relx=0.82,rely=0.615,anchor='center')
 
             if rec1[6]!='NULL':    
                 l71=lb(f10,text=rec1[6],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 3 
                 l71.place(relx=0.53,rely=0.675,anchor='center')
+
                 l72=lb(f10,text=(rec1[6]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l72.place(relx=0.82,rely=0.675,anchor='center')
             else:
                 l71=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 3 
                 l71.place(relx=0.53,rely=0.675,anchor='center')
+
                 l72=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l72.place(relx=0.82,rely=0.675,anchor='center')
 
             if rec1[7]!='NULL':
                 l73=lb(f10,text=rec1[7],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 4
                 l73.place(relx=0.53,rely=0.765,anchor='center')
+
                 l74=lb(f10,text=(rec1[7]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l74.place(relx=0.82,rely=0.765,anchor='center')
             else:
                 l73=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #midsem 4
                 l73.place(relx=0.53,rely=0.765,anchor='center')
+
                 l74=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l74.place(relx=0.82,rely=0.765,anchor='center')
 
             if rec1[8]!='NULL':
                 l75=lb(f10,text=rec1[8],bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 4
                 l75.place(relx=0.53,rely=0.825,anchor='center')
+
                 l76=lb(f10,text=(rec1[8]+'%'),bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l76.place(relx=0.82,rely=0.825,anchor='center')
             else:
                 l75=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF') #final 4
                 l75.place(relx=0.53,rely=0.825,anchor='center')
+
                 l76=lb(f10,text='N/A',bd=0,font=('SF Pro Display',15),bg='#232323',fg='#FFFFFF')
                 l76.place(relx=0.82,rely=0.825,anchor='center')
 
@@ -1171,9 +1301,11 @@ try:
                         marks()
                             
                 b34=bt(f10,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=marks_save)
-                b34.place(relx=0.95,rely=0.0875,anchor='center') 
+                b34.place(relx=0.95,rely=0.0875,anchor='center')
+
                 b35=bt(f10,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=marks)  
                 b35.place(relx=0.85,rely=0.0875,anchor='center')
+
             b33=bt(f10,image=p28,bd=0,bg='#000000',activebackground='#000000',command=marks_edit)  
             b33.place(relx=0.95,rely=0.09,anchor='center')
 
@@ -1191,10 +1323,13 @@ try:
             f4.place_forget()
             f11=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f11.place(relx=0.5,rely=0.535,anchor='center')
+
             l81=lb(f11,text='Fee details',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
             l81.place(relx=0,rely=0.05,anchor='w')
+
             l82=lb(f11,image=p29,bd=0)
             l82.place(relx=0.5,rely=0.55,anchor='center')
+
             dbcur.execute('select * from fees where sid="{}"'.format(sid.get()))
             global d14
             d14=list(dbcur.fetchall()[0])
@@ -1205,31 +1340,41 @@ try:
             pp2=['All Clear!','No dues!','No Pending Fees!'] 
             im=choice(pp1)
             it=choice(pp2) 
+
             l98=lb(f11,image=im,bd=0)
             l99=lb(f11,text=it,font=('SF Pro Display',32,'bold'),bd=0,bg='#232323', fg='#FFFFFF')
+
             if d14[3]=='Paid' or d14[3]=='paid':                           
                 l98.place(relx=0.5,rely=0.45,anchor='center')             
                 l99.place(relx=0.5,rely=0.65,anchor='center')
             else:       
                 l82.place(relx=0.5,rely=0.55,anchor='center')
+
                 l92=lb(f11,text='Cycle  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
                 l92.place(relx=0.2,rely=0.25,anchor='w')
+
                 l93=lb(f11,text='Amount  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
                 l93.place(relx=0.2,rely=0.35,anchor='w')
+
                 l94=lb(f11,text='Status  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
                 l94.place(relx=0.2,rely=0.45,anchor='w')
+
                 l100=lb(f11,text='Due date  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
                 l100.place(relx=0.2,rely=0.55,anchor='w')
+
                 l95=lb(f11,text=d14[1],font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
                 l95.place(relx=0.35,rely=0.25,anchor='w')
+
                 if d14[2]!='N/A':
                     l96=lb(f11,text=('Rs. '+d14[2]+'/-'),font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
                     l96.place(relx=0.35,rely=0.35,anchor='w')
                 else:
                     l96=lb(f11,text=d14[2],font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
                     l96.place(relx=0.35,rely=0.35,anchor='w')
+
                 l97=lb(f11,text=d14[3],font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
                 l97.place(relx=0.35,rely=0.45,anchor='w')
+
                 l101=lb(f11,text=d14[4],font=('SF Pro Display',16),bd=0,bg='#232323', fg='#FFFFFF')
                 l101.place(relx=0.35,rely=0.55,anchor='w')    
             
@@ -1239,15 +1384,20 @@ try:
                 l98.place_forget()
                 l99.place_forget()
 
-                l82.place(relx=0.5,rely=0.55,anchor='center')                
+                l82.place(relx=0.5,rely=0.55,anchor='center')   
+
                 la1=lb(f11,text='Cycle  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
                 la1.place(relx=0.2,rely=0.25,anchor='w')
+
                 la2=lb(f11,text='Amount  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
                 la2.place(relx=0.2,rely=0.35,anchor='w')
+
                 la3=lb(f11,text='Status  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
                 la3.place(relx=0.2,rely=0.45,anchor='w')
+
                 la8=lb(f11,text='Due date  :',font=('SF Pro Display',16),bd=0,bg='#232323', fg='#249ADF')
                 la8.place(relx=0.2,rely=0.55,anchor='w')
+
                 la4=lb(f11,image=p33,bd=0)
                 la5=lb(f11,image=p33,bd=0)
                 la6=lb(f11,image=p33,bd=0)
@@ -1312,8 +1462,10 @@ try:
                                 msgb.showwarning('Unexpected error','Please check all entries and try again or later.')                    
                 b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=fee_save)
                 b37.place(relx=0.95,rely=0.0875,anchor='center') 
+
                 b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=fee_details)  
                 b38.place(relx=0.85,rely=0.0875,anchor='center')
+
             b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=fee_edit)  
             b36.place(relx=0.95,rely=0.09,anchor='center')
 
@@ -1453,9 +1605,11 @@ try:
                             msgb.showwarning('Unexpected error','Please check all entries and try again or later.')
 
             b46=bt(f14,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=events_save)
-            b46.place(relx=0.95,rely=0.0865,anchor='center') 
+            b46.place(relx=0.95,rely=0.0865,anchor='center')
+
             b47=bt(f14,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=events)  
             b47.place(relx=0.85,rely=0.0865,anchor='center')
+
         b45=bt(f14,image=p28,bd=0,bg='#000000',activebackground='#000000',command=events_edit)  
         b45.place(relx=0.95,rely=0.08,anchor='center')
 
@@ -1473,10 +1627,13 @@ try:
             f4.place_forget()
             f15=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f15.place(relx=0.5,rely=0.535,anchor='center')
+
             lb7=lb(f15,text='Attendance',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
             lb7.place(relx=0,rely=0.05,anchor='w')
+
             lb8=lb(f15,image=p29,bd=0)
             lb8.place(relx=0.5,rely=0.55,anchor='center')
+
             dbcur.execute('select * from attendance where sid="{}"'.format(sid.get()))
             global d17
             d17=dbcur.fetchall()[0]
@@ -1520,6 +1677,7 @@ try:
                 c1.create_arc(arc,start="{}".format(pr),extent=120,fill='#C9E265',outline='#C9E265') # holidays (festivals + weekends)
                 c1.create_arc(arc,start=0,extent=-60,fill='#FF914D',outline='#FF914D') # permitted leaves
                 c1.place(relx=0.35,rely=0.65,anchor='center')
+
                 lc7=lb(f15,image=p41,bd=0)
                 lc7.place(relx=0.68,rely=0.66,anchor='center')
 
@@ -1528,7 +1686,8 @@ try:
                 lb(f15,image = p44,bd=0).place(relx=0.55,rely=0.2,anchor='w')
                 at=ent(f15,bd=0,bg='#F2F2F2',font=('SF Pro Display',14),width=3)
                 at.place(relx=0.558,rely=0.2,anchor='w')
-                at.insert(0,d17[1])            
+                at.insert(0,d17[1])      
+
                 b48.place_forget()
                 def att_save():
                     a=0 
@@ -1550,8 +1709,10 @@ try:
                                 msgb.showwarning('Unexpected error','Please check all entries and try again or later.')                    
                 b49=bt(f15,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=att_save)
                 b49.place(relx=0.95,rely=0.0875,anchor='center') 
+
                 b50=bt(f15,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=attendance)  
                 b50.place(relx=0.85,rely=0.0875,anchor='center')
+
             b48=bt(f15,image=p28,bd=0,bg='#000000',activebackground='#000000',command=att_edit)  
             b48.place(relx=0.95,rely=0.09,anchor='center')
 
@@ -1569,10 +1730,13 @@ try:
             f4.place_forget()
             f16=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f16.place(relx=0.5,rely=0.535,anchor='center')
+
             lc8=lb(f16,text='Projects',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
             lc8.place(relx=0,rely=0.05,anchor='w')
+
             lc9=lb(f16,image=p42,bd=0)
             lc9.place(relx=0.5,rely=0.56,anchor='center')
+
             dbcur.execute('select t1,t2,t3,t4,t5 from projects where sid="{}"'.format(sid.get()))
             d19=dbcur.fetchall()[0]
             proj=[]
@@ -1743,8 +1907,10 @@ try:
                                 msgb.showwarning('Unexpected error','Please check all entries and try again or later.')
                 b52=bt(f16,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
                 b52.place(relx=0.95,rely=0.0875,anchor='center') 
+
                 b53=bt(f16,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
                 b53.place(relx=0.85,rely=0.0875,anchor='center')
+
             b51=bt(f16,image=p28,bd=0,bg='#000000',activebackground='#000000',command=projects_edit)  
             b51.place(relx=0.95,rely=0.09,anchor='center')
 
@@ -1762,8 +1928,10 @@ try:
             f4.place_forget()
             f17=fr(f2,height=500,width=855,bd=0,bg='#000000') 
             f17.place(relx=0.5,rely=0.535,anchor='center')
+
             ld5=lb(f17,text='Assignments',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000', fg='#FFFFFF')
             ld5.place(relx=0,rely=0.05,anchor='w')
+
             ld6=lb(f17,image=p43,bd=0)
             ld6.place(relx=0.5,rely=0.55,anchor='center')
 
@@ -1996,8 +2164,10 @@ try:
 
                 b55=bt(f17,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=assignment_save)
                 b55.place(relx=0.95,rely=0.0875,anchor='center') 
+
                 b56=bt(f17,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=assignments)  
                 b56.place(relx=0.85,rely=0.0875,anchor='center')
+
             b54=bt(f17,image=p28,bd=0,bg='#000000',activebackground='#000000',command=assignment_edit)  
             b54.place(relx=0.95,rely=0.085,anchor='center')
         
@@ -2007,20 +2177,27 @@ try:
         global f6    
         f6=fr(f2,height=500,width=855,bd=0,bg='#000000') 
         f6.place(relx=0.5,rely=0.535,anchor='center')
+
         l27=lb(f6,image=p29,bd=0)
         l27.place(relx=0.5,rely=0.55,anchor='center')
+
         dbcur.execute('select * from about')
         d7=(dbcur.fetchall())[0][0]  
+
         m1=msg(f6,text=d7.strip(),bd=0,bg='#232323',fg='#FFFFFF',font=('SF Pro Display',12))
         m1.place(relx=0.5,rely=0.55,anchor='center',width=750,height=400)
+
         l26=lb(f6,text='About',font=('SF Pro Display',38,'bold'),bd=0,bg='#000000',fg='#FFFFFF')
         l26.place(relx=0,rely=0.05,anchor='w')
+
         def about_edit():
             m1.place_forget()
             b20.place_forget()
+
             t1=tx(f6,bd=0,bg='#232323',fg='#FFFFFF',font=('SF Pro Display',12),padx=80,pady=10)
             t1.place(relx=0.5,rely=0.55,anchor='center',width=750,height=400)
             t1.insert(1.0,d7)
+
             def abt_save():
                 if t1.get(1.0,END).strip()=='':
                     msgb.showwarning('Invalid entry',' Entry is empty, Please try again. ')
@@ -2032,10 +2209,13 @@ try:
                         about()
                     except:
                         msgb.showinfo('Unexpected error','Please check the entry and try again.')
+                        
             b21=bt(f6,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=abt_save)
             b21.place(relx=0.95,rely=0.0875,anchor='center') 
+
             b22=bt(f6,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=about)  
-            b22.place(relx=0.85,rely=0.0875,anchor='center')                 
+            b22.place(relx=0.85,rely=0.0875,anchor='center')  
+
         b20=bt(f6,image=p28,bd=0,bg='#000000',activebackground='#000000',command=about_edit)  
         b20.place(relx=0.95,rely=0.09,anchor='center')    
    
@@ -2090,9 +2270,9 @@ try:
                         msgb.showwarning('Invalid entry','There was an error, Incorrect ID and Password combination.')
                         key.delete(0,END)  
 
-        b3=bt(f1,image=p7,bd = 0, bg='#232323',
-        activebackground='#232323',command=verify)
+        b3=bt(f1,image=p7,bd = 0, bg='#232323',        activebackground='#232323',command=verify)
         b3.place(relx = 0.85,rely=0.69,anchor='center')
+        ANIMATE(b3,p7)
 
         b4=bt(f1,text= 'Forgot your Password ?',font = ('SF Pro Display',10,UNDERLINE),
         bd = 0,bg = '#232323',fg='#737373',activebackground = '#232323',command=forgpass)
@@ -2100,6 +2280,7 @@ try:
 
         b5=bt(f1,image=p8,bd=0,bg='#000000',activebackground='#000000',command=main)
         b5.place(relx=0.03,rely=0.05,anchor='center')
+        ANIMATE(b5,p8)
     
 
     def main():####################################################################  COMPLETE  ########################################################################
@@ -2123,7 +2304,7 @@ try:
         #login button 1
         
         global b1
-        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =login)
+        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =home)
         b1.place(relx=0.75,rely=0.55,anchor='center')
 
         def sbutton():                         
