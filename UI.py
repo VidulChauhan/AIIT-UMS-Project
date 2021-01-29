@@ -79,6 +79,8 @@ try:
     p48=ph(file = 'images/-administrator.png')
     p49=ph(file = 'images/-student.png')
     p50=ph(file = 'images/smallbar(black).png')
+    p51=ph(file = 'images/savebt.png')
+    p52=ph(file = 'images/cancelbt.png')
     
     #title bar icon change
 
@@ -90,13 +92,14 @@ try:
         return date(int(a[0]),int(a[1]),int(a[2]))
 
     ################################################################# MINOR ANIMATIONS ###########################################################
+    
     from PIL import ImageTk,Image
     def ZOOM(img):
         path=img.cget('file')
         image=Image.open(path)    
         image1=ImageTk.PhotoImage(image)
-        width=round(image1.width()+(0.03*image1.width()))
-        height=round(image1.height()+(0.03*image1.height()))
+        width=round(image1.width()+(0.035*image1.width()))
+        height=round(image1.height()+(0.035*image1.height()))
         zoom_image=image.resize((width,height),Image.ANTIALIAS)
         new_image=ImageTk.PhotoImage(zoom_image)
         return new_image
@@ -469,11 +472,13 @@ try:
                         except:
                             msgb.showwarning('Unexpected error','Please check all fields or try again later.')
 
-        b41=bt(f12,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=nstudent_save)
+        b41=bt(f12,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=nstudent_save)
         b41.place(relx=0.95,rely=0.1,anchor='center')
+        ANIMATE(b41,p51)
 
-        b42=bt(f12,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
+        b42=bt(f12,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
         b42.place(relx=0.85,rely=0.1,anchor='center')
+        ANIMATE(b42,p52)
 
 
     def addadmin(): ######################################################################### COMPLETED ###########################################################
@@ -562,11 +567,13 @@ try:
                                 msgb.showwarning('Unexpected error','Please check all fields or try again later.')
 
                 
-        b43=bt(f13,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=nadmin_save)
+        b43=bt(f13,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=nadmin_save)
         b43.place(relx=0.95,rely=0.0875,anchor='center') 
+        ANIMATE(b43,p51)
 
-        b44=bt(f13,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
+        b44=bt(f13,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=home)  
         b44.place(relx=0.85,rely=0.0875,anchor='center')  
+        ANIMATE(b44,p52)
     
 
     def forgpass():#####################################################################  COMPLETE  #############################################################
@@ -688,10 +695,12 @@ try:
                             def cancel2():
                                 f9.place_forget()
                                 f8.place_forget()
+                                fram.place_forget()
                                 f1.place(relx=0.5,rely=0.5,anchor = 'center')
 
-                            b31=bt(f9,text='Cancel',font=('SF Pro Display',16),bd=0,bg='#000000',activebackground='#000000',fg='#FFFFFF',command=cancel2)
+                            b31=bt(f9,image=p52,font=('SF Pro Display',16),bd=0,bg='#000000',activebackground='#000000',fg='#CF3327',command=cancel2)
                             b31.place(relx=0.9,rely=0.08,anchor='center')
+                            ANIMATE(b31,p52)
 
                             def save2():
                                 try:
@@ -723,8 +732,9 @@ try:
         b27=bt(f8,text='Go',bd=0,font=('SF Pro Display',16),bg='#232323',fg='#249ADF',activebackground='#232323',command=go)
         b27.place(relx=0.6,rely=0.3,anchor='center')
 
-        b28=bt(f8,text='Cancel',bd=0,font=('SF Pro Display',16),bg='#000000',fg='#CF3327',activebackground='#000000',command=cancel1)
+        b28=bt(f8,image=p52,bd=0,font=('SF Pro Display',16),bg='#000000',fg='#CF3327',activebackground='#000000',command=cancel1)
         b28.place(relx=0.9,rely=0.08,anchor='center')
+        ANIMATE(b28,p52)
         
 
     def passr():#####################################################################  COMPLETE  #############################################################    
@@ -847,9 +857,11 @@ try:
 
         b23=bt(f7,image=p30,bd=0,bg='#232323',activebackground='#232323',command=apassreset)
         b23.place(relx=0.499,rely=0.175,anchor='e')
+        ANIMATE(b23,p30)
         
         b24=bt(f7,image=p32,bd=0,bg='#232323',activebackground='#232323',command=spassreset)
         b24.place(relx=0.501,rely=0.177,anchor='w')
+        ANIMATE(b24,p32)
 
         apassreset()       
         
@@ -1081,14 +1093,17 @@ try:
                                 except:
                                     msgb.showwarning('Unexpected error','Please try again.')    
     
-                    b18=bt(f5,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=profile_save)
+                    b18=bt(f5,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=profile_save)
                     b18.place(relx=0.95,rely=0.1,anchor='center') 
+                    ANIMATE(b18,p51)
 
-                    b19=bt(f5,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=sprofile)  
+                    b19=bt(f5,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=sprofile)  
                     b19.place(relx=0.85,rely=0.1,anchor='center')
+                    ANIMATE(b19,p52)
 
                 b17=bt(f5,image=p28,bd=0,bg='#000000',activebackground='#000000',command=profile_edit)  
-                b17.place(relx=0.95,rely=0.09,anchor='center')    
+                b17.place(relx=0.975,rely=0.09,anchor='center')  
+                ANIMATE(b17,p28)  
 
 
     def marks(): ##########################################################   COMPLETE   ##################################################
@@ -1304,14 +1319,17 @@ try:
                         msgb.showinfo('Operation sucessful','All records updated successfully.')
                         marks()
                             
-                b34=bt(f10,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=marks_save)
+                b34=bt(f10,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=marks_save)
                 b34.place(relx=0.95,rely=0.0875,anchor='center')
+                ANIMATE(b34,p51)
 
-                b35=bt(f10,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=marks)  
+                b35=bt(f10,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=marks)  
                 b35.place(relx=0.85,rely=0.0875,anchor='center')
+                ANIMATE(b35,p52)
 
             b33=bt(f10,image=p28,bd=0,bg='#000000',activebackground='#000000',command=marks_edit)  
             b33.place(relx=0.95,rely=0.09,anchor='center')
+            ANIMATE(b33,p28)
 
 
     def fee_details():##########################################################  COMPLETED  ####################################################################
@@ -1466,14 +1484,17 @@ try:
                             except:
                                 msgb.showwarning('Unexpected error','Please check all entries and try again or later.')
 
-                b37=bt(f11,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=fee_save)
+                b37=bt(f11,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=fee_save)
                 b37.place(relx=0.95,rely=0.0875,anchor='center') 
+                ANIMATE(b37,p51)
 
-                b38=bt(f11,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=fee_details)  
+                b38=bt(f11,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=fee_details)  
                 b38.place(relx=0.85,rely=0.0875,anchor='center')
+                ANIMATE(b38,p52)
 
             b36=bt(f11,image=p28,bd=0,bg='#000000',activebackground='#000000',command=fee_edit)  
             b36.place(relx=0.95,rely=0.09,anchor='center')
+            ANIMATE(b36,p28)
 
 
     def events(): #################################################### COMPLETED ###############################################################
@@ -1610,14 +1631,17 @@ try:
                         except:
                             msgb.showwarning('Unexpected error','Please check all entries and try again or later.')
 
-            b46=bt(f14,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=events_save)
+            b46=bt(f14,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=events_save)
             b46.place(relx=0.95,rely=0.0865,anchor='center')
+            ANIMATE(b46,p51)
 
-            b47=bt(f14,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=events)  
+            b47=bt(f14,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=events)  
             b47.place(relx=0.85,rely=0.0865,anchor='center')
+            ANIMATE(b47,p52)
 
         b45=bt(f14,image=p28,bd=0,bg='#000000',activebackground='#000000',command=events_edit)  
         b45.place(relx=0.95,rely=0.08,anchor='center')
+        ANIMATE(b45,p28)
 
 
     def attendance():######################################################  COMPLETED  ##########################################################
@@ -1716,14 +1740,17 @@ try:
                             except:
                                 msgb.showwarning('Unexpected error','Please check all entries and try again or later.')   
 
-                b49=bt(f15,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=att_save)
+                b49=bt(f15,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=att_save)
                 b49.place(relx=0.95,rely=0.0875,anchor='center') 
+                ANIMATE(b49,p51)
 
-                b50=bt(f15,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=attendance)  
+                b50=bt(f15,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=attendance)  
                 b50.place(relx=0.85,rely=0.0875,anchor='center')
+                ANIMATE(b50,p52)
 
             b48=bt(f15,image=p28,bd=0,bg='#000000',activebackground='#000000',command=att_edit)  
             b48.place(relx=0.95,rely=0.09,anchor='center')
+            ANIMATE(b48,p28)
 
 
     def projects():######################################################  COMPLETED  #########################################################
@@ -1915,14 +1942,17 @@ try:
                             except TypeError:                        
                                 msgb.showwarning('Unexpected error','Please check all entries and try again or later.')
 
-                b52=bt(f16,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
+                b52=bt(f16,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=projects_save)
                 b52.place(relx=0.95,rely=0.0875,anchor='center') 
+                ANIMATE(b52,p51)
 
-                b53=bt(f16,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
+                b53=bt(f16,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=projects)  
                 b53.place(relx=0.85,rely=0.0875,anchor='center')
+                ANIMATE(b53,p52)
 
             b51=bt(f16,image=p28,bd=0,bg='#000000',activebackground='#000000',command=projects_edit)  
             b51.place(relx=0.95,rely=0.09,anchor='center')
+            ANIMATE(b51,p28)
 
 
     def assignments(): ################################################  COMPLETED  #############################################################
@@ -2173,14 +2203,17 @@ try:
                             except:
                                 msgb.showwarning('Unexpected error','Please check all entries and try again or later.')                    
 
-                b55=bt(f17,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=assignment_save)
+                b55=bt(f17,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=assignment_save)
                 b55.place(relx=0.95,rely=0.0875,anchor='center') 
+                ANIMATE(b55,p51)
 
-                b56=bt(f17,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=assignments)  
+                b56=bt(f17,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=assignments)  
                 b56.place(relx=0.85,rely=0.0875,anchor='center')
+                ANIMATE(b56,p52)
 
             b54=bt(f17,image=p28,bd=0,bg='#000000',activebackground='#000000',command=assignment_edit)  
             b54.place(relx=0.95,rely=0.085,anchor='center')
+            ANIMATE(b54,p28)
         
 
     def about():####################################################################    COMPLETE    ###############################################
@@ -2221,14 +2254,17 @@ try:
                     except:
                         msgb.showinfo('Unexpected error','Please check the entry and try again.')
 
-            b21=bt(f6,text='Save',bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=abt_save)
+            b21=bt(f6,image=p51,bd=0,font=('SF Pro Display',15),bg='#000000',fg='#249ADF',activebackground='#000000',command=abt_save)
             b21.place(relx=0.95,rely=0.0875,anchor='center') 
+            ANIMATE(b21,p51)
 
-            b22=bt(f6,text='Cancel',bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=about)  
+            b22=bt(f6,image=p52,bd=0,font=('sf pro display',15),bg='#000000',fg='#CF3327',activebackground='#000000',command=about)  
             b22.place(relx=0.85,rely=0.0875,anchor='center')  
+            ANIMATE(b22,p52)
 
         b20=bt(f6,image=p28,bd=0,bg='#000000',activebackground='#000000',command=about_edit)  
         b20.place(relx=0.95,rely=0.09,anchor='center')    
+        ANIMATE(b20,p28)
    
 
     def login():######################################################################### COMPLETE #####################################################################
@@ -2313,7 +2349,7 @@ try:
         # login button 1
         
         global b1
-        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =home)
+        b1=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =login)
         b1.place(relx=0.75,rely=0.55,anchor='center')
 
         def sbutton():                         
