@@ -35,8 +35,8 @@ try:
 
     p=ph(file = 'images/titlelogo.png')
     p1=ph(file = 'images/main.png')
-    p2=ph(file = 'images/loginbutton1.png') 
-    p3=ph(file = 'images/loginbutton2.png')
+    p2=ph(file = 'images/adminlogin1.png') 
+    p3=ph(file = 'images/adminlogin2.png')
     p6=ph(file = 'images/divbar.png')
     p7=ph(file = 'images/gobutton.png') 
     p8=ph(file = 'images/backbutton.png')
@@ -81,7 +81,8 @@ try:
     p50=ph(file = 'images/smallbar(black).png')
     p51=ph(file = 'images/savebt.png')
     p52=ph(file = 'images/cancelbt.png')
-    
+    p53=ph(file = 'images/studentlogin1.png')
+    p54=ph(file = 'images/studentlogin2.png')
     #title bar icon change
 
     win.iconphoto(None,p)
@@ -3164,13 +3165,13 @@ try:
         
         global adminbt
         adminbt=bt(f1,image = p2,bd = 0,bg = '#000000', activebackground = '#000000',command =adlogin)
-        adminbt.place(relx=0.75,rely=0.55,anchor='center')
+        adminbt.place(relx=0.75,rely=0.525,anchor='center')
         
         # login button 2
 
         global studentbt
-        studentbt=bt(f1,image = p2,bd = 0,bg = '#FFFFFF', activebackground = '#000000',command =stlogin)
-        studentbt.place(relx=0.75,rely=0.65,anchor='center')
+        studentbt=bt(f1,image = p53,bd = 0,bg = '#000000', activebackground = '#000000',command =stlogin)
+        studentbt.place(relx=0.75,rely=0.64,anchor='center')
 
         def hovereffect():                         
             def switch1(a):
@@ -3180,11 +3181,11 @@ try:
                 adminbt.configure(image=p2)
                 adminbt.image=p2
             def switch2(a):
-                studentbt.configure(image=p3)
-                studentbt.image=p3
+                studentbt.configure(image=p54)
+                studentbt.image=p54
             def reverse2(a):
-                studentbt.configure(image=p2)
-                studentbt.image=p2
+                studentbt.configure(image=p53)
+                studentbt.image=p53
 
             adminbt.bind('<Enter>',switch1)
             adminbt.bind('<Leave>',reverse1)
