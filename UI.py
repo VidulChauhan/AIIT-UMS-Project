@@ -1,5 +1,5 @@
 try:
-    import start
+    import Start
     import mysql.connector as db                    ### EXTERNAL INSTALL ###     
     from random import *
     import time as t

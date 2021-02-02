@@ -1,6 +1,5 @@
 def init():
     import tkinter as tk
-    import sys
     import time as t
     win1=tk.Tk()
     wid=int(((win1.winfo_screenwidth()*0.9875)//2)-240)
