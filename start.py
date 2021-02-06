@@ -53,6 +53,7 @@ def init():
     win1.after(4400, dot2)
     win1.after(4900, dot3)
     win1.after(5000, close)
+    
     win1.mainloop()
 
 

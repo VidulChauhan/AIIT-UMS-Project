@@ -18,6 +18,7 @@ def ZOOM(img):
     zoom_image=image.resize((width,height),Image.ANTIALIAS)
     new_image=ImageTk.PhotoImage(zoom_image)
     return new_image
+
 def ANIMATE(img):
     def zoom(i):
         image=ZOOM(img)
@@ -28,6 +29,7 @@ def ANIMATE(img):
         b.image=img
     b.bind('<Enter>',zoom)
     b.bind('<Leave>',reverse)
+    
 ANIMATE(p3)
 root.mainloop()
 
