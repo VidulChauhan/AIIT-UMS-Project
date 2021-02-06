@@ -6,7 +6,7 @@ root.geometry('500x500')
 root.configure(bg='#000000')
 
 p3=PhotoImage(file = 'images/assignments2.png')
-b=Button(root,image=p3,bd=0)
+b=Button(root,image=p3,bd=0,bg='#000000')
 b.place(relx=0.5,rely=0.5,anchor='center')   
 
 def ZOOM(img):
