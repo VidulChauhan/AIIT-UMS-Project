@@ -142,7 +142,7 @@ try:
         l28.place(relx=0.715, rely=0.755, anchor='center')
 
         l29 = lb(f2, bd=0, bg='#000000', fg='#FFFFFF',
-                 font=('SF Pro Display', 22, 'bold'))
+                 font=('SF Pro Display', 21))
         l29.place(relx=0.5, rely=0.105, anchor='center')
 
         #####################  GREETING ACCORDING TO TIME ####################
