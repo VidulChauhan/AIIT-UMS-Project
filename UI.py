@@ -1682,8 +1682,8 @@ try:
                 b36.place_forget()
                 l98.place_forget()
                 l99.place_forget()
-                l95.place_forget()
-
+                if d14[3] == 'Pending' or d14[3] == 'pending':
+                    l95.place_forget()
                 l82.place(relx=0.5, rely=0.55, anchor='center')
 
                 la1 = lb(f11, text='Cycle  :', font=(
