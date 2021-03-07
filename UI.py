@@ -545,7 +545,7 @@ try:
                             msgb.showinfo(
                                 'Message', 'Account added successfully.')
                             msgb.showinfo('Message', 'Since this will be a new account, therefore all other data branches such as password,assignments,attendance,etc are also not set-up.\n'
-                                          'For now, all information regarding acedemics including credentials has been set to NULL.\n'
+                                          'For now, all information regarding academics including credentials has been set to NULL.\n'
                                           'You can change this in the future. ')
                             adminhome()
                         except:
