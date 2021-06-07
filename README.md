@@ -1,5 +1,4 @@
 # Advanced Institute of Innovation and Technology 
-ERP Software
 
 This is a Class 12th project which was built using Python and Mysql
 
