@@ -101,8 +101,8 @@ try:
         path = img.cget('file')
         image = Image.open(path)
         image1 = ImageTk.PhotoImage(image)
-        width = round(image1.width()+(0.035*image1.width()))
-        height = round(image1.height()+(0.035*image1.height()))
+        width = round(image1.width()-(0.035*image1.width()))
+        height = round(image1.height()-(0.035*image1.height()))
         zoom_image = image.resize((width, height), Image.ANTIALIAS)
         new_image = ImageTk.PhotoImage(zoom_image)
         return new_image
