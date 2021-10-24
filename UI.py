@@ -7,7 +7,11 @@ try:
     ph = PhotoImage
     lb = Label
     bt = Button
-    fr = Frame
+    fr = Frame  
+
+
+
+    
     ent = Entry
     from tkinter import messagebox
     msgb = messagebox
