@@ -1,3 +1,8 @@
+import ctypes  # included library with Python install.
+
+def Mbox(title, text, style=0):
+    return ctypes.windll.user32.MessageBoxW(0, text, title, style)
+
 try:
     import Start
     import mysql.connector as db  # EXTERNAL INSTALL ###
@@ -9,8 +14,6 @@ try:
     bt = Button
     fr = Frame
     ent = Entry
-    from tkinter import messagebox
-    msgb = messagebox
     tx = Text
     msg = Message
     cv = Canvas
@@ -33,56 +36,56 @@ try:
     win.configure(bg='#000000')
     win.resizable(False, False)
 
-    p = ph(file='images/titlelogo.png')
-    p1 = ph(file='images/main.png')
-    p2 = ph(file='images/adminlogin1.png')
-    p3 = ph(file='images/adminlogin2.png')
-    p6 = ph(file='images/divbar.png')
-    p7 = ph(file='images/gobutton.png')
-    p8 = ph(file='images/backbutton.png')
-    p9 = ph(file='images/aiit.png')
-    p10 = ph(file='images/signout.png')
-    p11 = ph(file='images/profile2.png')
-    p12 = ph(file='images/assignments2.png')
-    p13 = ph(file='images/fee2.png')
-    p14 = ph(file='images/projects2.png')
-    p15 = ph(file='images/events2.png')
-    p16 = ph(file='images/attendance2.png')
-    p17 = ph(file='images/about2.png')
-    p18 = ph(file='images/marks2.png')
-    p19 = ph(file='images/passreset2.png')
-    p20 = ph(file='images/hb.png')
-    p21 = ph(file='images/loginbg2.png')
-    p23 = ph(file='images/loginbarbg.png')
-    p24 = ph(file='images/sidbar.png')
-    p25 = ph(file='images/profilebg.png')
-    p26 = ph(file='images/boyicon.png')
-    p27 = ph(file='images/girlicon.png')
-    p28 = ph(file='images/editbutton.png')
-    p29 = ph(file='images/abtbg.png')
-    p30 = ph(file='images/apassr.png')
-    p32 = ph(file='images/spassr.png')
-    p33 = ph(file='images/txbar bg.png')
-    p34 = ph(file='images/marksbg.png')
-    p35 = ph(file='images/+admin.png')
-    p36 = ph(file='images/+student.png')
-    p37 = ph(file='images/paid1.png')
-    p38 = ph(file='images/paid2.png')
-    p39 = ph(file='images/paid3.png')
-    p40 = ph(file='images/eventbg.png')
-    p41 = ph(file='images/chartlegend.png')
-    p42 = ph(file='images/projectbg.png')
-    p43 = ph(file='images/assignmentbg.png')
-    p44 = ph(file='images/smallbar(lightbrown).png')
-    p45 = ph(file='images/txbar(small).png')
-    p46 = ph(file='images/txbar(lightbrown).png')
-    p48 = ph(file='images/-administrator.png')
-    p49 = ph(file='images/-student.png')
-    p50 = ph(file='images/smallbar(black).png')
-    p51 = ph(file='images/savebt.png')
-    p52 = ph(file='images/cancelbt.png')
-    p53 = ph(file='images/studentlogin1.png')
-    p54 = ph(file='images/studentlogin2.png')
+    p = ph(file='Resources/App/AppUI Resources/Images/titlelogo.png')
+    p1 = ph(file='Resources/App/AppUI Resources/Images/main.png')
+    p2 = ph(file='Resources/App/AppUI Resources/Images/adminlogin1.png')
+    p3 = ph(file='Resources/App/AppUI Resources/Images/adminlogin2.png')
+    p6 = ph(file='Resources/App/AppUI Resources/Images/divbar.png')
+    p7 = ph(file='Resources/App/AppUI Resources/Images/gobutton.png')
+    p8 = ph(file='Resources/App/AppUI Resources/Images/backbutton.png')
+    p9 = ph(file='Resources/App/AppUI Resources/Images/aiit.png')
+    p10 = ph(file='Resources/App/AppUI Resources/Images/signout.png')
+    p11 = ph(file='Resources/App/AppUI Resources/Images/profile2.png')
+    p12 = ph(file='Resources/App/AppUI Resources/Images/assignments2.png')
+    p13 = ph(file='Resources/App/AppUI Resources/Images/fee2.png')
+    p14 = ph(file='Resources/App/AppUI Resources/Images/projects2.png')
+    p15 = ph(file='Resources/App/AppUI Resources/Images/events2.png')
+    p16 = ph(file='Resources/App/AppUI Resources/Images/attendance2.png')
+    p17 = ph(file='Resources/App/AppUI Resources/Images/about2.png')
+    p18 = ph(file='Resources/App/AppUI Resources/Images/marks2.png')
+    p19 = ph(file='Resources/App/AppUI Resources/Images/passreset2.png')
+    p20 = ph(file='Resources/App/AppUI Resources/Images/hb.png')
+    p21 = ph(file='Resources/App/AppUI Resources/Images/loginbg2.png')
+    p23 = ph(file='Resources/App/AppUI Resources/Images/loginbarbg.png')
+    p24 = ph(file='Resources/App/AppUI Resources/Images/sidbar.png')
+    p25 = ph(file='Resources/App/AppUI Resources/Images/profilebg.png')
+    p26 = ph(file='Resources/App/AppUI Resources/Images/boyicon.png')
+    p27 = ph(file='Resources/App/AppUI Resources/Images/girlicon.png')
+    p28 = ph(file='Resources/App/AppUI Resources/Images/editbutton.png')
+    p29 = ph(file='Resources/App/AppUI Resources/Images/abtbg.png')
+    p30 = ph(file='Resources/App/AppUI Resources/Images/apassr.png')
+    p32 = ph(file='Resources/App/AppUI Resources/Images/spassr.png')
+    p33 = ph(file='Resources/App/AppUI Resources/Images/txbar bg.png')
+    p34 = ph(file='Resources/App/AppUI Resources/Images/marksbg.png')
+    p35 = ph(file='Resources/App/AppUI Resources/Images/+admin.png')
+    p36 = ph(file='Resources/App/AppUI Resources/Images/+student.png')
+    p37 = ph(file='Resources/App/AppUI Resources/Images/paid1.png')
+    p38 = ph(file='Resources/App/AppUI Resources/Images/paid2.png')
+    p39 = ph(file='Resources/App/AppUI Resources/Images/paid3.png')
+    p40 = ph(file='Resources/App/AppUI Resources/Images/eventbg.png')
+    p41 = ph(file='Resources/App/AppUI Resources/Images/chartlegend.png')
+    p42 = ph(file='Resources/App/AppUI Resources/Images/projectbg.png')
+    p43 = ph(file='Resources/App/AppUI Resources/Images/assignmentbg.png')
+    p44 = ph(file='Resources/App/AppUI Resources/Images/smallbar(lightbrown).png')
+    p45 = ph(file='Resources/App/AppUI Resources/Images/txbar(small).png')
+    p46 = ph(file='Resources/App/AppUI Resources/Images/txbar(lightbrown).png')
+    p48 = ph(file='Resources/App/AppUI Resources/Images/-administrator.png')
+    p49 = ph(file='Resources/App/AppUI Resources/Images/-student.png')
+    p50 = ph(file='Resources/App/AppUI Resources/Images/smallbar(black).png')
+    p51 = ph(file='Resources/App/AppUI Resources/Images/savebt.png')
+    p52 = ph(file='Resources/App/AppUI Resources/Images/cancelbt.png')
+    p53 = ph(file='Resources/App/AppUI Resources/Images/studentlogin1.png')
+    p54 = ph(file='Resources/App/AppUI Resources/Images/studentlogin2.png')
     # title bar icon change
 
     win.iconphoto(None, p)
@@ -243,10 +246,10 @@ try:
             def del1():
                 a = 0
                 if dsid.get() == '' or dsid.get() == 'Enter ID':
-                    msgb.showwarning('Invalid entry',   'Please enter ID.   ')
+                    Mbox('Invalid entry',   'Please enter ID.   ')
                     a += 1
                 if (dsid.get() != '' and dsid.get() != 'Enter ID') and ((dsid.get(),) not in d20):
-                    msgb.showwarning('Invalid entry',
+                    Mbox('Invalid entry',
                                      'Please enter valid ID.   ')
                     a += 1
                 else:
@@ -267,11 +270,11 @@ try:
                             dbcur.execute(
                                 'delete from assignments where sid="{}"'.format(dsid.get()))
                             dbcon.commit()
-                            msgb.showinfo(
+                            Mbox(
                                 'Message', 'Account deleted successfully.')
                             adminhome()
                         except:
-                            msgb.showwarning(
+                            Mbox(
                                 'Unexpected error', 'There was an error deleting that account\nPlease try again later.')
                             adminhome()
 
@@ -297,16 +300,16 @@ try:
             def del2():
                 a = 0
                 if daid.get() == '' or daid.get() == 'Enter ID':
-                    msgb.showwarning('Invalid entry',   'Please enter ID.   ')
+                    Mbox('Invalid entry',   'Please enter ID.   ')
                     a += 1
                 if (daid.get() != '' and daid.get() != 'Enter ID') and ((daid.get(),) not in d21):
-                    msgb.showwarning('Invalid entry',
+                    Mbox('Invalid entry',
                                      'Please enter valid ID.   ')
                     a += 1
                 else:
                     if (a == 0) and ((daid.get(),) in d21):
                         if (daid.get() == aid.get()):
-                            msgb.showwarning(
+                            Mbox(
                                 'Message', 'Please login from another ID to delete this one.'
                             )
                             adminhome()
@@ -315,11 +318,11 @@ try:
                                 dbcur.execute(
                                     'delete from adminlogin where id="{}"'.format(daid.get()))
                                 dbcon.commit()
-                                msgb.showinfo(
+                                Mbox(
                                     'Message', 'Account deleted successfully.')
                                 adminhome()
                             except:
-                                msgb.showwarning(
+                                Mbox(
                                     'Unexpected error', 'There was an error deleting that account\nPlease try again later.')
                                 adminhome()
 
@@ -473,45 +476,45 @@ try:
                     ad += 1
 
             if sg != 0:
-                msgb.showwarning(
+                Mbox(
                     'Invalid entry', 'Please enter data in all fields before saving.')
             if sg == 0:
                 if s12.get().startswith('Saiit') == False or s != 0:
-                    msgb.showwarning(
+                    Mbox(
                         "Invalid entry", "Please enter valid ID.\nIt should start with 'Saiit',\nand should have a relevant unique number suffixed")
                     e += 1
                 if a != 0:
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', 'Names cannot contain numbers, please try again.')
                     e += 1
                 if len(s2.get()) != 10 or len(s9.get()) != 10 or len(s11.get()) != 10 or b != 0:
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', 'Phone number is invalid, please try again.')
                     e += 1
                 if s3.get() not in l:  # year checked.
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', '    Please check year.    ')
                     e += 1
                 if s4.get().startswith('S') == False or ad != 0:    # admission number checked
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', "Admission number is not valid,\nIt can only begin with a 'S'\nPlease try again.")
                     e += 1
                 if d != 0:
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', 'Course is not valid, please try again.')
                     e += 1
                 if s6.get() not in l2:  # blood group checked.
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', 'Please check blood group and try again.')
                     e += 1
                 # gender checked.
                 if s7.get() not in ['male', 'female', 'Male', 'Female', 'M', 'F', 'm', 'f']:
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', 'Please check gender and try again.')
                     e += 1
                 else:
                     if tuple(sget) in d11:
-                        msgb.showwarning('Repeated entry',
+                        Mbox('Repeated entry',
                                          'This record already exists. ')
                     if tuple(sget) not in d11 and e == 0:
                         try:
@@ -542,14 +545,14 @@ try:
                             dbcur.execute(
                                 'insert into assignments values("{}","NULL,NULL,NULL","NULL,NULL,NULL","NULL,NULL,NULL","NULL,NULL,NULL","NULL,NULL,NULL")'.format(s12.get()))
                             dbcon.commit()
-                            msgb.showinfo(
+                            Mbox(
                                 'Message', 'Account added successfully.')
-                            msgb.showinfo('Message', 'Since this will be a new account, therefore all other data branches such as password,assignments,attendance,etc are also not set-up.\n'
+                            Mbox('Message', 'Since this will be a new account, therefore all other data branches such as password,assignments,attendance,etc are also not set-up.\n'
                                           'For now, all information regarding academics including credentials has been set to NULL.\n'
                                           'You can change this in the future. ')
                             adminhome()
                         except:
-                            msgb.showwarning(
+                            Mbox(
                                 'Unexpected error', 'Please check all fields or try again later.')
 
         b41 = bt(f12, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
@@ -627,7 +630,7 @@ try:
                 if i == '':
                     c += 1
             if c != 0:
-                msgb.showwarning('Entry error', 'Please fill all fields.')
+                Mbox('Entry error', 'Please fill all fields.')
             if c == 0:
                 if (tid.get().startswith('Taiit') == False):
                     a += 1
@@ -640,26 +643,26 @@ try:
                 if len(phno.get()) != 10:
                     a += 1
                 if a != 0:
-                    msgb.showwarning(
+                    Mbox(
                         'Entry error', 'Please check all fields and try again.')
                 if a == 0:
                     if napass.get() != cnapass.get():
-                        msgb.showwarning(
+                        Mbox(
                             'Key error', 'Entered paswords do not match.\nPlease try again.')
                     if napass.get() == cnapass.get():
                         if tuple(a1get) in d12:
-                            msgb.showwarning('Repeated entry',
+                            Mbox('Repeated entry',
                                              'This record already exists.')
                         if tuple(a1get) not in d12:
                             try:
                                 dbcur.execute('insert into adminlogin values("{}","{}","{}")'.format(
                                     tid.get(), cnapass.get(), phno.get()))
                                 dbcon.commit()
-                                msgb.showinfo(
+                                Mbox(
                                     'Message', 'Account added successfully.')
                                 adminhome()
                             except:
-                                msgb.showwarning(
+                                Mbox(
                                     'Unexpected error', 'Please check all fields or try again later.')
 
         b43 = bt(f13, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
@@ -703,9 +706,9 @@ try:
             dbcur.execute('select id from adminlogin')
             d2 = dbcur.fetchall()
             if fid.get() == '':
-                msgb.showwarning('Empty entry', '    Please enter ID.    ')
+                Mbox('Empty entry', '    Please enter ID.    ')
             if (fid.get(),) not in d2 and fid.get() != '':
-                msgb.showwarning(
+                Mbox(
                     'Invalid entry', '  Incorrect ID.  \nPlease try again')
             if (fid.get(),) in d2:
                 dbcur.execute(
@@ -739,14 +742,14 @@ try:
                             global onet
                             onet = randrange(635745, 952675)
                             Phone.OTP(phn, onet)
-                            msgb.showinfo('Forgot password',
+                            Mbox('Forgot password',
                                           '   OTP sent successfully.   ')
                             scount.append('clicked')
                         except:
-                            msgb.showerror(
+                            Mbox(
                                 'Message Client error', 'Message could not be sent.\nPlease try again later.')
                     else:
-                        msgb.showwarning(
+                        Mbox(
                             'Incorrect credentials', '  Phone number not entered or invalid.  ')
 
                 b29 = bt(f8, text='Send', bd=0, font=('SF Pro Display', 16),
@@ -766,11 +769,11 @@ try:
 
                 def fverify():
                     if len(scount) == 0:
-                        msgb.showinfo(
+                        Mbox(
                             'Message error', 'Please click on send to send OTP and then enter it to verify.')
                     if len(scount) != 0:
                         if otp.get() == '':
-                            msgb.showwarning(
+                            Mbox(
                                 'Invalid entry', 'Please enter OTP. \nif not recieved,enter registered mobile number and click on send')
                         if otp.get() == str(onet):
                             t.sleep(0.3)
@@ -823,20 +826,20 @@ try:
                             def save2():
                                 try:
                                     if npass.get() == '' or cnpass.get() == '':
-                                        msgb.showwarning(
+                                        Mbox(
                                             'Operation unsuccessful', 'Please enter credentials in both fields')
                                     if npass.get() == cnpass.get() and npass.get() != '':
                                         dbcur.execute('update adminlogin set pass="{}" where id="{}"'.format(
                                             npass.get(), fid.get()))
                                         dbcon.commit()
-                                        msgb.showinfo(
+                                        Mbox(
                                             'Operation successful', 'Password changed successfully.\nPlease re-login for changes to take effect.')
                                         cancel2()
                                     if npass.get() != cnpass.get() and npass.get() != '' and cnpass.get() != '':
-                                        msgb.showwarning(
+                                        Mbox(
                                             'Operation unsuccessful', 'Passswords do not match, please try again.')
                                 except:
-                                    msgb.showinfo(
+                                    Mbox(
                                         'Unexpected error', 'Please check all fields and try again.')
 
                             b32 = bt(f9, text='Save', font=('SF Pro Display', 16), bd=0,
@@ -844,7 +847,7 @@ try:
                             b32.place(relx=0.55, rely=0.45, anchor='center')
 
                         if otp.get() != str(onet) and otp.get() != '':
-                            msgb.showwarning(
+                            Mbox(
                                 'Invalid entry', '  Entered code is incorrect.  ')
 
                 b30 = bt(f8, text='Verify', font=('SF Pro Display', 16), bd=0,
@@ -909,17 +912,17 @@ try:
                 d4 = dbcur.fetchall()[0]
                 try:
                     if curpass.get() == '':
-                        msgb.showwarning(
+                        Mbox(
                             'Empty entry', ' Please enter current password. ')
                     if curpass.get() != d4[1] and curpass.get() != '':
-                        msgb.showwarning(
+                        Mbox(
                             'Incorrect password', 'Entered password was wrong.\nplease try again.')
                     if curpass.get() == d4[1]:
                         if newpass.get() == '':
-                            msgb.showwarning(
+                            Mbox(
                                 'Empty entry', '  Please enter new password.  ')
                         if cnewpass.get() != newpass.get() and newpass.get() != '':
-                            msgb.showwarning(
+                            Mbox(
                                 'Incorrect entry', ' New passwords do no match,\n please try again.')
                             newpass.delete(0, END)
                             cnewpass.delete(0, END)
@@ -927,10 +930,10 @@ try:
                             dbcur.execute('update adminlogin set pass="{}" where id="{}"'.format(
                                 cnewpass.get(), aid.get()))
                             dbcon.commit()
-                            msgb.showinfo(
+                            Mbox(
                                 'Operation successful', 'Password changed successfully.\nPlease re-login for changes to take effect.')
                 except:
-                    msgb.showinfo('Unexpected error',
+                    Mbox('Unexpected error',
                                   'Please check all fields and try again.')
 
             b26 = bt(f7, text='Save', bd=0, font=('SF Pro Display', 15), bg='#232323',
@@ -974,10 +977,10 @@ try:
                 try:
                     if (Sid.get(),) in d5:
                         if newspass.get() == '':
-                            msgb.showwarning(
+                            Mbox(
                                 'Empty entry', '  Please enter new password.  ')
                         if cnewspass.get() != newspass.get() and newspass.get() != '':
-                            msgb.showwarning(
+                            Mbox(
                                 'Incorrect entry', ' New passwords do no match,\n please try again.')
                             newspass.delete(0, END)
                             cnewspass.delete(0, END)
@@ -985,13 +988,13 @@ try:
                             dbcur.execute('update slogin set pass="{}" where id="{}"'.format(
                                 cnewspass.get(), Sid.get()))
                             dbcon.commit()
-                            msgb.showinfo('Operation successful',
+                            Mbox('Operation successful',
                                           'Password changed successfully.')
                     else:
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid ID', 'Incorrect ID, Please try again.')
                 except:
-                    msgb.showinfo('Unexpected error',
+                    Mbox('Unexpected error',
                                   'Please check all fields and try again.')
 
             b26 = bt(f7, text='Save', bd=0, font=('SF Pro Display', 15), bg='#232323',
@@ -1027,9 +1030,9 @@ try:
         global d1
         d1 = dbcur.fetchall()
         if sid.get() == '':
-            msgb.showwarning('ID error', '  Please enter a Student ID  ')
+            Mbox('ID error', '  Please enter a Student ID  ')
         if (sid.get(),) not in d1 and sid.get() != '':
-            msgb.showwarning('Invalid Student ID',
+            Mbox('Invalid Student ID',
                              ' Please enter a valid student ID ')
             sid.delete(0, END)
         for i in d1:
@@ -1206,7 +1209,7 @@ try:
                             if ch2.isdigit() == True:
                                 a += 1
                         if a != 0:
-                            msgb.showwarning(
+                            Mbox(
                                 'Invalid entry', 'Names cannot contain numbers, please try again.')
                             sname_e.delete(0, END)
                             fname_e.delete(0, END)
@@ -1226,7 +1229,7 @@ try:
                             if n2.isdigit() != True:
                                 b += 1
                         if len(sph_e.get()) != 10 or len(fph_e.get()) != 10 or len(mph_e.get()) != 10 or b != 0:
-                            msgb.showwarning(
+                            Mbox(
                                 'Invalid entry', 'Phone number is invalid, please try again.')
                             sph_e.delete(0, END)
                             fph_e.delete(0, END)
@@ -1239,7 +1242,7 @@ try:
                         # year checked.
                         l = ['1st year', '2nd year', '3rd year', 'Final year']
                         if y_e.get() not in l:
-                            msgb.showwarning(
+                            Mbox(
                                 'Invalid entry', '    Please check year.    ')
                             y_e.delete(0, END)
                             r += 1
@@ -1250,7 +1253,7 @@ try:
                         if admn_e.get().startswith('S') == False or ad != 0:
                             c += 1
                         if c != 0:  # admission number checked
-                            msgb.showwarning(
+                            Mbox(
                                 'Invalid entry', 'Admission number is not valid, please try again.')
                             admn_e.delete(0, END)
                             admn_e.insert(0, rec[1])
@@ -1260,7 +1263,7 @@ try:
                             if w.isdigit() == True:
                                 d += 1
                         if d != 0:
-                            msgb.showwarning(
+                            Mbox(
                                 'Invalid entry', 'Course is not valid, please try again.')
                             crs_e.delete(0, END)
                             crs_e.insert(0, rec[8])
@@ -1268,14 +1271,14 @@ try:
                         # blood group checked.
                         l2 = ['+A', '+B', '+O', '-O', '+AB', '-AB', '-A', '-B']
                         if bld_e.get() not in l2:
-                            msgb.showwarning(
+                            Mbox(
                                 'Invalid entry', 'Please check blood group and try again.')
                             bld_e.delete(0, END)
                             bld_e.insert(0, rec[11])
                             r += 1
                         # gender checked.
                         if gdr_e.get() not in ['male', 'female', 'Male', 'Female']:
-                            msgb.showwarning(
+                            Mbox(
                                 'Invalid entry', 'Please check gender and try again.')
                             gdr_e.delete(0, END)
                             gdr_e.insert(0, rec[10])
@@ -1290,11 +1293,11 @@ try:
                                                       mph_e.get(), y_e.get(), admn_e.get(), crs_e.get(), bld_e.get(),
                                                       gdr_e.get(), rec[0]))
                                     dbcon.commit()
-                                    msgb.showinfo(
+                                    Mbox(
                                         'Message', 'Operation successful.')
                                     sprofile()
                                 except:
-                                    msgb.showwarning(
+                                    Mbox(
                                         'Unexpected error', 'Please try again.')
 
                     b18 = bt(f5, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
@@ -1317,9 +1320,9 @@ try:
         global d13
         d13 = dbcur.fetchall()
         if sid.get() == '':
-            msgb.showwarning('ID error', '  Please enter a Student ID  ')
+            Mbox('ID error', '  Please enter a Student ID  ')
         if (sid.get(),) not in d13 and sid.get() != '':
-            msgb.showwarning('Invalid Student ID',
+            Mbox('Invalid Student ID',
                              ' Please enter a valid student ID ')
             sid.delete(0, END)
         if (sid.get(),) in d13:
@@ -1552,7 +1555,7 @@ try:
                     s = 0
                     for b in range(0, len(mget)):
                         if mget[b] == 'NULL':
-                            msgb.showinfo(
+                            Mbox(
                                 "Entry error", "NULL is an internal keyword.\nPlease enter 'N/A' instead")
                             s += 1
                             break
@@ -1567,7 +1570,7 @@ try:
                         if i not in lis1:
                             w += 1
                     if w != 0:
-                        msgb.showwarning(
+                        Mbox(
                             'Entry error', 'Please check all entries,\nThere seems to be a mistake.')
                         marks()
                     if w == 0 and s == 0:
@@ -1576,7 +1579,7 @@ try:
                                       'where sid="{}"'.format(mget[0], mget[1], mget[2], mget[3], mget[4], mget[5],
                                                               mget[6], mget[7], rec1[0]))
                         dbcon.commit()
-                        msgb.showinfo('Operation sucessful',
+                        Mbox('Operation sucessful',
                                       'All records updated successfully.')
                         marks()
 
@@ -1600,9 +1603,9 @@ try:
         global d13
         d13 = dbcur.fetchall()
         if sid.get() == '':
-            msgb.showwarning('ID error', '  Please enter a Student ID  ')
+            Mbox('ID error', '  Please enter a Student ID  ')
         if (sid.get(),) not in d13 and sid.get() != '':
-            msgb.showwarning('Invalid Student ID',
+            Mbox('Invalid Student ID',
                              ' Please enter a valid student ID ')
             sid.delete(0, END)
         if (sid.get(),) in d13:
@@ -1749,18 +1752,18 @@ try:
                         if i == '':
                             fc += 1
                     if fc != 0:
-                        msgb.showwarning(
+                        Mbox(
                             'Entry error', 'Please fill all fields and try again.')
                     if fc == 0:
                         for h in amt.get():
                             if h.isalpha() == True:
                                 n += 1
                         if n != 0 or int(fget[1]) not in range(1, 1000000):
-                            msgb.showwarning(
+                            Mbox(
                                 'Message', 'Please enter valid amount.')
                             err += 1
                         if fget[2] not in ['Pending', 'Paid', 'paid', 'pending']:
-                            msgb.showwarning(
+                            Mbox(
                                 'Message', 'Please check status, you can only enter Paid or Pending.')
                             err += 1
                         if err == 0:
@@ -1768,11 +1771,11 @@ try:
                                 dbcur.execute('update fees set cycle="{}",amount="{}",status="{}",'
                                               'due_date="{}" where sid="{}"'.format(fget[0], fget[1], fget[2], fget[3], sid.get()))
                                 dbcon.commit()
-                                msgb.showinfo(
+                                Mbox(
                                     'Message', 'Operation succesfull.')
                                 fee_details()
                             except:
-                                msgb.showwarning(
+                                Mbox(
                                     'Unexpected error', 'Please check all entries and try again or later.')
 
                 b37 = bt(f11, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
@@ -1927,7 +1930,7 @@ try:
                     if k == '':
                         b += 1
                 if a != 0:
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', 'Please fill all descriptions and try again.')
 
                 for h in e1get:
@@ -1935,7 +1938,7 @@ try:
                         if p in list('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'):
                             c += 1
                 if b != 0 or c != 0:
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', 'Please check all the dates and try again.\nMake sure they are valid and relevant.')
                 else:
                     if a == 0 and b == 0 and c == 0:
@@ -1944,10 +1947,10 @@ try:
                                 dbcur.execute('update events set event="{}",date="{}" where Eid="{}"'.format(
                                     eget[p], e1get[p], l1[p]))
                                 dbcon.commit()
-                            msgb.showinfo('Message', 'Operation succesful.')
+                            Mbox('Message', 'Operation succesful.')
                             events()
                         except:
-                            msgb.showwarning(
+                            Mbox(
                                 'Unexpected error', 'Please check all entries and try again or later.')
 
             b46 = bt(f14, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
@@ -1970,9 +1973,9 @@ try:
         global d16
         d16 = dbcur.fetchall()
         if sid.get() == '':
-            msgb.showwarning('ID error', '  Please enter a Student ID  ')
+            Mbox('ID error', '  Please enter a Student ID  ')
         if (sid.get(),) not in d16 and sid.get() != '':
-            msgb.showwarning('Invalid Student ID',
+            Mbox('Invalid Student ID',
                              ' Please enter a valid student ID ')
             sid.delete(0, END)
         if (sid.get(),) in d16:
@@ -2065,10 +2068,10 @@ try:
                         if i == '':
                             a += 1
                     if at.get() == '':
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid entry', 'Please enter number of days present correctly and try again.')
                     if at.get() != '' and a != 0:
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid error', 'Please enter a valid numeric value for number of days present.')
                     else:
                         if a == 0 and at.get() != '':
@@ -2076,11 +2079,11 @@ try:
                                 dbcur.execute('update attendance set present="{}" where sid="{}"'.format(
                                     at.get(), sid.get()))
                                 dbcon.commit()
-                                msgb.showinfo(
+                                Mbox(
                                     'Message', 'Operation successful.')
                                 attendance()
                             except:
-                                msgb.showwarning(
+                                Mbox(
                                     'Unexpected error', 'Please check all entries and try again or later.')
 
                 b49 = bt(f15, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
@@ -2103,9 +2106,9 @@ try:
         global d18
         d18 = dbcur.fetchall()
         if sid.get() == '':
-            msgb.showwarning('ID error', '  Please enter a Student ID  ')
+            Mbox('ID error', '  Please enter a Student ID  ')
         if (sid.get(),) not in d18 and sid.get() != '':
-            msgb.showwarning('Invalid Student ID',
+            Mbox('Invalid Student ID',
                              ' Please enter a valid student ID ')
             sid.delete(0, END)
         if (sid.get(),) in d18:
@@ -2288,10 +2291,10 @@ try:
                                 if j in list('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'):
                                     b += 1
                     if a != 0:
-                        msgb.showwarning('Invalid entry', 'Please fill all fields and try again.\n'
+                        Mbox('Invalid entry', 'Please fill all fields and try again.\n'
                                          'If you want to leave an empty record\njust pass N/A in both its parameters.')
                     if b != 0:
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid entry', 'Please enter a valid date.')
                     for u in range(5):
                         if pro[u].strip() == 'N/A':
@@ -2301,7 +2304,7 @@ try:
                             if pro[u].strip() != 'N/A':
                                 c += 1
                     if c != 0:
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid entry', 'Please fill both parameters as N/A, not one.')
                     else:
                         if a == 0 and b == 0:
@@ -2313,12 +2316,12 @@ try:
                                 q4 = pro[4]+','+dates[4]
                                 dbcur.execute('update projects set t1="{}",t2="{}",t3="{}",t4="{}",t5="{}" where sid="{}"'.format(
                                     q0, q1, q2, q3, q4, sid.get()))
-                                msgb.showinfo(
+                                Mbox(
                                     'Message', 'Operation successful.')
                                 dbcon.commit()
                                 projects()
                             except TypeError:
-                                msgb.showwarning(
+                                Mbox(
                                     'Unexpected error', 'Please check all entries and try again or later.')
 
                 b52 = bt(f16, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
@@ -2341,9 +2344,9 @@ try:
         global d18
         d18 = dbcur.fetchall()
         if sid.get() == '':
-            msgb.showwarning('ID error', '  Please enter a Student ID  ')
+            Mbox('ID error', '  Please enter a Student ID  ')
         if (sid.get(),) not in d18 and sid.get() != '':
-            msgb.showwarning('Invalid Student ID',
+            Mbox('Invalid Student ID',
                              ' Please enter a valid student ID ')
             sid.delete(0, END)
         if (sid.get(),) in d18:
@@ -2607,13 +2610,13 @@ try:
                                     z += 1
 
                     if g != 0:
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid entry', 'Please fill all fields and try again ')
                     if z != 0 and g == 0:
-                        msgb.showwarning('Invalid entry', 'Please enter a valid date.\n\n'
+                        Mbox('Invalid entry', 'Please enter a valid date.\n\n'
                                          'To leave an empty record, enter N/A in all 3 parameters.')
                     if p != 0 and g == 0:
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid entry', 'Please enter N/A in all 3 parameters if you want to leave it empty.')
                     else:
                         if z == 0 and g == 0 and p == 0:
@@ -2627,11 +2630,11 @@ try:
                                 dbcur.execute('update assignments set a1="{}",a2="{}",a3="{}",a4="{}",a5="{}" where sid="{}"'.format(
                                     q5, q6, q7, q8, q9, sid.get()))
                                 dbcon.commit()
-                                msgb.showinfo(
+                                Mbox(
                                     'Message', 'Operation successful.')
                                 assignments()
                             except:
-                                msgb.showwarning(
+                                Mbox(
                                     'Unexpected error', 'Please check all entries and try again or later.')
 
                 b55 = bt(f17, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
@@ -2681,7 +2684,7 @@ try:
 
             def abt_save():
                 if t1.get(1.0, END).strip() == '':
-                    msgb.showwarning(
+                    Mbox(
                         'Invalid entry', ' Entry is empty, Please try again. ')
                     about()
                 else:
@@ -2691,7 +2694,7 @@ try:
                         dbcon.commit()
                         about()
                     except:
-                        msgb.showinfo('Unexpected error',
+                        Mbox('Unexpected error',
                                       'Please check the entry and try again.')
 
             b21 = bt(f6, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
@@ -2855,10 +2858,10 @@ try:
                 try:
                     if (Curpass.get(),) in d5:
                         if newspass.get() == '':
-                            msgb.showwarning(
+                            Mbox(
                                 'Empty entry', '  Please enter new password.  ')
                         if cnewspass.get() != newspass.get() and newspass.get() != '':
-                            msgb.showwarning(
+                            Mbox(
                                 'Incorrect entry', ' New passwords do no match,\n please try again.')
                             newspass.delete(0, END)
                             cnewspass.delete(0, END)
@@ -2866,14 +2869,14 @@ try:
                             dbcur.execute('update slogin set pass="{}" where id="{}"'.format(
                                 cnewspass.get(), stid.get()))
                             dbcon.commit()
-                            msgb.showinfo('Operation successful',
+                            Mbox('Operation successful',
                                           'Password changed successfully.')
                             studenthome()
                     else:
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid ID', 'Current password is incorrect, Please try again.')
                 except:
-                    msgb.showinfo('Unexpected error',
+                    Mbox('Unexpected error',
                                   'Please check all fields and try again.')
 
             b26 = bt(f7, text='Save', bd=0, font=('SF Pro Display', 15), bg='#232323',
@@ -3619,13 +3622,13 @@ try:
             global d8
             d8 = dbcur.fetchall()
             if aid.get() == '' or key.get() == '':
-                msgb.showwarning(
+                Mbox(
                     'Invalid entry', '   Please fill both fields.   ')
                 key.delete(0, END)
 
             # ((id.get().startswith('Taiit')==False or len(id.get())<=5)
             if (aid.get(),) not in d8 and (aid.get() != '' and key.get() != ''):
-                msgb.showwarning('Invalid entry', '      Invalid ID      ')
+                Mbox('Invalid entry', '      Invalid ID      ')
                 aid.delete(0, END)
                 key.delete(0, END)
 
@@ -3637,7 +3640,7 @@ try:
                     if key.get() == d9[0][0]:
                         adminhome()
                     elif key.get() != d9[0][0] and key.get() != '':
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid entry', 'There was an error, Incorrect ID and Password combination.')
                         key.delete(0, END)
 
@@ -3688,12 +3691,12 @@ try:
             global d8
             d8 = dbcur.fetchall()
             if stid.get() == '' or skey.get() == '':
-                msgb.showwarning(
+                Mbox(
                     'Invalid entry', '   Please fill both fields.   ')
                 skey.delete(0, END)
 
             if (stid.get(),) not in d8 and (stid.get() != '' and skey.get() != ''):
-                msgb.showwarning('Invalid entry', '      Invalid ID      ')
+                Mbox('Invalid entry', '      Invalid ID      ')
                 stid.delete(0, END)
                 skey.delete(0, END)
 
@@ -3705,7 +3708,7 @@ try:
                     if skey.get() == d9[0][0]:
                         studenthome()
                     elif skey.get() != d9[0][0] and skey.get() != '':
-                        msgb.showwarning(
+                        Mbox(
                             'Invalid entry', 'There was an error, Incorrect ID and Password combination.')
                         skey.delete(0, END)
 
@@ -3796,10 +3799,10 @@ try:
         if dbcon.is_connected() == True:
             dbcur = dbcon.cursor()
     except:
-        msgb.showwarning(
+        Mbox(
             'Database Error', 'There was some problem with the associated database, Please try again later')
     else:
         main()
 except:
-    msgb.showwarning('Unexpected error',
-                     "There was an unexpected error, we're trying to solve it. Please close the app and start it again.")
+    Mbox('Unexpected error', "There was an unexpected error, we're trying to solve it. Please close the app and start it again.")
+    
