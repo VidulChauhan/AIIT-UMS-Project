@@ -1,4 +1,5 @@
 import ctypes  # included library with Python install.
+import ErrorLogger as elog
 
 def Mbox(title, text, style=0):
     return ctypes.windll.user32.MessageBoxW(0, text, title, style)
@@ -56,10 +57,11 @@ try:
     win1.after(2700, wipe)
     win1.after(3100, dot1)
     win1.after(3500, dot2)
+    elog.createLog('Successful startup','The app started successfully and has proceeded to run the Main UI.')
 
     win1.after(3900, close)
 
     win1.mainloop()
 except:
     Mbox("Runtime Error",'There was an issue during the startup of the App. Please Try Again later while we fix this.')
-
+    elog.createLog('Start Screen Error','The Start Screen Didnt appear and error message prompted after which program unexpectedly stopped.')

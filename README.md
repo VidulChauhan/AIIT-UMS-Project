@@ -9,7 +9,7 @@ so i used images wherever possible.
 This contains almost all dynamic features making it shine above most projects:
 
 * Supports Two-Factor-authentication
-* Has built in software update system, so we need not install the newer one everytime, we can just update the existing software
+* Has built in software update Service, so we need not install the newer one everytime, we can just update the existing software
 * Best in class Graphics design
 * Built-in dark mode
 * Dynamic dark mode to be added soon 

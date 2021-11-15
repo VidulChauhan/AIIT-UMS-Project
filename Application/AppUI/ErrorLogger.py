@@ -13,12 +13,10 @@ def openLogFile():
 def closeLogFile():
     LogFile.close()
     
-def createLog(type='Not Specified',Log='Unexpected System Brick and Stop.'):
+def createLog(type='App Executed',Log='Proceeding to Start Screen.'):
 
     openLogFile()
 
     LogFile.write("{}, {} , {} , {}\n".format(CurDate,CurTime,type,Log))
     
     closeLogFile()
-
-createLog()

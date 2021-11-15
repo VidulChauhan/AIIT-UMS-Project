@@ -1,4 +1,5 @@
 import ctypes  # included library with Python install.
+import ErrorLogger as elog
 
 def Mbox(title, text, style=0):
     return ctypes.windll.user32.MessageBoxW(0, text, title, style)
@@ -247,10 +248,12 @@ try:
                 a = 0
                 if dsid.get() == '' or dsid.get() == 'Enter ID':
                     Mbox('Invalid entry',   'Please enter ID.   ')
+                    elog.createLog('deleting student acc','invalid ID entered')
                     a += 1
                 if (dsid.get() != '' and dsid.get() != 'Enter ID') and ((dsid.get(),) not in d20):
                     Mbox('Invalid entry',
                                      'Please enter valid ID.   ')
+                    elog.createLog('deleting student acc','invalid ID entered')
                     a += 1
                 else:
                     if (a == 0) and ((dsid.get(),) in d20):
@@ -272,10 +275,12 @@ try:
                             dbcon.commit()
                             Mbox(
                                 'Message', 'Account deleted successfully.')
+                            elog.createLog('deleting student acc','Account Deleted successfully.')
                             adminhome()
                         except:
                             Mbox(
                                 'Unexpected error', 'There was an error deleting that account\nPlease try again later.')
+                            elog.createLog('deleting student acc','Account Deletion unsuccessful.')
                             adminhome()
 
             bt(f2, text='delete', bd=0, bg='#000000', fg='#CF3327', font=('SF Pro Display', 12), activebackground='#000000', command=del1).place(
@@ -302,16 +307,19 @@ try:
                 if daid.get() == '' or daid.get() == 'Enter ID':
                     Mbox('Invalid entry',   'Please enter ID.   ')
                     a += 1
+                    elog.createLog('deleting admin acc','invalid ID entered')
                 if (daid.get() != '' and daid.get() != 'Enter ID') and ((daid.get(),) not in d21):
                     Mbox('Invalid entry',
                                      'Please enter valid ID.   ')
                     a += 1
+                    elog.createLog('deleting admin acc','invalid ID entered')
                 else:
                     if (a == 0) and ((daid.get(),) in d21):
                         if (daid.get() == aid.get()):
                             Mbox(
                                 'Message', 'Please login from another ID to delete this one.'
                             )
+                            elog.createLog('deleting admin acc','attempt to delete the account which is logged in.')
                             adminhome()
                         else:
                             try:
@@ -320,10 +328,12 @@ try:
                                 dbcon.commit()
                                 Mbox(
                                     'Message', 'Account deleted successfully.')
+                                elog.createLog('deleting admin acc','Account Deletion Successful.')
                                 adminhome()
                             except:
                                 Mbox(
                                     'Unexpected error', 'There was an error deleting that account\nPlease try again later.')
+                                elog.createLog('deleting admin acc','Account Deletion Unsuccessful.')
                                 adminhome()
 
             bt(f2, text='delete', bd=0, bg='#000000', fg='#CF3327', font=('SF Pro Display', 12), activebackground='#000000', command=del2).place(
@@ -478,44 +488,54 @@ try:
             if sg != 0:
                 Mbox(
                     'Invalid entry', 'Please enter data in all fields before saving.')
+                elog.createLog('student profile edit','empty fields before saving.')
             if sg == 0:
                 if s12.get().startswith('Saiit') == False or s != 0:
                     Mbox(
                         "Invalid entry", "Please enter valid ID.\nIt should start with 'Saiit',\nand should have a relevant unique number suffixed")
+                    elog.createLog('student profile edit','New ID disobeys ID-constraints.')
                     e += 1
                 if a != 0:
                     Mbox(
                         'Invalid entry', 'Names cannot contain numbers, please try again.')
+                    elog.createLog('student profile edit','numeric value entered in name.')
                     e += 1
                 if len(s2.get()) != 10 or len(s9.get()) != 10 or len(s11.get()) != 10 or b != 0:
                     Mbox(
                         'Invalid entry', 'Phone number is invalid, please try again.')
+                    elog.createLog('student profile edit','Invalid Phone number.')
                     e += 1
                 if s3.get() not in l:  # year checked.
                     Mbox(
                         'Invalid entry', '    Please check year.    ')
+                    elog.createLog('student profile edit','Invalid Year.')
                     e += 1
                 if s4.get().startswith('S') == False or ad != 0:    # admission number checked
                     Mbox(
                         'Invalid entry', "Admission number is not valid,\nIt can only begin with a 'S'\nPlease try again.")
+                    elog.createLog('student profile edit','empty fields before saving.')
                     e += 1
                 if d != 0:
                     Mbox(
                         'Invalid entry', 'Course is not valid, please try again.')
+                    elog.createLog('student profile edit','Invalid Course details.')
                     e += 1
                 if s6.get() not in l2:  # blood group checked.
                     Mbox(
                         'Invalid entry', 'Please check blood group and try again.')
+                    elog.createLog('student profile edit','Incorrect blood group details entered.')
                     e += 1
                 # gender checked.
                 if s7.get() not in ['male', 'female', 'Male', 'Female', 'M', 'F', 'm', 'f']:
                     Mbox(
                         'Invalid entry', 'Please check gender and try again.')
+                    elog.createLog('student profile edit','gender information invalid.')
                     e += 1
                 else:
                     if tuple(sget) in d11:
                         Mbox('Repeated entry',
                                          'This record already exists. ')
+                        elog.createLog('student profile edit','Account with similar records found.')
                     if tuple(sget) not in d11 and e == 0:
                         try:
                             dbcur.execute("insert into sprofile values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')"
@@ -547,6 +567,7 @@ try:
                             dbcon.commit()
                             Mbox(
                                 'Message', 'Account added successfully.')
+                            elog.createLog('student profile saving','Account added successfully.')
                             Mbox('Message', 'Since this will be a new account, therefore all other data branches such as password,assignments,attendance,etc are also not set-up.\n'
                                           'For now, all information regarding academics including credentials has been set to NULL.\n'
                                           'You can change this in the future. ')
@@ -554,6 +575,7 @@ try:
                         except:
                             Mbox(
                                 'Unexpected error', 'Please check all fields or try again later.')
+                            elog.createLog('student profile saving','Account addition Unsuccessful.')
 
         b41 = bt(f12, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
                  fg='#249ADF', activebackground='#000000', command=nstudent_save)
@@ -631,6 +653,7 @@ try:
                     c += 1
             if c != 0:
                 Mbox('Entry error', 'Please fill all fields.')
+            elog.createLog('admin profile creation','empty fields before saving.')
             if c == 0:
                 if (tid.get().startswith('Taiit') == False):
                     a += 1
@@ -645,14 +668,17 @@ try:
                 if a != 0:
                     Mbox(
                         'Entry error', 'Please check all fields and try again.')
+                    elog.createLog('admin profile creation','Invalid information in fields.')
                 if a == 0:
                     if napass.get() != cnapass.get():
                         Mbox(
                             'Key error', 'Entered paswords do not match.\nPlease try again.')
+                        elog.createLog('admin profile creation','Passwords not matching.')
                     if napass.get() == cnapass.get():
                         if tuple(a1get) in d12:
                             Mbox('Repeated entry',
                                              'This record already exists.')
+                            elog.createLog('admin profile creation','Account with similar records has been found.')
                         if tuple(a1get) not in d12:
                             try:
                                 dbcur.execute('insert into adminlogin values("{}","{}","{}")'.format(
@@ -660,10 +686,12 @@ try:
                                 dbcon.commit()
                                 Mbox(
                                     'Message', 'Account added successfully.')
+                                elog.createLog('admin profile creation','Account added successfully.')
                                 adminhome()
                             except:
                                 Mbox(
                                     'Unexpected error', 'Please check all fields or try again later.')
+                                elog.createLog('admin profile creation','Account addition Unsuccessful.')
 
         b43 = bt(f13, image=p51, bd=0, font=('SF Pro Display', 15), bg='#000000',
                  fg='#249ADF', activebackground='#000000', command=nadmin_save)
@@ -707,6 +735,7 @@ try:
             d2 = dbcur.fetchall()
             if fid.get() == '':
                 Mbox('Empty entry', '    Please enter ID.    ')
+            elog.createLog('password reset','empty fields before proceeding.')
             if (fid.get(),) not in d2 and fid.get() != '':
                 Mbox(
                     'Invalid entry', '  Incorrect ID.  \nPlease try again')
@@ -3801,8 +3830,10 @@ try:
     except:
         Mbox(
             'Database Error', 'There was some problem with the associated database, Please try again later')
+        elog.createLog('Database error CRITICAL','Database response with login details NEGATIVE.')
     else:
         main()
 except:
     Mbox('Unexpected error', "There was an unexpected error, we're trying to solve it. Please close the app and start it again.")
+    elog.createLog('Main UI startup issue CRITICAL','Main UI start NEGATIVE and program unexpectedly stopped.')
     
