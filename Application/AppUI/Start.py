@@ -31,7 +31,7 @@ try:
 
     def load():
         w = tk.Label(frame, text='Loading', font=(
-            'SF Pro Display', 13), bd=0, bg='#000000', fg='#737373')
+            'SF Pro Display', 13,"bold"), bd=0, bg='#000000', fg='#737373')
         w.place(relx=0.5, rely=0.75, anchor='center')
 
     def dot1():
