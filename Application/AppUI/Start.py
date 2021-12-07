@@ -38,19 +38,19 @@ try:
         global w1
         w1 = tk.Label(frame, text='.', font=('SF Pro Display', 13),
                         bd=0, bg='#000000', fg='#737373')
-        w1.place(relx=0.57, rely=0.75, anchor='center')
+        w1.place(relx=0.58, rely=0.75, anchor='center')
 
     def dot2():
         global w2
         w2 = tk.Label(frame, text='.', font=('SF Pro Display', 13),
                         bd=0, bg='#000000', fg='#737373')
-        w2.place(relx=0.59, rely=0.75, anchor='center')
+        w2.place(relx=0.60, rely=0.75, anchor='center')
 
     def dot3():
         global w3
         w3 = tk.Label(frame, text='.', font=('SF Pro Display', 13),
                         bd=0, bg='#000000', fg='#737373')
-        w3.place(relx=0.61, rely=0.75, anchor='center')
+        w3.place(relx=0.62, rely=0.75, anchor='center')
 
     def wipe():
         w1.place_forget()
