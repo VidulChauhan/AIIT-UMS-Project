@@ -1,0 +1,54 @@
+||--DATE--||--Time--||------LogType------||------------------------Log----------------------------------------------------------------------------------------------------------------------------------------------------||
+**********************************************************************************************************************
+                                                                                                                                                                                                                           
+2021-11-15, 15:22:19 , Successful startup , The app started successfully and has proceeded to run the main UI.
+2021-11-15, 15:22:38 , Start Screen Error , The Start Screen Didnt appear and error message prompted after which program unexpectedly stopped.
+2021-11-15, 15:22:54 , Start Screen Error , The Start Screen Didnt appear and error message prompted after which program unexpectedly stopped.
+2021-11-15, 15:23:07 , Successful startup , The app started successfully and has proceeded to run the main UI.
+2021-11-15, 15:23:32 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-15, 15:23:45 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-15, 15:24:02 , Start Screen Error , The Start Screen Didnt appear and error message prompted after which program unexpectedly stopped.
+2021-11-15, 15:24:11 , Start Screen Error , The Start Screen Didnt appear and error message prompted after which program unexpectedly stopped.
+2021-11-15, 15:27:17 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-15, 15:47:50 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-15, 15:47:50 , Main UI startup issue CRITICAL , Main UI start NEGATIVE and program unexpectedly stopped.
+2021-11-15, 15:48:44 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-15, 15:48:44 , Main UI startup issue CRITICAL , Main UI start NEGATIVE and program unexpectedly stopped.
+2021-11-15, 15:49:01 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-15, 15:49:12 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-15, 15:49:23 , Start Screen Error , The Start Screen Didnt appear and error message prompted after which program unexpectedly stopped.
+2021-11-15, 15:49:30 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-18, 17:57:01 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-18, 17:57:01 , Main UI startup issue CRITICAL , Main UI start NEGATIVE and program unexpectedly stopped.
+2021-11-18, 17:57:32 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-18, 19:48:55 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-18, 19:49:06 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-18, 19:49:06 , Main UI startup issue CRITICAL , Main UI start NEGATIVE and program unexpectedly stopped.
+2021-11-22, 14:34:54 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-22, 14:35:05 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-11-22, 14:35:05 , Main UI startup issue CRITICAL , Main UI start NEGATIVE and program unexpectedly stopped.
+<<<<<<< HEAD
+2021-12-07, 20:38:43 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-07, 20:38:43 , Main UI startup issue CRITICAL , Main UI start NEGATIVE and program unexpectedly stopped.
+=======
+2021-12-04, 13:30:54 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-04, 13:31:00 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-04, 13:31:41 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-04, 13:31:54 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-04, 13:32:31 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-04, 13:33:02 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-04, 13:42:08 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-04, 13:42:38 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-04, 13:43:01 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-04, 13:58:21 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+>>>>>>> 7c9998251caf99a2704b6981b91d3e9c6a0d2ac7
+2021-12-07, 20:41:51 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-07, 20:42:45 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-07, 20:43:12 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-07, 20:47:18 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-07, 20:47:18 , Main UI startup issue CRITICAL , Main UI start NEGATIVE and program unexpectedly stopped.
+2021-12-09, 22:36:37 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-09, 22:37:24 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-09, 22:38:17 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-09, 22:40:02 , Successful startup , The app started successfully and has proceeded to run the Main UI.
+2021-12-09, 22:40:29 , Successful startup , The app started successfully and has proceeded to run the Main UI.
